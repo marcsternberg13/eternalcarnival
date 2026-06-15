@@ -3,16 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <script>
-// Mobile redirect — send phones/tablets to the mobile version
-(function(){
-  var w = window.innerWidth || document.documentElement.clientWidth;
-  if(w < 768){
-    var mob = window.location.href
-      .replace('eternal_carnival_v9_desktop.html','eternal_carnival_v9_mobile.html')
-      .replace('_desktop.html','_mobile.html');
-    if(mob !== window.location.href) window.location.replace(mob);
-  }
-})();
+// Mobile redirect disabled for standalone file distribution
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -420,16 +411,7 @@ section { position:relative;z-index:2; }
 @keyframes pitchBreath { 0%,100%{opacity:.6} 50%{opacity:1} }
 .pitch-inner { position:relative;max-width:1100px;margin:0 auto; }
 .pitch-stmt {
-  margin:4rem 0 5rem;
-}
-.pitch-line {
-  font-size:clamp(1.3rem,2vw,1.8rem);font-weight:300;font-style:italic;line-height:1.5;color:var(--cream);margin-bottom:1rem;
-}
-.pitch-built {
-  margin-top:2.5rem;padding:1.4rem 2rem;
-  border-left:2px solid rgba(200,146,42,.35);
-  background:rgba(200,146,42,.04);
-  font-size:clamp(1.2rem,1.6vw,1.6rem);font-weight:300;font-style:italic;color:var(--ivory);
+  font-size:clamp(1.3rem,1.8vw,1.7rem);font-weight:300;font-style:italic;line-height:2;color:var(--cream);margin:3rem 0 4rem;
 }
 .pg { color:var(--gold-pale);font-weight:700;font-style:normal; }
 .pt { color:var(--teal-glow);font-weight:700;font-style:normal; }
@@ -499,6 +481,32 @@ footer { border-top:1px solid rgba(255,255,255,.05);padding:3rem 4rem;display:fl
   .ft-meta { text-align:center; }
 }
 @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms !important;transition-duration:.01ms !important; } }
+
+/* ── HAMBURGER ── */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.4rem;background:transparent;border:none;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--gold);transition:all .3s;}
+@media(max-width:900px){.hamburger{display:flex;}}
+
+/* ── MOBILE SLIDE MENU ── */
+.mob-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:590;display:none;}
+.mob-overlay.open{display:block;}
+.mob-menu{position:fixed;top:0;right:-100%;width:78vw;max-width:320px;height:100vh;background:rgba(3,4,10,.97);backdrop-filter:blur(20px);z-index:600;padding:5rem 2rem 2rem;transition:right .35s cubic-bezier(.22,1,.36,1);border-left:1px solid rgba(200,146,42,.12);}
+.mob-menu.open{right:0;}
+.mob-close{position:absolute;top:1.2rem;right:1.5rem;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.2em;color:var(--ash);background:transparent;border:none;cursor:pointer;}
+.mob-menu ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;}
+.mob-menu ul li{border-bottom:1px solid rgba(255,255,255,.05);}
+.mob-menu ul li a{display:block;padding:1.2rem 0;font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:.3em;color:rgba(245,237,216,.7);text-decoration:none;text-transform:uppercase;}
+.mob-lang{display:flex;gap:1rem;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(200,146,42,.12);}
+.mob-lang button{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.2em;color:rgba(245,237,216,.5);background:transparent;border:none;cursor:pointer;}
+
+/* ── COMPS TABLE MOBILE ── */
+@media(max-width:768px){
+  .comps-table thead{display:none;}
+  .comps-table,.comps-table tbody,.comps-table tr,.comps-table td{display:block;width:100%;}
+  .comps-table tr{border-bottom:1px solid rgba(200,146,42,.15);padding:1.5rem 0;}
+  .comps-table td{padding:.4rem 0;border:none;font-size:1rem;}
+  .comps-table td:first-child{font-family:'Cinzel',serif;color:var(--gold-pale);font-size:.9rem;margin-bottom:.5rem;}
+}
 
 /* ── V3 COLORED BLOCK SECTIONS ── */
 .sec-block {
@@ -1130,7 +1138,30 @@ footer { border-top:1px solid rgba(255,255,255,.05);padding:3rem 4rem;display:fl
     <li><a href="#production">Production</a></li>
     <li><a href="#notice" style="color:#c0392b;font-weight:600;" data-t="nav_notice">Notice</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" onclick="openMobileMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-overlay" id="mobOverlay" onclick="closeMobileMenu()"></div>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="closeMobileMenu()">✕ CLOSE</button>
+  <ul>
+    <li><a href="#story" onclick="closeMobileMenu()">Story</a></li>
+    <li><a href="#world" onclick="closeMobileMenu()">World</a></li>
+    <li><a href="#enemy" onclick="closeMobileMenu()">Enemy</a></li>
+    <li><a href="#characters" onclick="closeMobileMenu()">Characters</a></li>
+    <li><a href="#arc" onclick="closeMobileMenu()">Arc</a></li>
+    <li><a href="#production" onclick="closeMobileMenu()">Production</a></li>
+    <li><a href="#notice" onclick="closeMobileMenu()" style="color:#c0392b;" data-t="nav_notice">Notice</a></li>
+  </ul>
+  <div class="mob-lang">
+    <button onclick="setLang('en');closeMobileMenu()">English</button>
+    <span>/</span>
+    <button onclick="setLang('es');closeMobileMenu()">Español</button>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="hero">
@@ -1194,15 +1225,7 @@ footer { border-top:1px solid rgba(255,255,255,.05);padding:3rem 4rem;display:fl
     <h2 class="s-title rv" data-t="story1_title">What It Is</h2>
     <div class="sec-pitch" style="padding:0;overflow:visible">
       <div class="pitch-inner rv" style="max-width:none;text-align:left">
-        <div class="pitch-stmt" data-t="pitch_stmt" style="text-align:left">
-          <p class="pitch-line">The spectacle and physical world of <span class="pg">Cirque&nbsp;du&nbsp;Soleil</span> and <span class="pg">The&nbsp;Dark&nbsp;Crystal</span>.</p>
-          <p class="pitch-line">The layered realities of <span class="pt">Inception</span>.</p>
-          <p class="pitch-line">The darkness and grief of <span class="pt">Pan&#8217;s&nbsp;Labyrinth</span> and <span class="pt">The&nbsp;Boy&nbsp;and&nbsp;the&nbsp;Heron</span>.</p>
-          <p class="pitch-line">The desperate imagination of <span class="pc">The&nbsp;NeverEnding&nbsp;Story</span> and <span class="pc">The&nbsp;Phantom&nbsp;Tollbooth</span>.</p>
-          <p class="pitch-line">The interior world made real of <span class="pg">Inside&nbsp;Out</span>.</p>
-          <p class="pitch-line">The epic scale and world mythology of <span class="pt">Star&nbsp;Wars</span>.</p>
-          <div class="pitch-built">Built inside one real artist&#8217;s lifetime of work.</div>
-        </div>
+        <div class="pitch-stmt" data-t="pitch_stmt" style="text-align:left">The spectacle and physical world of <span class="pg">Cirque&nbsp;du&nbsp;Soleil</span> and <span class="pg">The&nbsp;Dark&nbsp;Crystal</span>.<br>The layered realities of <span class="pt">Inception</span>.<br>The darkness and grief of <span class="pt">Pan&#8217;s&nbsp;Labyrinth</span> and <span class="pt">The&nbsp;Boy&nbsp;and&nbsp;the&nbsp;Heron</span>.<br>The desperate imagination of <span class="pc">The&nbsp;NeverEnding&nbsp;Story</span> and <span class="pc">The&nbsp;Phantom&nbsp;Tollbooth</span>.<br>The interior world made real of <span class="pg">Inside&nbsp;Out</span>.<br>The epic scale and world mythology of <span class="pt">Star&nbsp;Wars</span>.<br><br><em>Built inside one real artist&#8217;s lifetime of work.</em></div>
         <div class="pitch-tags" style="justify-content:flex-start">
           <span class="pitch-tag">Physical World-Building</span>
           <span class="pitch-tag">Moral Darkness</span>
@@ -2422,7 +2445,7 @@ const TRANSLATIONS = {
     logline_label: 'Logline',
     story1_label: 'The Pitch in One Line',
     story1_title: 'What It Is',
-    pitch_stmt: '<p class=\"pitch-line\">The spectacle and physical world of <span class=\"pg\">Cirque&nbsp;du&nbsp;Soleil</span> and <span class=\"pg\">The&nbsp;Dark&nbsp;Crystal</span>.</p><p class=\"pitch-line\">The layered realities of <span class=\"pt\">Inception</span>.</p><p class=\"pitch-line\">The darkness and grief of <span class=\"pt\">Pan&#8217;s&nbsp;Labyrinth</span> and <span class=\"pt\">The&nbsp;Boy&nbsp;and&nbsp;the&nbsp;Heron</span>.</p><p class=\"pitch-line\">The desperate imagination of <span class=\"pc\">The&nbsp;NeverEnding&nbsp;Story</span> and <span class=\"pc\">The&nbsp;Phantom&nbsp;Tollbooth</span>.</p><p class=\"pitch-line\">The interior world made real of <span class=\"pg\">Inside&nbsp;Out</span>.</p><p class=\"pitch-line\">The epic scale and world mythology of <span class=\"pt\">Star&nbsp;Wars</span>.</p><div class=\"pitch-built\">Built inside one real artist&#8217;s lifetime of work.</div>',
+    pitch_stmt: 'The spectacle and physical world of <span class="pg">Cirque&nbsp;du&nbsp;Soleil</span> and <span class="pg">The&nbsp;Dark&nbsp;Crystal</span>.<br>The layered realities of <span class="pt">Inception</span>.<br>The darkness and grief of <span class="pt">Pan&#8217;s&nbsp;Labyrinth</span> and <span class="pt">The&nbsp;Boy&nbsp;and&nbsp;the&nbsp;Heron</span>.<br>The desperate imagination of <span class="pc">The&nbsp;NeverEnding&nbsp;Story</span> and <span class="pc">The&nbsp;Phantom&nbsp;Tollbooth</span>.<br>The interior world made real of <span class="pg">Inside&nbsp;Out</span>.<br>The epic scale and world mythology of <span class="pt">Star&nbsp;Wars</span>.<br><br><em>Built inside one real artist&#8217;s lifetime of work.</em>',
     story2_label: 'The Story in Three Sentences',
     story2_heading: 'The Core',
     story2_s1: 'A boy who doesn\'t fit the real world falls into his own imagination.',
@@ -2749,7 +2772,7 @@ const TRANSLATIONS = {
     logline_label: 'Logline',
     story1_label: 'El Pitch en Una Línea',
     story1_title: 'Qué Es',
-    pitch_stmt: '<p class=\"pitch-line\">El espect&aacute;culo y el mundo f&iacute;sico de <span class=\"pg\">Cirque&nbsp;du&nbsp;Soleil</span> y <span class=\"pg\">The&nbsp;Dark&nbsp;Crystal</span>.</p><p class=\"pitch-line\">Las realidades superpuestas de <span class=\"pt\">Inception</span>.</p><p class=\"pitch-line\">La oscuridad y el dolor de <span class=\"pt\">El&nbsp;laberinto&nbsp;del&nbsp;fauno</span> y <span class=\"pt\">El&nbsp;ni&ntilde;o&nbsp;y&nbsp;la&nbsp;garza</span>.</p><p class=\"pitch-line\">La imaginaci&oacute;n desesperada de <span class=\"pc\">La&nbsp;historia&nbsp;interminable</span> y <span class=\"pc\">The&nbsp;Phantom&nbsp;Tollbooth</span>.</p><p class=\"pitch-line\">El mundo interior hecho realidad de <span class=\"pg\">Inside&nbsp;Out</span>.</p><p class=\"pitch-line\">La escala &eacute;pica y la mitolog&iacute;a de <span class=\"pt\">Star&nbsp;Wars</span>.</p><div class=\"pitch-built\">Constru&iacute;do dentro de la obra de toda una vida de un solo artista.</div>',
+    pitch_stmt: 'El espectáculo y el mundo físico de <span class="pg">Cirque&nbsp;du&nbsp;Soleil</span> y <span class="pg">The&nbsp;Dark&nbsp;Crystal</span>.<br>Las realidades superpuestas de <span class="pt">Inception</span>.<br>La oscuridad y el dolor de <span class="pt">El&nbsp;laberinto&nbsp;del&nbsp;fauno</span> y <span class="pt">El&nbsp;niño&nbsp;y&nbsp;la&nbsp;garza</span>.<br>La imaginación desesperada de <span class="pc">La&nbsp;historia&nbsp;interminable</span> y <span class="pc">The&nbsp;Phantom&nbsp;Tollbooth</span>.<br>El mundo interior hecho realidad de <span class="pg">Inside&nbsp;Out</span>.<br>La escala épica y la mitología de <span class="pt">Star&nbsp;Wars</span>.<br><br><em>Construido dentro de la obra de toda una vida de un solo artista.</em>',
     story2_label: 'La Historia en Tres Oraciones',
     story2_heading: 'El Núcleo',
     story2_s1: 'Un niño que no encaja en el mundo real cae dentro de su propia imaginación.',
@@ -3070,6 +3093,8 @@ const TRANSLATIONS = {
 let currentLang = 'es';
 // Initialize page in Spanish on load
 window.addEventListener('DOMContentLoaded', function(){ setLang('es'); });
+function openMobileMenu(){document.getElementById('mobMenu').classList.add('open');document.getElementById('mobOverlay').classList.add('open');}
+function closeMobileMenu(){document.getElementById('mobMenu').classList.remove('open');document.getElementById('mobOverlay').classList.remove('open');}
 function setLang(lang) {
   currentLang = lang;
   const T = TRANSLATIONS[lang];
