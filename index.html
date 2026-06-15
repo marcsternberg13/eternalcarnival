@@ -819,6 +819,12 @@ footer { border-top:1px solid rgba(255,255,255,.05);padding:3rem 4rem;display:fl
 </style>
 </head>
 <body>
+<script>
+  const pass = prompt("ETERNAL CARNIVAL · Enter password\n\nFor access contact: marcsternberg13@gmail.com");
+  if (pass !== "carnival") {
+    document.body.innerHTML = "<div style='font-family:monospace;color:#C8922A;background:#03040A;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;'><p style='letter-spacing:.3em;font-size:1.1rem'>ACCESS RESTRICTED</p><br><p style='color:#6A6860;font-size:.85rem;letter-spacing:.2em'>Contact marcsternberg13@gmail.com</p></div>";
+  }
+</script>
 
 <div id="cur"></div>
 <div id="cur-ring"></div>
