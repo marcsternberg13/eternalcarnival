@@ -252,6 +252,7 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:2rem 1.5rem;text-align
     if(val === CORRECT){
       sessionStorage.setItem('ec_access','granted');
       document.getElementById('pw-gate').remove();
+      setLang(typeof currentLang !== 'undefined' ? currentLang : 'es');
     } else {
       document.getElementById('pw-err').textContent = 'Incorrect. Contact Marc Sternberg for the password.';
       document.getElementById('pw-input').value='';
@@ -1440,8 +1441,8 @@ if(typeof TRANSLATIONS !== 'undefined') {
   TRANSLATIONS.es.nav_logo_main='ETERNAL CARNIVAL';
 }
 
-// Initialize language - called here to guarantee all translations are defined
-setLang('es');
+// Initialize language after DOM fully loaded
+window.addEventListener('load', function(){ setLang('es'); });
 </script>
 </body>
 </html>
