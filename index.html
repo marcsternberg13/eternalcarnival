@@ -126,7 +126,6 @@ nav.scrolled {
 .hero-content {
   position:relative;z-index:10;text-align:center;
   display:flex;flex-direction:column;align-items:center;
-  padding-top:15rem;
 }
 .series-type {
   font-family:'Cinzel',serif;
@@ -170,7 +169,7 @@ nav.scrolled {
 }
 
 .logline {
-  font-size:clamp(1.44rem,2.24vw,2.08rem);font-weight:300;font-style:italic;
+  font-size:clamp(1.26rem,1.96vw,1.82rem);font-weight:300;font-style:italic;
   color:rgba(245,237,216,.85);line-height:1.65;max-width:min(1100px,92vw);margin-top:2.8rem;
   opacity:0;animation:riseIn 1.4s cubic-bezier(.22,1,.36,1) 1.1s forwards;
 }
@@ -816,15 +815,238 @@ footer { border-top:1px solid rgba(255,255,255,.05);padding:3rem 4rem;display:fl
 /* Row 4 (card 13): standalone */
 .lv-card:nth-child(13) { margin-top: 70px; }
 
+
+/* ── V9 ADDITIONS ── */
+.nav-logo { display:flex;flex-direction:column;gap:.1rem; }
+.nav-logo-main { font-family:'Cinzel',serif;font-size:1.05rem;letter-spacing:.38em;color:var(--gold);font-weight:700;line-height:1.1;text-transform:uppercase; }
+.nav-logo-sub { font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.28em;color:rgba(200,146,42,.5);font-style:italic;text-transform:uppercase; }
+.lang-toggle-hero {
+  display:flex;align-items:center;gap:1rem;
+  margin-bottom:2.2rem;
+  margin-top:20px;
+  opacity:0;animation:riseIn 1s cubic-bezier(.22,1,.36,1) 0s forwards;
+}
+.lang-btn-hero {
+  font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;
+  color:rgba(245,237,216,.45);background:transparent;border:none;cursor:none;
+  padding:.3rem 0;transition:color .3s,opacity .3s;position:relative;
+}
+.lang-btn-hero::after {
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:var(--gold);transform:scaleX(0);transition:transform .3s;
+}
+.lang-btn-hero[data-active="true"] { color:var(--gold); }
+.lang-btn-hero[data-active="true"]::after { transform:scaleX(1); }
+.lang-btn-hero:hover { color:var(--gold-pale); }
+.lang-divider { font-family:'Cinzel',serif;font-size:.9rem;color:rgba(200,146,42,.3); }
+/* Rendering overlays for character cards */
+.ch-art-img { position:absolute;inset:0;overflow:hidden; }
+.ch-art-img img { width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .8s cubic-bezier(.25,.46,.45,.94); }
+.ch-card:hover .ch-art-img img { transform:scale(1.06); }
+
+/* ══ V9 SECTION STYLES ══ */
+
+/* Crimson section header bars */
+.section-header {
+  background:var(--crimson);
+  padding:1.1rem 4rem;
+  display:flex;align-items:center;gap:2rem;
+  position:relative;z-index:3;
+}
+.section-header-title {
+  font-family:'Cinzel',serif;font-size:.9rem;letter-spacing:.5em;
+  text-transform:uppercase;color:var(--cream);font-weight:400;
+}
+.section-header-line { flex:1;height:1px;background:rgba(245,237,216,.2); }
+.section-header-num {
+  font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.3em;
+  color:rgba(245,237,216,.4);
+}
+
+/* Standard section padding */
+.v9-section { position:relative;z-index:2; }
+.v9-inner { max-width:1240px;margin:0 auto;padding:0 4rem; }
+.v9-pad { padding:8rem 0; }
+.v9-pad-lg { padding:10rem 0; }
+
+/* Two-col grid */
+.v9-grid-2 { display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start; }
+.v9-grid-3 { display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(200,146,42,.04); }
+
+/* Story section */
+.story-3-sent { display:flex;flex-direction:column;gap:1.4rem;border-left:2px solid rgba(200,146,42,.25);padding-left:2.5rem;margin-top:2.5rem; }
+.story-3-sent-item { font-size:clamp(1.3rem,1.8vw,1.6rem);font-weight:300;line-height:1.85;color:rgba(245,237,216,.85); }
+.story-logline-block { margin-top:3rem;padding:2.5rem;border-left:2px solid var(--gold);background:rgba(200,146,42,.04); }
+.story-logline-label { font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:1rem; }
+.story-logline-text { font-size:clamp(1.35rem,1.8vw,1.6rem);font-style:italic;font-weight:300;color:rgba(245,237,216,.92);line-height:1.75; }
+
+/* Unique pillars */
+.unique-card { padding:3rem 2.5rem;border:1px solid rgba(200,146,42,.1);transition:background .3s; }
+.unique-card:hover { background:rgba(200,146,42,.04); }
+.unique-num { font-family:'Cinzel',serif;font-size:4rem;font-weight:900;color:rgba(200,146,42,.12);line-height:1;margin-bottom:1rem; }
+.unique-title { font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold-pale);margin-bottom:1rem;letter-spacing:.04em; }
+.unique-body { font-size:clamp(1.15rem,1.4vw,1.35rem);font-weight:300;color:rgba(245,237,216,.72);line-height:1.8; }
+
+/* Comps table */
+.comps-table { width:100%;border-collapse:collapse;margin-top:2.5rem; }
+.comps-table th { font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dim);padding:1rem 1.5rem;text-align:left;border-bottom:1px solid rgba(200,146,42,.2); }
+.comps-table td { padding:1.2rem 1.5rem;font-size:clamp(1.1rem,1.4vw,1.3rem);font-weight:300;color:rgba(245,237,216,.78);border-bottom:1px solid rgba(255,255,255,.04);line-height:1.6;vertical-align:top; }
+.comps-table td:first-child { font-family:'Cinzel',serif;color:var(--gold-pale); }
+.comps-table tr:hover td { background:rgba(200,146,42,.03); }
+.comp-what { font-size:clamp(1rem,1.2vw,1.15rem);color:rgba(245,237,216,.55);margin-top:.4rem; }
+
+/* Wound divider */
+.wound-divider { padding:7rem 4rem;text-align:center;position:relative;z-index:2;background:radial-gradient(ellipse at center,rgba(200,146,42,.04) 0%,transparent 70%); }
+.wound-divider blockquote { font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,3vw,2.8rem);font-style:italic;font-weight:300;color:rgba(245,237,216,.88);line-height:1.6;max-width:800px;margin:0 auto; }
+
+/* World cards */
+.world-block { padding:2.5rem;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02);transition:border-color .3s; }
+.world-block:hover { border-color:rgba(200,146,42,.2); }
+.world-block-title { font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold-pale);margin-bottom:.8rem;letter-spacing:.04em; }
+.world-block-body { font-size:clamp(1.1rem,1.3vw,1.25rem);font-weight:300;color:rgba(245,237,216,.72);line-height:1.8; }
+
+/* Glitch escalation */
+.glitch-row { display:grid;grid-template-columns:100px 1fr;gap:2rem;align-items:start;padding:1.2rem 0;border-bottom:1px solid rgba(255,255,255,.05); }
+.glitch-tag { font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.18em;color:var(--teal-glow);padding:.35rem .8rem;border:1px solid rgba(78,201,196,.3);white-space:nowrap;align-self:start; }
+.glitch-desc { font-size:clamp(1.15rem,1.4vw,1.35rem);font-weight:300;color:rgba(245,237,216,.82);line-height:1.65; }
+
+/* Enemy section */
+.void-card-v9 { padding:3.5rem;border:1px solid rgba(139,26,26,.3);background:rgba(139,26,26,.04);position:relative;overflow:hidden;margin-top:2.5rem; }
+.void-card-v9::before { content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(139,26,26,.08),transparent 70%); }
+.void-quote-v9 { font-size:clamp(1.6rem,2.6vw,2.4rem);font-style:italic;font-weight:300;color:rgba(245,237,216,.88);line-height:1.55;margin-bottom:2rem;position:relative;z-index:1;border-left:2px solid var(--crimson-glow);padding-left:2rem;text-shadow:0 0 60px rgba(139,26,26,.3); }
+.void-body-v9 { font-size:clamp(1.2rem,1.5vw,1.4rem);font-weight:300;color:rgba(245,237,216,.7);line-height:1.8;position:relative;z-index:1; }
+
+/* LQS grid */
+.lqs-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(107,74,26,.04);margin-top:2.5rem; }
+.lqs-card { padding:2.5rem;border:1px solid rgba(107,74,26,.2);transition:background .3s; }
+.lqs-card:hover { background:rgba(107,74,26,.04); }
+.lqs-title { font-family:'Cinzel',serif;font-size:1.05rem;color:var(--bronze-glow);margin-bottom:.8rem;letter-spacing:.04em; }
+.lqs-body { font-size:clamp(1.1rem,1.3vw,1.25rem);font-weight:300;color:rgba(245,237,216,.68);line-height:1.75; }
+
+/* Bronze stages */
+.bronze-stages { display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem; }
+.bronze-stage { padding:2rem;border-left:2px solid var(--bronze-mid);background:rgba(107,74,26,.04); }
+.bs-num { font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--bronze-mid);margin-bottom:.5rem; }
+.bs-title { font-family:'Cinzel',serif;font-size:1.1rem;color:var(--cream);margin-bottom:.6rem; }
+.bs-body { font-size:clamp(1.05rem,1.2vw,1.2rem);font-weight:300;color:rgba(245,237,216,.65);line-height:1.65; }
+
+/* Character principals */
+.principals-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.04);margin-top:3rem; }
+.principal-card { position:relative;overflow:hidden;background:var(--void);border:1px solid rgba(200,146,42,.08);transition:border-color .4s; }
+.principal-card:hover { border-color:rgba(200,146,42,.3); }
+.pc-image { width:100%;aspect-ratio:2/3;overflow:hidden;position:relative; }
+.pc-image img { width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .8s cubic-bezier(.25,.46,.45,.94); }
+.principal-card:hover .pc-image img { transform:scale(1.05); }
+.pc-image-fallback { width:100%;height:100%;position:absolute;inset:0; }
+.pc-info { padding:2rem 2rem 2.5rem; }
+.pc-role { font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.38em;text-transform:uppercase;margin-bottom:.5rem; }
+.pc-name { font-family:'Cinzel',serif;font-size:1.5rem;font-weight:700;color:var(--cream);margin-bottom:.8rem; }
+.pc-body { font-size:clamp(1.1rem,1.3vw,1.25rem);font-weight:300;color:rgba(245,237,216,.72);line-height:1.8; }
+
+/* Anchor block */
+.anchor-block { margin-top:3rem;padding:3rem;display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:center;border:1px solid rgba(200,146,42,.12);background:rgba(200,146,42,.02); }
+.anchor-eye { font-size:5rem;text-align:center;filter:drop-shadow(0 0 24px rgba(200,146,42,.5)); }
+.anchor-body { font-size:clamp(1.2rem,1.5vw,1.4rem);font-weight:300;color:rgba(245,237,216,.82);line-height:1.8; }
+
+/* Skywalker grid */
+.skywalker-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:3rem; }
+.sky-card { padding:2.5rem;border:1px solid rgba(78,201,196,.12);background:rgba(78,201,196,.02); }
+.sky-title { font-family:'Cinzel',serif;font-size:1.1rem;color:var(--teal-glow);margin-bottom:1.2rem;letter-spacing:.05em; }
+.sky-body { font-size:clamp(1.15rem,1.4vw,1.35rem);font-weight:300;color:rgba(245,237,216,.75);line-height:1.8; }
+
+/* Sorkel arc table */
+.sorkel-arc-table { width:100%;border-collapse:collapse;margin-top:2.5rem; }
+.sorkel-arc-table th { font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dim);padding:1rem 1.5rem;text-align:left;border-bottom:1px solid rgba(200,146,42,.2); }
+.sorkel-arc-table td { padding:1.2rem 1.5rem;font-size:clamp(1.1rem,1.3vw,1.25rem);font-weight:300;color:rgba(245,237,216,.75);border-bottom:1px solid rgba(255,255,255,.04);line-height:1.6;vertical-align:top; }
+
+/* Citizens grid */
+.citizens-grid-v9 { display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,.03);margin-top:3rem; }
+.citizen-card-v9 { padding:2.5rem;border:1px solid rgba(255,255,255,.06);transition:border-color .3s,background .3s; }
+.citizen-card-v9:hover { border-color:rgba(200,146,42,.22);background:rgba(200,146,42,.03); }
+.citizen-name-v9 { font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold-pale);margin-bottom:.7rem;letter-spacing:.03em; }
+.citizen-body-v9 { font-size:clamp(1.05rem,1.2vw,1.2rem);font-weight:300;color:rgba(245,237,216,.68);line-height:1.8; }
+
+/* Arc seasons */
+.season-cards { display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:rgba(200,146,42,.04);margin-top:3rem; }
+.season-q-card { padding:3rem 2.5rem;border:1px solid rgba(200,146,42,.1);transition:background .3s; }
+.season-q-card:hover { background:rgba(200,146,42,.04); }
+.sqc-num { font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:var(--bronze-mid);margin-bottom:.5rem; }
+.sqc-name { font-family:'Cinzel',serif;font-size:1.5rem;font-weight:700;color:var(--cream);margin-bottom:.4rem; }
+.sqc-word { font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:var(--teal-glow);margin-bottom:1.2rem; }
+.sqc-quote { font-size:clamp(1.15rem,1.5vw,1.35rem);font-style:italic;font-weight:300;color:rgba(245,237,216,.78);line-height:1.75; }
+
+/* Episode grid */
+.ep-grid-v9 { display:grid;grid-template-columns:repeat(2,1fr);gap:2.5rem;margin-top:3.5rem; }
+.ep-card-v9 { background:rgba(255,255,255,.02);border:1px solid rgba(200,146,42,.1);padding:2.5rem 2.2rem;transition:border-color .4s,background .4s; }
+.ep-card-v9:hover { border-color:rgba(200,146,42,.3);background:rgba(200,146,42,.04); }
+.ep-num-v9 { font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.42em;color:var(--teal-glow);text-transform:uppercase;margin-bottom:1rem; }
+.ep-title-v9 { font-family:'Cinzel',serif;font-size:1.2rem;color:var(--cream);margin-bottom:.9rem;letter-spacing:.03em; }
+.ep-body-v9 { font-size:clamp(1.05rem,1.2vw,1.2rem);font-weight:300;line-height:1.85;color:rgba(245,237,216,.7); }
+
+/* Beat sheet */
+.beats-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(200,146,42,.03);margin-top:3rem; }
+.beat-card { padding:2rem;border:1px solid rgba(200,146,42,.06);transition:background .3s; }
+.beat-card:hover { background:rgba(200,146,42,.03); }
+.beat-num { font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--bronze-mid);margin-bottom:.4rem; }
+.beat-title { font-family:'Cinzel',serif;font-size:.95rem;color:var(--gold-pale);margin-bottom:.5rem; }
+.beat-body { font-size:clamp(1rem,1.15vw,1.1rem);font-weight:300;color:rgba(245,237,216,.65);line-height:1.65; }
+
+/* Production pillars */
+.prod-pillars { display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(200,146,42,.03);margin-top:3rem; }
+.prod-pillar-v9 { padding:2.5rem 2rem;border:1px solid rgba(200,146,42,.07);border-top:2px solid rgba(200,146,42,.12);transition:border-top-color .3s,background .3s; }
+.prod-pillar-v9:hover { background:rgba(200,146,42,.04);border-top-color:var(--gold); }
+.pp-label { font-family:'Space Mono',monospace;font-size:.82rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);opacity:.82;margin-bottom:.7rem; }
+.pp-num { font-family:'Cinzel',serif;font-size:3.5rem;font-weight:900;color:rgba(200,146,42,.13);line-height:1;margin-bottom:.5rem; }
+.pp-text { font-size:clamp(1.1rem,1.3vw,1.25rem);line-height:1.8;color:rgba(210,205,235,.8);font-weight:300; }
+
+/* Sorkel divider */
+.sorkel-divider { padding:7rem 4rem;text-align:center;position:relative;z-index:2;background:radial-gradient(ellipse at center,rgba(107,74,26,.05) 0%,transparent 70%); }
+.sorkel-divider blockquote { font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.2vw,2rem);font-style:italic;font-weight:300;color:rgba(245,237,216,.82);line-height:1.7;max-width:740px;margin:0 auto 1.2rem; }
+.sd-meta { font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--bronze-mid);opacity:.7; }
+
+/* Gap block production */
+.gap-block { padding:2.5rem;border:1px solid rgba(78,201,196,.15);background:rgba(78,201,196,.02);margin-top:2.5rem; }
+.gap-item { display:flex;gap:1.5rem;align-items:flex-start;padding:1.2rem 0;border-bottom:1px solid rgba(255,255,255,.05); }
+.gap-item:last-child { border-bottom:none; }
+.gap-dash { color:var(--teal-glow);font-size:1.4rem;flex-shrink:0;margin-top:.1rem; }
+.gap-text { font-size:clamp(1.2rem,1.5vw,1.4rem);font-weight:300;color:rgba(245,237,216,.78);line-height:1.7; }
+
+/* World color swatches */
+.color-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.04);margin-top:3rem; }
+.color-swatch-v9 { padding:2.5rem 2rem;transition:background .3s; }
+.color-swatch-v9:hover { background:rgba(200,146,42,.03); }
+.cs-dot { width:52px;height:52px;border-radius:4px;margin-bottom:1.2rem; }
+.cs-label { font-family:'Cinzel',serif;font-size:1rem;color:var(--cream);margin-bottom:.5rem; }
+.cs-desc { font-size:clamp(1rem,1.2vw,1.15rem);font-weight:300;color:rgba(245,237,216,.6);line-height:1.65; }
+
+/* Level map table */
+.level-map { border:1px solid rgba(200,146,42,.15);margin-top:2.5rem; }
+.lmap-row { padding:2rem 2.5rem;border-bottom:1px solid rgba(200,146,42,.07); }
+.lmap-row:nth-child(odd) { background:rgba(200,146,42,.02); }
+.lmap-row:last-child { border-bottom:none; }
+.lmap-season { font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;color:var(--cream);margin-bottom:.3rem; }
+.lmap-arc { font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.18em;color:var(--bronze-mid);margin-bottom:.5rem; }
+.lmap-body { font-size:clamp(1.1rem,1.3vw,1.25rem);font-weight:300;color:rgba(245,237,216,.68);line-height:1.6; }
+
+/* Responsive */
+@media(max-width:1100px) {
+  .v9-grid-2,.skywalker-grid,.season-cards { grid-template-columns:1fr; }
+  .lqs-grid,.bronze-stages { grid-template-columns:1fr; }
+  .principals-grid,.citizens-grid-v9 { grid-template-columns:1fr; }
+  .v9-grid-3,.prod-pillars,.beats-grid { grid-template-columns:repeat(2,1fr); }
+  .color-grid { grid-template-columns:repeat(2,1fr); }
+  .ep-grid-v9 { grid-template-columns:1fr; }
+}
+@media(max-width:768px) {
+  .section-header,.v9-inner,.wound-divider,.sorkel-divider { padding-left:1.5rem;padding-right:1.5rem; }
+  .v9-pad { padding:5rem 0; }
+  .v9-grid-2,.v9-grid-3,.prod-pillars,.beats-grid,.color-grid,.principals-grid,.citizens-grid-v9,.lqs-grid,.bronze-stages { grid-template-columns:1fr; }
+  .anchor-block { grid-template-columns:1fr; }
+}
+
 </style>
 </head>
 <body>
-<script>
-  const pass = prompt("ETERNAL CARNIVAL · Enter password\n\nFor access contact: marcsternberg13@gmail.com");
-  if (pass !== "carnival") {
-    document.body.innerHTML = "<div style='font-family:monospace;color:#C8922A;background:#03040A;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;'><p style='letter-spacing:.3em;font-size:1.1rem'>ACCESS RESTRICTED</p><br><p style='color:#6A6860;font-size:.85rem;letter-spacing:.2em'>Contact marcsternberg13@gmail.com</p></div>";
-  }
-</script>
 
 <div id="cur"></div>
 <div id="cur-ring"></div>
@@ -833,16 +1055,17 @@ footer { border-top:1px solid rgba(255,255,255,.05);padding:3rem 4rem;display:fl
 
 <!-- NAV -->
 <nav id="nav">
-  <div class="nav-logo">Eternal Carnival</div>
+  <div class="nav-logo">
+    <span class="nav-logo-main">ETERNAL CARNIVAL</span>
+    <span class="nav-logo-sub" data-t="nav_sub">An Original Series</span>
+  </div>
   <ul class="nav-links">
-    <li><a href="#world">The World</a></li>
-    <li><a href="#void">El Vacío</a></li>
+    <li><a href="#pitch">Story</a></li>
+    <li><a href="#world">World</a></li>
+    <li><a href="#void">Enemy</a></li>
     <li><a href="#characters">Characters</a></li>
-    <li><a href="#seasons">Seasons</a></li>
+    <li><a href="#seasons">Arc</a></li>
     <li><a href="#production">Production</a></li>
-    <li><a href="#gallery">The Galleries</a></li>
-    <li><a href="#producer">The Producer</a></li>
-    <li><a href="#close">Contact</a></li>
   </ul>
 </nav>
 
@@ -858,12 +1081,17 @@ footer { border-top:1px solid rgba(255,255,255,.05);padding:3rem 4rem;display:fl
   <div class="water-lines"></div>
 
   <div class="hero-content" id="heroContent">
-    <div class="series-type">A Live-Action TV Series Concept</div>
-    <div class="eyebrow">An Original Series &nbsp;·&nbsp; Created by Marc Sternberg<br>Son of a Botanist Productions</div>
+    <div class="lang-toggle-hero">
+      <button class="lang-btn-hero" id="langBtnEn" onclick="setLang('en')" data-active="true">English</button>
+      <span class="lang-divider">/</span>
+      <button class="lang-btn-hero" id="langBtnEs" onclick="setLang('es')" data-active="false">Español</button>
+    </div>
+    <div class="series-type" data-t="hero_series_type">A Live-Action TV Series Concept</div>
+    <div class="eyebrow" data-t="hero_eyebrow">An Original Series &nbsp;·&nbsp; Created by Marc Sternberg<br>Son of a Botanist Productions</div>
     <h1 class="hero-title">
       Eternal<span class="t-carnival">Carn<span class="void-i">i</span>val</span>
     </h1>
-    <p class="logline">
+    <p class="logline" data-t="logline">
       In a dying empire of imagination, a child who still feels everything<br>
       must find the creator who has forgotten how —<br>
       because <em>the boy is the last memory the old man has of himself.</em>
@@ -875,7 +1103,7 @@ footer { border-top:1px solid rgba(255,255,255,.05);padding:3rem 4rem;display:fl
 
   <div class="scroll-sig">
     <div class="scroll-sig-line"></div>
-    <span>Descend</span>
+    <span data-t="hero_scroll">Descend</span>
   </div>
 </section>
 
@@ -888,539 +1116,85 @@ footer { border-top:1px solid rgba(255,255,255,.05);padding:3rem 4rem;display:fl
   </div>
 </section>
 
-<!-- PITCH -->
-<section class="sec-pitch" id="pitch">
-  <div class="pitch-bg-glow"></div>
-  <div class="pitch-inner rv">
-    <div class="s-label" style="justify-content:center">The Pitch in One Line</div>
-    <p class="pitch-stmt">
-      <span class="pg">Cirque&nbsp;du&nbsp;Soleil</span> meets <span class="pt">Pan&#8217;s&nbsp;Labyrinth</span> meets <span class="pg">The&nbsp;Dark&nbsp;Crystal</span> meets <span class="pt">Inception</span> meets <span class="pc">The&nbsp;NeverEnding&nbsp;Story</span>
-    </p>
-    <div class="pitch-tags">
-      <span class="pitch-tag">Physical World-Building</span>
-      <span class="pitch-tag">Moral Darkness</span>
-      <span class="pitch-tag">Live Action Creatures</span>
-      <span class="pitch-tag">Parallel Realities</span>
-      <span class="pitch-tag">One Artist's Universe</span>
-      <span class="pitch-tag">Imagination as Stakes</span>
-      <span class="pitch-tag" style="white-space:nowrap">4&nbsp;Seasons · 13&nbsp;Levels<br>· 2&nbsp;Worlds</span>
-    </div>
-  </div>
-</section>
 
+<!-- STORY SECTION -->
+<div class="section-header rv">
+  <span class="section-header-title" data-t="nav_story">Story</span>
+  <div class="section-header-line"></div>
+  <span class="section-header-num">01</span>
+</div>
 
-
-<!-- STORY: THREE SENTENCES -->
-<section class="sec-block sec-block-indigo" id="story3" style="padding:9rem 0;">
-  <div class="block-wrap" style="max-width:900px;margin:0 auto;padding:0 4rem;">
-    <div class="rv">
-      <div class="s-label">The Story</div>
-      <h2 class="s-title" style="font-size:clamp(3rem,6vw,5.5rem);margin-bottom:0;">Three Sentences</h2>
-    </div>
-    <div class="rv logline-v3" style="position:relative;padding:2.8rem 3.2rem;border-left:2px solid var(--gold);background:rgba(200,151,26,.04);margin:3.5rem 0;max-width:78ch;">
-      <div style="content:'';font-family:'Cormorant Garamond',serif;font-size:52px;color:var(--gold);opacity:.15;position:absolute;top:.2rem;left:1rem;line-height:1;pointer-events:none;">&ldquo;</div>
-      <p style="font-size:clamp(1.4rem,2vw,1.9rem);font-style:italic;font-weight:300;line-height:1.75;color:rgba(245,237,216,.92);">In a dying empire of imagination, a child who still feels everything must find the creator who has forgotten how &mdash; because the boy is the last memory the old man has of himself.</p>
-    </div>
-    <div class="rv" style="border-left:1px solid rgba(200,146,42,.22);margin:3.5rem 0 3.5rem 2rem;max-width:65ch;">
-      <div class="s3-sentence" data-n="I" style="padding:1.4rem 2rem;font-size:clamp(1.4rem,2.2vw,1.9rem);color:var(--cream);line-height:1.5;border-bottom:1px solid rgba(200,146,42,.07);position:relative;">A boy who doesn&rsquo;t fit the real world falls into his own imagination.</div>
-      <div class="s3-sentence" data-n="II" style="padding:1.4rem 2rem;font-size:clamp(1.4rem,2.2vw,1.9rem);color:var(--cream);line-height:1.5;border-bottom:1px solid rgba(200,146,42,.07);position:relative;">The imagination is dying because the old man who built it has lost the ability to feel.</div>
-      <div class="s3-sentence" data-n="III" style="padding:1.4rem 2rem;font-size:clamp(1.4rem,2.2vw,1.9rem);color:var(--cream);line-height:1.5;position:relative;">The boy has to save the old man.</div>
-    </div>
-    <p class="rv s-body" style="font-size:1.45rem;font-weight:300;line-height:1.85;color:rgba(245,237,216,.75);max-width:68ch;">The Moonchild built the Eternal Carnival because the world he was born into had no room for him. He is Sorkel before the fear. Sorkel is the Moonchild after it wins. That is the arc.</p>
-  </div>
-</section>
-
-<!-- UNIQUE PILLARS -->
-<section class="sec-block sec-block-purple">
-  <div class="block-wrap">
-    <div class="rv">
-      <div class="s-label" style="justify-content:center">What Makes It Original</div>
-      <h2 class="s-title" style="text-align:center">The Three Simultaneously Unique Things</h2>
-    </div>
-    <div class="pillar-grid">
-      <div class="rv" style="transition-delay:.08s">
-        <div class="pillar-num">01</div>
-        <div class="pillar-title">The Mirror Architect</div>
-        <p class="pillar-body">A fallen creator who built the world the hero is trapped in — who is also an earlier version of the hero himself — who is also the primary antagonist in Season 1. The hero must save his own future self from his own future self.</p>
-      </div>
-      <div class="rv" style="transition-delay:.16s">
-        <div class="pillar-num">02</div>
-        <div class="pillar-title">The Parallel Reality</div>
-        <p class="pillar-body">Two worlds running simultaneously — the Carnival inside, Sergio's real creative life outside — each affecting the other without explanation. Never explained. Just felt. The real world scenes never announce themselves as real world scenes.</p>
-      </div>
-      <div class="rv" style="transition-delay:.24s">
-        <div class="pillar-num">03</div>
-        <div class="pillar-title">The Melancholy Weapon</div>
-        <p class="pillar-body">A weapon that is specifically melancholy: the deliberate replacement of feeling with logic, color with bronze, wonder with explanation — administered by agents who genuinely believe they are helping. The villain you cannot hate.</p>
+<!-- STORY 1: PITCH -->
+<section class="v9-section v9-pad" id="pitch" style="background:linear-gradient(to bottom,var(--void),#070A14)">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="story1_label">The Pitch in One Line</div>
+    <h2 class="s-title rv" data-t="story1_title">What It Is</h2>
+    <div class="sec-pitch" style="padding:0;overflow:visible">
+      <div class="pitch-inner rv" style="max-width:none;text-align:left">
+        <p class="pitch-stmt" data-t="pitch_stmt" style="text-align:left"><span class="pg">Cirque&nbsp;du&nbsp;Soleil</span> meets <span class="pt">Pan&#8217;s&nbsp;Labyrinth</span> meets <span class="pg">The&nbsp;Dark&nbsp;Crystal</span> meets <span class="pt">Inception</span> meets <span class="pc">The&nbsp;NeverEnding&nbsp;Story</span></p>
+        <div class="pitch-tags" style="justify-content:flex-start">
+          <span class="pitch-tag">Physical World-Building</span>
+          <span class="pitch-tag">Moral Darkness</span>
+          <span class="pitch-tag">Live Action Creatures</span>
+          <span class="pitch-tag">Parallel Realities</span>
+          <span class="pitch-tag">One Artist&#8217;s Universe</span>
+          <span class="pitch-tag">Imagination as Stakes</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SEASONS -->
-<section class="sec-seasons" id="seasons">
-  <div class="seasons-wrap">
-    <div class="seasons-h rv">
-      <div class="s-label">The Arc</div>
-      <h2 class="s-title">Four Seasons. One Wound.<br>No Clean Victory.</h2>
-    </div>
-    <div class="seasons-list" id="seasonsList"></div>
-  </div>
-</section>
-
-
-<!-- EPISODES: SEASON ONE -->
-<section class="sec-block sec-block-aubergine">
-  <div class="block-wrap">
-    <div class="rv">
-      <div class="s-label" style="justify-content:center">Season One · Eight Episodes</div>
-      <h2 class="s-title" style="text-align:center">The Searching</h2>
-      <p class="s-body" style="text-align:center;max-width:800px;margin:1.5rem auto 0">Eight episodes. The Moonchild arrives pure. He does not know what he is looking for, only that the pull is real. Levels 1–3. Real world: Sergio, age 0–9, Culiacán.</p>
-    </div>
-  </div>
-  <div class="ep-grid">
-    <div class="ep-card rv">
-      <div class="ep-num">Episode 01</div>
-      <div class="ep-title">The Searching</div>
-      <p class="ep-body">Dark water. Wrong stars. A boy washes ashore — no memory, no name, both arms clean. In his hand: one painted eye. Sorkel arrives from a gondola: There you are.</p>
-    </div>
-    <div class="ep-card rv" style="transition-delay:.06s">
-      <div class="ep-num">Episode 02</div>
-      <div class="ep-title">The Hands</div>
-      <p class="ep-body">The sky flickers — one frame. Hands on clay. Citizens diverge. Those who look versus those who don't. The Moonchild sees the upturned faces and understands there is a ritual he doesn't know yet.</p>
-    </div>
-    <div class="ep-card rv" style="transition-delay:.12s">
-      <div class="ep-num">Episode 03</div>
-      <div class="ep-title">La Fuente</div>
-      <p class="ep-body">The Moonchild finds the fountain archivist. She has been speaking since 1975 without pause. He is the first to stop and listen. She tells him three things. The third changes everything.</p>
-    </div>
-    <div class="ep-card rv" style="transition-delay:.18s">
-      <div class="ep-num">Episode 04</div>
-      <div class="ep-title">The Ladder</div>
-      <p class="ep-body">La Escalera appears on the passage between levels. The Moonchild asks all three versions of her the same question. Each answers differently. The bronze spreads another inch.</p>
-    </div>
-    <div class="ep-card rv" style="transition-delay:.24s">
-      <div class="ep-num">Episode 05</div>
-      <div class="ep-title">The Boat</div>
-      <p class="ep-body">Sorkel sends the gondola without a pilot. The Moonchild must choose: climb in and go deeper, or stay where it's safer. He has never been safe. He gets in.</p>
-    </div>
-    <div class="ep-card rv" style="transition-delay:.30s">
-      <div class="ep-num">Episode 06</div>
-      <div class="ep-title">El Toro-Brujo</div>
-      <p class="ep-body">The deepest citizen of Level 3 drops a single drop of color onto the advancing bronze of the Moonchild's arm. It holds. For now. He understands for the first time what he is racing against.</p>
-    </div>
-    <div class="ep-card rv" style="transition-delay:.36s">
-      <div class="ep-num">Episode 07</div>
-      <div class="ep-title">La Ciudad</div>
-      <p class="ep-body">The city herself closing her eyes. The Moonchild reaches her just as bronze touches her eyelids. He holds her face and asks her what she sees. She tells him.</p>
-    </div>
-    <div class="ep-card rv" style="transition-delay:.42s">
-      <div class="ep-num">Episode 08</div>
-      <div class="ep-title">The Astronomer</div>
-      <p class="ep-body">Sorkel and the Moonchild meet properly for the first time. I am your world. The Moonchild's response is not what Sorkel expected. Level 4 opens. The cost begins.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 13 LEVELS -->
-<section class="sec-levels">
-  <div class="levels-h rv">
-    <div class="s-label" style="justify-content:center">The Structure</div>
-    <h2 class="s-title">4&nbsp;Seasons · 13&nbsp;Levels<br>· 2&nbsp;Worlds</h2>
-    <p class="s-body" style="text-align:center">Color is health. <strong>Bronze is the enemy.</strong> Each level deeper is a level darker — until there is nothing left but the studio, and the brush, and the question.</p>
-    <div class="levels-scroll-hint">Scroll to descend</div>
-  </div>
-  <div class="levels-stair" id="levelsTrack"></div>
-</section>
-
-<!-- EL VACÍO -->
-<section class="sec-void" id="void">
-  <div class="void-wrap">
-    <div class="rv-l">
-      <div class="s-label">The Enemy</div>
-      <blockquote class="void-quote">They don't kill what they touch.<br>They make it <em style="color:var(--bronze-glow);font-style:normal">permanent.</em></blockquote>
-      <p class="s-body" style="margin-bottom:2.5rem">
-        The weapon is not violence. It is explanation. Los Que Saben arrive with clipboards and patient understanding. They convert artists into archivists. They turn color into bronze, wonder into logic, feeling into data. They say they are protecting.<br><br>
-        <strong>They genuinely believe it.</strong> That is what makes them so devastating. The villain you cannot hate. The darkness that looks like care.
-      </p>
-      <div class="void-attr">El Vacío &nbsp;·&nbsp; Supreme Dark Force &nbsp;·&nbsp; The Carnival Archives</div>
-      <div style="margin-top:3rem">
-        <div class="s-label">Infection by Level</div>
-        <div id="bzMeter"></div>
-      </div>
-    </div>
-    <div class="rv-r">
-      <div class="void-orb-wrap">
-        <div class="void-orb">
-          <svg class="void-orb-svg" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="vg" cx="50%" cy="40%" r="60%">
-                <stop offset="0%" stop-color="rgba(139,26,26,0.4)"/>
-                <stop offset="60%" stop-color="rgba(50,10,10,0.2)"/>
-                <stop offset="100%" stop-color="rgba(3,4,10,0)"/>
-              </radialGradient>
-            </defs>
-            <circle cx="120" cy="120" r="115" fill="url(#vg)" stroke="rgba(139,26,26,0.25)" stroke-width="0.5"/>
-            <circle cx="120" cy="120" r="80" fill="none" stroke="rgba(139,26,26,0.15)" stroke-width="0.4"/>
-            <circle cx="120" cy="120" r="50" fill="none" stroke="rgba(139,26,26,0.2)" stroke-width="0.4"/>
-            <circle cx="120" cy="120" r="28" fill="rgba(3,4,10,0.95)" stroke="rgba(139,26,26,0.5)" stroke-width="0.8"/>
-            <!-- tendril lines from center -->
-            <line x1="120" y1="92" x2="120" y2="20" stroke="rgba(139,26,26,0.2)" stroke-width="0.5"/>
-            <line x1="120" y1="148" x2="120" y2="220" stroke="rgba(107,74,26,0.3)" stroke-width="0.5"/>
-            <line x1="92" y1="120" x2="20" y2="120" stroke="rgba(139,26,26,0.15)" stroke-width="0.5"/>
-            <line x1="148" y1="120" x2="220" y2="120" stroke="rgba(139,26,26,0.15)" stroke-width="0.5"/>
-            <line x1="100" y1="100" x2="44" y2="44" stroke="rgba(139,26,26,0.12)" stroke-width="0.4"/>
-            <line x1="140" y1="140" x2="196" y2="196" stroke="rgba(107,74,26,0.2)" stroke-width="0.4"/>
-          </svg>
-        </div>
-        <div class="void-ring" style="width:270px;height:270px;border-color:rgba(139,26,26,0.3);animation-delay:0s"></div>
-        <div class="void-ring" style="width:270px;height:270px;border-color:rgba(139,26,26,0.2);animation-delay:1.5s"></div>
-        <div class="void-ring" style="width:270px;height:270px;border-color:rgba(139,26,26,0.1);animation-delay:3s"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CHARACTERS -->
-<section class="sec-chars" id="characters">
-  <div class="chars-h rv">
-    <div class="s-label" style="justify-content:center">The Players</div>
-    <h2 class="s-title">The Inhabitants of the Dying Empire</h2>
-  </div>
-  <div class="chars-grid">
-
-    <!-- MOONCHILD -->
-    <div class="ch-card rv">
-      <div class="ch-art">
-        <svg width="100%" height="100%" viewBox="0 0 400 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <defs><radialGradient id="mcg" cx="45%" cy="35%" r="65%"><stop offset="0%" stop-color="#1A5C5A" stop-opacity=".6"/><stop offset="100%" stop-color="#03040A" stop-opacity="1"/></radialGradient></defs>
-          <rect width="400" height="600" fill="url(#mcg)"/>
-          <circle cx="200" cy="200" r="140" fill="rgba(78,201,196,0.04)" filter="blur(30px)"/>
-          <ellipse cx="200" cy="230" rx="72" ry="90" fill="rgba(26,92,90,0.35)" stroke="rgba(78,201,196,0.25)" stroke-width="0.5"/>
-          <ellipse cx="200" cy="165" rx="52" ry="60" fill="rgba(78,201,196,0.12)" stroke="rgba(78,201,196,0.4)" stroke-width="0.5"/>
-          <circle cx="200" cy="158" r="16" fill="rgba(78,201,196,0.55)" stroke="rgba(78,201,196,0.8)" stroke-width="0.5"/>
-          <circle cx="200" cy="158" r="7" fill="rgba(3,4,10,0.9)"/>
-          <circle cx="204" cy="155" r="2.5" fill="rgba(245,237,216,0.9)"/>
-          <path d="M148 320 Q118 400 105 540" stroke="rgba(78,201,196,0.28)" stroke-width="9" fill="none" stroke-linecap="round"/>
-          <path d="M252 320 Q282 395 295 540" stroke="rgba(26,92,90,0.35)" stroke-width="9" fill="none" stroke-linecap="round"/>
-          <circle cx="78" cy="80" r="2.2" fill="rgba(245,237,216,0.55)"/>
-          <circle cx="322" cy="52" r="1.6" fill="rgba(245,237,216,0.45)"/>
-          <circle cx="354" cy="155" r="1.2" fill="rgba(78,201,196,0.65)"/>
-          <circle cx="46" cy="205" r="1.6" fill="rgba(200,146,42,0.5)"/>
-          <circle cx="340" cy="285" r="1" fill="rgba(245,237,216,0.35)"/>
-          <circle cx="60" cy="380" r="1.4" fill="rgba(78,201,196,0.4)"/>
-        </svg>
-      </div>
-      <div class="ch-over"></div>
-      <div class="ch-line"></div>
-      <div class="ch-info">
-        <div class="ch-role">Protagonist</div>
-        <div class="ch-name">The Moonchild</div>
-        <div class="ch-epi">Pure. Feeling everything. The last memory an old man has of himself. He arrived on the Shore before he understood what arriving meant. He is Sorkel before the fear took hold.</div>
-      </div>
-    </div>
-
-    <!-- SORKEL -->
-    <div class="ch-card rv" style="transition-delay:.12s">
-      <div class="ch-art">
-        <svg width="100%" height="100%" viewBox="0 0 400 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <defs><radialGradient id="skg" cx="50%" cy="38%" r="62%"><stop offset="0%" stop-color="#6B4A1A" stop-opacity=".7"/><stop offset="100%" stop-color="#03040A" stop-opacity="1"/></radialGradient></defs>
-          <rect width="400" height="600" fill="url(#skg)"/>
-          <ellipse cx="200" cy="215" rx="82" ry="105" fill="rgba(107,74,26,0.28)" stroke="rgba(160,112,48,0.35)" stroke-width="0.5"/>
-          <ellipse cx="200" cy="155" rx="58" ry="68" fill="rgba(160,112,48,0.18)" stroke="rgba(160,112,48,0.45)" stroke-width="0.5"/>
-          <!-- Crown -->
-          <path d="M158 108 L172 62 L200 88 L228 58 L242 108" stroke="rgba(200,146,42,0.6)" stroke-width="2" fill="none" stroke-linejoin="round"/>
-          <circle cx="172" cy="62" r="4" fill="rgba(200,146,42,0.5)"/>
-          <circle cx="200" cy="88" r="3" fill="rgba(200,146,42,0.4)"/>
-          <circle cx="228" cy="58" r="4" fill="rgba(200,146,42,0.5)"/>
-          <!-- Single eye — almost bronze -->
-          <circle cx="200" cy="150" r="14" fill="rgba(107,74,26,0.8)" stroke="rgba(160,112,48,0.55)" stroke-width="0.8"/>
-          <circle cx="200" cy="150" r="6" fill="rgba(3,4,10,0.95)"/>
-          <circle cx="203" cy="148" r="1.5" fill="rgba(160,112,48,0.6)"/>
-          <!-- Heavy bronze patches — advanced infection -->
-          <ellipse cx="135" cy="228" rx="28" ry="17" fill="rgba(107,74,26,0.58)" transform="rotate(-18 135 228)"/>
-          <ellipse cx="270" cy="198" rx="22" ry="14" fill="rgba(107,74,26,0.48)" transform="rotate(22 270 198)"/>
-          <ellipse cx="195" cy="290" rx="34" ry="20" fill="rgba(107,74,26,0.5)"/>
-          <ellipse cx="160" cy="330" rx="18" ry="11" fill="rgba(107,74,26,0.42)" transform="rotate(-8 160 330)"/>
-          <!-- Arms heavy with bronze -->
-          <path d="M118 240 Q88 328 75 480" stroke="rgba(107,74,26,0.45)" stroke-width="11" fill="none" stroke-linecap="round"/>
-          <path d="M282 240 Q312 320 325 480" stroke="rgba(107,74,26,0.4)" stroke-width="11" fill="none" stroke-linecap="round"/>
-          <!-- Faint color trying to survive -->
-          <circle cx="318" cy="82" r="2" fill="rgba(200,146,42,0.3)"/>
-          <circle cx="55" cy="188" r="1.2" fill="rgba(78,201,196,0.2)"/>
-        </svg>
-      </div>
-      <div class="ch-over"></div>
-      <div class="ch-line"></div>
-      <div class="ch-info">
-        <div class="ch-role">The Cursed Antagonist</div>
-        <div class="ch-name">Sorkel</div>
-        <div class="ch-epi">He built the Carnival from pure feeling. He forgot why. He is not the villain — he is the warning. The Moonchild is Sorkel before the fear. Sorkel is the Moonchild after it wins.</div>
-      </div>
-    </div>
-
-    <!-- EL VACÍO -->
-    <div class="ch-card rv" style="transition-delay:.24s">
-      <div class="ch-art">
-        <svg width="100%" height="100%" viewBox="0 0 400 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <defs><radialGradient id="evg" cx="50%" cy="50%" r="55%"><stop offset="0%" stop-color="#160808" stop-opacity=".9"/><stop offset="100%" stop-color="#03040A" stop-opacity="1"/></radialGradient></defs>
-          <rect width="400" height="600" fill="url(#evg)"/>
-          <!-- Void — pure absence, concentric erasure -->
-          <circle cx="200" cy="260" r="160" fill="none" stroke="rgba(139,26,26,0.12)" stroke-width="0.4"/>
-          <circle cx="200" cy="260" r="120" fill="none" stroke="rgba(139,26,26,0.18)" stroke-width="0.4"/>
-          <circle cx="200" cy="260" r="85" fill="none" stroke="rgba(139,26,26,0.22)" stroke-width="0.4"/>
-          <circle cx="200" cy="260" r="55" fill="none" stroke="rgba(139,26,26,0.28)" stroke-width="0.6"/>
-          <circle cx="200" cy="260" r="30" fill="rgba(3,4,10,0.98)" stroke="rgba(139,26,26,0.6)" stroke-width="0.8"/>
-          <!-- tendrils -->
-          <path d="M200 260 Q148 155 95 65" stroke="rgba(139,26,26,0.2)" stroke-width="0.6" fill="none"/>
-          <path d="M200 260 Q268 158 328 55" stroke="rgba(139,26,26,0.15)" stroke-width="0.6" fill="none"/>
-          <path d="M200 260 Q72 282 18 355" stroke="rgba(139,26,26,0.18)" stroke-width="0.6" fill="none"/>
-          <path d="M200 260 Q332 308 388 412" stroke="rgba(139,26,26,0.12)" stroke-width="0.6" fill="none"/>
-          <path d="M200 260 Q182 395 175 580" stroke="rgba(107,74,26,0.28)" stroke-width="1.2" fill="none"/>
-          <path d="M200 260 Q218 390 225 580" stroke="rgba(107,74,26,0.22)" stroke-width="1.2" fill="none"/>
-          <!-- Bronze settling at base -->
-          <ellipse cx="200" cy="560" rx="190" ry="50" fill="rgba(107,74,26,0.18)"/>
-          <!-- stars being erased (grayed out) -->
-          <circle cx="80" cy="80" r="1.5" fill="rgba(107,74,26,0.4)"/>
-          <circle cx="320" cy="55" r="1.2" fill="rgba(107,74,26,0.35)"/>
-          <circle cx="350" cy="165" r="1" fill="rgba(107,74,26,0.3)"/>
-        </svg>
-      </div>
-      <div class="ch-over"></div>
-      <div class="ch-line"></div>
-      <div class="ch-info">
-        <div class="ch-role">Supreme Dark Force</div>
-        <div class="ch-name">El Vacío</div>
-        <div class="ch-epi">Not violent. Erasing. The absence that sells itself as clarity. The Nothing that wears the face of reason. It does not arrive with fangs. It arrives with a clipboard.</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- CITIZENS: THE MINOR CHARACTERS -->
-<section class="sec-block sec-block-verdigris">
-  <div class="block-wrap">
-    <div class="rv">
-      <div class="s-label" style="justify-content:center">The World · Citizens</div>
-      <h2 class="s-title" style="text-align:center">Every Character Already Exists</h2>
-      <p class="s-body" style="text-align:center;max-width:800px;margin:1.5rem auto 0">Every character in Eternal Carnival already exists in Bustamante's work — waiting inside bronze and paint and papier-mâché for someone to ask them what they're thinking.</p>
-    </div>
-  </div>
-  <div class="citizen-grid">
-    <div class="citizen-card rv">
-      <div class="citizen-role">The Gatekeeper</div>
-      <div class="citizen-name">El Portero</div>
-      <p class="citizen-epi">A bronze face split across entry door handles. Governs readiness, not permission. I prefer positioned. First citizen the Moonchild meets. Teaches the law of names.</p>
-    </div>
-    <div class="citizen-card rv" style="transition-delay:.08s">
-      <div class="citizen-role">The Archivist · Since 1975</div>
-      <div class="citizen-name">La Fuente</div>
-      <p class="citizen-epi">A wall-fountain speaking continuous Carnival history since 1975. Has never stopped. Knows where Sorkel went wrong. Has been waiting to tell someone who can hear it.</p>
-    </div>
-    <div class="citizen-card rv" style="transition-delay:.16s">
-      <div class="citizen-role">Twin Crescent Moons</div>
-      <div class="citizen-name">Las Lunas Gemelas</div>
-      <p class="citizen-epi">Two sisters in a centuries-old disagreement about the same moment. One believes forgetting is mercy. The other believes it is El Vacío's crime. They offer forgetting as a gift.</p>
-    </div>
-    <div class="citizen-card rv" style="transition-delay:.24s">
-      <div class="citizen-role">Three Women, One Ladder</div>
-      <div class="citizen-name">La Escalera</div>
-      <p class="citizen-epi">Three versions of the same woman at different points on an infinite ladder. The bottom doesn't know what the top knows. The top cannot reach back down. She connects all 13 levels.</p>
-    </div>
-    <div class="citizen-card rv" style="transition-delay:.32s">
-      <div class="citizen-role">The Carrier</div>
-      <div class="citizen-name">El Cargador</div>
-      <p class="citizen-epi">Carries the weight of all things that were foreclosed — every possibility the Carnival never became. Does not complain. Is the most honest citizen in the empire.</p>
-    </div>
-    <div class="citizen-card rv" style="transition-delay:.40s">
-      <div class="citizen-role">The True Exit</div>
-      <div class="citizen-name">La Puerta de Luna</div>
-      <p class="citizen-epi">The only real door out of the Carnival. Passage through it makes whatever happened permanent. Does not open until Season 4. She has been waiting since the beginning.</p>
-    </div>
-  </div>
-</section>
-
-<!-- THE CITIZENS -->
-<section class="sec-seasons" id="citizens" style="background:linear-gradient(to bottom,var(--void),#0B0D1C,var(--void))">
-  <div class="seasons-wrap">
-    <div class="seasons-h rv">
-      <div class="s-label">The World · Citizens by Faction</div>
-      <h2 class="s-title">Looking or Not Looking</h2>
-      <p class="s-body" style="margin-top:1rem">The Carnival has lived with the Glitches long enough that it has divided into factions. This is one of the deepest fault lines in Carnival society — deeper than the bronze, older than Los Que Saben. When the sky flickers, every citizen makes a choice. Citizens can look if they want. That's what makes it a moral choice rather than a mechanical one.</p>
-    </div>
-    <div class="seasons-list">
-      <div class="sn-item rv">
-        <div class="sn-dot" style="color:var(--gold);border-color:var(--gold)"></div>
-        <div class="sn-meta">
-          <div class="sn-num" style="color:var(--gold)">Never Looks</div>
-          <div class="sn-name">Sol Ardiente</div>
-          <div class="sn-arc">The Performer · The Warm Danger</div>
-        </div>
-        <div class="sn-body">When a glitch fires, Sol performs harder. He uses the upturned faces as his audience. His warmth is real. The calculating inventory underneath is also real. He pulls people back from the sky with the sheer force of himself. He has been performing for a very long time. When something reaches back from the other side, his body doesn't know what to do.</div>
-      </div>
-      <div class="sn-item rv" style="transition-delay:.08s">
-        <div class="sn-dot" style="color:var(--teal-glow);border-color:var(--teal-glow)"></div>
-        <div class="sn-meta">
-          <div class="sn-num" style="color:var(--teal-glow)">Always Looks</div>
-          <div class="sn-name">La Fuente</div>
-          <div class="sn-arc">The Narrator · The Witness · Since 1975</div>
-        </div>
-        <div class="sn-body">She narrates in real time. Every change, every moment the bronze spreads or the color comes back. She has been narrating since 1975. When a glitch fires, she narrates that too — mid-sentence, without breaking rhythm. When she sees the Moonchild, her narration surfaces something else: the first time he made something and it looked back at him was not in the studio. It was somewhere else. He was thirteen.</div>
-      </div>
-      <div class="sn-item rv" style="transition-delay:.16s">
-        <div class="sn-dot" style="color:var(--teal-glow);border-color:var(--teal-glow)"></div>
-        <div class="sn-meta">
-          <div class="sn-num" style="color:var(--teal-glow)">Always Looks</div>
-          <div class="sn-name">Luna</div>
-          <div class="sn-arc">The Cracked One · Every Time · The Crack Deepens</div>
-        </div>
-        <div class="sn-body">Every time a glitch fires, her crescent tilts upward. Every time, the crack in her face deepens slightly. She sees the Moonchild fully where others' eyes slide past. I am beginning to remember something I was before I was this. She is the only citizen who can see him completely.</div>
-      </div>
-      <div class="sn-item rv" style="transition-delay:.24s">
-        <div class="sn-dot" style="color:var(--gold);border-color:var(--gold)"></div>
-        <div class="sn-meta">
-          <div class="sn-num" style="color:var(--gold)">Looks, Then Writes</div>
-          <div class="sn-name">El Escritor</div>
-          <div class="sn-arc">Blank Pages · The Words That Dissolve</div>
-        </div>
-        <div class="sn-body">He looks at the glitch. Then he looks at his page. Words appear. They always dissolve before he can write them. He looks anyway. Four centuries of this. The thing you are looking for is behind the thing you are looking at. He cannot write it down. If he could, he'd know what it means.</div>
-      </div>
-      <div class="sn-item rv" style="transition-delay:.32s">
-        <div class="sn-dot" style="color:var(--bronze-glow);border-color:var(--bronze-glow)"></div>
-        <div class="sn-meta">
-          <div class="sn-num" style="color:var(--bronze-glow)">Never Looks</div>
-          <div class="sn-name">El Toro-Brujo</div>
-          <div class="sn-arc">The Droplet · Four Hundred Years · Not Yet</div>
-        </div>
-        <div class="sn-body">In his open hand: a droplet. Four hundred years. It does not fall. His thumb moves slightly when a glitch fires. He cannot break four hundred years of concentration to look. The moment of forgetting. Someone chose to stop feeling something. The bronze came after. When the droplet finally falls, what it lands on will remember what was forgotten. The right receiver hasn't arrived. Not yet.</div>
-      </div>
-      <div class="sn-item rv" style="transition-delay:.4s">
-        <div class="sn-dot" style="color:var(--crimson-glow);border-color:var(--crimson-glow)"></div>
-        <div class="sn-meta">
-          <div class="sn-num" style="color:var(--crimson-glow)">Never Looks</div>
-          <div class="sn-name">Sorkel</div>
-          <div class="sn-arc">The Astronomer · Four Centuries · The Deliberate Refusal</div>
-        </div>
-        <div class="sn-body">He built the Carnival. He has never looked up at a glitch. To look would be to see himself as he was. The astronomer would crack. The creator would surface. The Moonchild sees Sorkel not looking — and sees the deliberateness of it. This is Sorkel's cruelest act in Episode 1. Not the infection. The silence while the boy looks at the sky.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- COLOR PHILOSOPHY -->
-<section class="sec-void" id="color" style="background:linear-gradient(135deg,#04040C 0%,#080510 40%,#0A0608 100%)">
-  <div class="void-wrap" style="grid-template-columns:1fr 1fr">
-    <div class="rv-l">
-      <div class="s-label">Visual Language</div>
-      <h2 class="s-title">Color is Health.<br>Bronze is the Enemy.</h2>
-      <p class="s-body" style="margin-bottom:2.5rem">
-        The entire color philosophy of Eternal Carnival derives from Bustamante's own palette — and from what happens when El Vacío touches it. Color is not decoration. Color is life. Bronze is not a material. Bronze is the thing that happens to living color when the melancholy wins.<br><br>
-        <strong>The rule is absolute:</strong> wherever the bronze has not reached, Bustamante's palette reigns — warm golds, deep teals, burnt oranges, the violet of carnival night. The moment Los Que Saben arrive, color drains. The moment feeling returns, it floods back.
-      </p>
-      <div class="s-label">The Color System</div>
-      <div style="display:flex;flex-direction:column;gap:1.2rem;margin-top:.5rem">
-        <div style="display:flex;align-items:center;gap:1.5rem">
-          <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#C8922A,#E8C97A);flex-shrink:0;box-shadow:0 0 20px rgba(200,146,42,.4)"></div>
-          <div>
-            <div style="font-family:'Cinzel',serif;font-size:1rem;color:var(--gold-pale);margin-bottom:.3rem">Warm Gold</div>
-            <div style="font-size:.95rem;font-weight:300;color:rgba(245,237,216,.7)">The original light of the Carnival. What color looks like when the creator was still in love with making things.</div>
-          </div>
-        </div>
-        <div style="display:flex;align-items:center;gap:1.5rem">
-          <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#1A5C5A,#4EC9C4);flex-shrink:0;box-shadow:0 0 20px rgba(78,201,196,.3)"></div>
-          <div>
-            <div style="font-family:'Cinzel',serif;font-size:1rem;color:var(--teal-glow);margin-bottom:.3rem">Deep Teal</div>
-            <div style="font-size:.95rem;font-weight:300;color:rgba(245,237,216,.7)">The water. The Shore. The uncorrupted depths where the Moonchild arrived. Health at its most alive.</div>
-          </div>
-        </div>
-        <div style="display:flex;align-items:center;gap:1.5rem">
-          <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#6B4A1A,#A07030);flex-shrink:0;box-shadow:0 0 20px rgba(107,74,26,.5)"></div>
-          <div>
-            <div style="font-family:'Cinzel',serif;font-size:1rem;color:var(--bronze-mid);margin-bottom:.3rem">The Bronze</div>
-            <div style="font-size:.95rem;font-weight:300;color:rgba(245,237,216,.7)">Not gold. Not warm. The color of feeling locked forever in its last position. The weapon wears a color that almost looks like richness — until you look closely.</div>
-          </div>
-        </div>
-        <div style="display:flex;align-items:center;gap:1.5rem">
-          <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#8B1A1A,#C42A2A);flex-shrink:0;box-shadow:0 0 20px rgba(139,26,26,.5)"></div>
-          <div>
-            <div style="font-family:'Cinzel',serif;font-size:1rem;color:#C44;margin-bottom:.3rem">El Vacío Crimson</div>
-            <div style="font-size:.95rem;font-weight:300;color:rgba(245,237,216,.7)">The color of the wound before the bronze settles. The moment of conversion — brief, violent, irreversible.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="rv-r">
-      <div class="s-label">Production Register</div>
-      <div style="display:flex;flex-direction:column;gap:2rem;margin-top:.5rem">
-        <div style="border-left:2px solid rgba(200,146,42,.3);padding-left:2rem">
-          <div style="font-family:'Cinzel',serif;font-size:1.15rem;color:var(--cream);margin-bottom:.7rem">Format</div>
-          <div style="font-size:1.1rem;font-weight:300;line-height:1.85;color:rgba(245,237,216,.78)">Live action. Heavy VFX and practical effects. Prosthetics. Acrobatic performance. Extreme makeup and costuming. Virtual environments.</div>
-        </div>
-        <div style="border-left:2px solid rgba(78,201,196,.3);padding-left:2rem">
-          <div style="font-family:'Cinzel',serif;font-size:1.15rem;color:var(--cream);margin-bottom:.7rem">Physical Register</div>
-          <div style="font-size:1.1rem;font-weight:300;line-height:1.85;color:rgba(245,237,216,.78)">Cirque du Soleil. The body as world-building. The impossible made physical by human skill. The creature is built first. Everything else follows from what a body can do.</div>
-        </div>
-        <div style="border-left:2px solid rgba(139,26,26,.4);padding-left:2rem">
-          <div style="font-family:'Cinzel',serif;font-size:1.15rem;color:var(--cream);margin-bottom:.7rem">Tonal Register</div>
-          <div style="font-size:1.1rem;font-weight:300;line-height:1.85;color:rgba(245,237,216,.78)">Guillermo del Toro. Creatures that are not monsters. Darkness that means something. Beauty and devastation in the same frame.</div>
-        </div>
-        <div style="border-left:2px solid rgba(200,146,42,.3);padding-left:2rem">
-          <div style="font-family:'Cinzel',serif;font-size:1.15rem;color:var(--cream);margin-bottom:.7rem">Reference Touchstones</div>
-          <div style="font-size:1.1rem;font-weight:300;line-height:1.85;color:rgba(245,237,216,.78)">The Boy and the Heron (Miyazaki) · Pan's Labyrinth (Del Toro) · Star Wars — four-season arc · Inside Out — parallel worlds simultaneously · Princess Mononoke — moral complexity, no clean villain · The Phantom Tollbooth — guardrail</div>
-        </div>
-      </div>
-      <div style="margin-top:3rem;padding:2rem;border:1px solid rgba(200,146,42,.15);background:rgba(200,146,42,.04)">
-        <div style="font-family:'Space Mono',monospace;font-size:.82rem;letter-spacing:.3em;color:var(--teal-glow);text-transform:uppercase;margin-bottom:1rem">The Gap in the Market</div>
-        <div style="font-size:1.1rem;font-style:italic;font-weight:300;line-height:1.85;color:rgba(245,237,216,.85)">No existing series is a prestige live action fantasy grounded in the biography of a real living artist — built from his actual sculptures, inhabited by performers in his actual aesthetic, ending in his actual gallery in Tlaquepaque. That gap is not an accident. It is the show.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- THE GAP + PRODUCTION -->
-<section class="sec-block sec-block-crimson">
-  <div class="block-wrap">
-    <div class="block-grid-2">
-      <div class="rv-l">
-        <div class="s-label">The Gap in the Market</div>
-        <h2 class="s-title">What Doesn't Exist Yet</h2>
-        <p class="s-body">No existing series is a prestige live action fantasy grounded in the biography of a real living artist — built from his actual sculptures, inhabited by performers in his actual aesthetic, ending in his actual gallery in Tlaquepaque.<br><br><strong>That gap is not an accident. It is the show.</strong></p>
-        <div style="margin-top:3rem">
-          <div class="s-label">Reference Touchstones</div>
-          <div class="pitch-comps-grid">
-            <span class="pitch-comp-item">Pan's Labyrinth</span>
-            <span class="pitch-comp-item">The Boy and the Heron</span>
-            <span class="pitch-comp-item">Inside Out</span>
-            <span class="pitch-comp-item">Star Wars</span>
-            <span class="pitch-comp-item">Princess Mononoke</span>
-            <span class="pitch-comp-item">The Dark Crystal</span>
-            <span class="pitch-comp-item">Inception</span>
-            <span class="pitch-comp-item">The NeverEnding Story</span>
-          </div>
+<!-- STORY 2: THREE SENTENCES -->
+<section class="v9-section v9-pad" style="background:linear-gradient(to bottom,#070A14,var(--void))">
+  <div class="v9-inner">
+    <div class="v9-grid-2">
+      <div class="rv">
+        <div class="s-label" data-t="story2_label">The Story in Three Sentences</div>
+        <h2 class="s-title" data-t="story2_heading">The Core</h2>
+        <div class="story-3-sent">
+          <p class="story-3-sent-item" data-t="story2_s1">A boy who doesn&#8217;t fit the real world falls into his own imagination.</p>
+          <p class="story-3-sent-item" data-t="story2_s2">The imagination is dying because the old man who built it has lost the ability to feel.</p>
+          <p class="story-3-sent-item" data-t="story2_s3">The boy has to save the old man.</p>
         </div>
       </div>
       <div class="rv-r">
-        <div class="s-label">Production Register</div>
-        <div style="display:flex;flex-direction:column;gap:2rem;margin-top:.5rem">
-          <div style="border-left:2px solid rgba(200,146,42,.3);padding-left:2rem">
-            <div style="font-family:'Cinzel',serif;font-size:1.1rem;color:var(--cream);margin-bottom:.6rem">Format</div>
-            <div style="font-size:1rem;font-weight:300;line-height:1.85;color:rgba(245,237,216,.75)">Live action. Heavy VFX and practical effects. Prosthetics. Acrobatic performance. Extreme makeup and costuming. Virtual environments.</div>
+        <div class="story-logline-block">
+          <div class="story-logline-label" data-t="logline_label">Logline</div>
+          <p class="story-logline-text" data-t="logline">In a dying empire of imagination, a child who still feels everything must find the creator who has forgotten how — because <em>the boy is the last memory the old man has of himself.</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY 3: THE WOUND -->
+<section class="v9-section v9-pad" style="background:linear-gradient(to bottom,var(--void),#0A0B12)">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="wound_label">Story 3</div>
+    <h2 class="s-title rv" data-t="wound_title">The Wound</h2>
+    <div class="v9-grid-2">
+      <div class="s-body rv" style="line-height:2.1">
+        <p data-t="wound_p1">Every creative child builds a second world.</p>
+        <p style="margin-top:1rem;font-style:italic;font-size:clamp(1.5rem,2vw,1.9rem);color:var(--gold-pale)" data-t="wound_p2">Not to escape.</p>
+        <p style="margin-top:.5rem;font-style:italic;font-size:clamp(1.5rem,2vw,1.9rem);color:var(--gold-pale)" data-t="wound_p3">To survive.</p>
+        <p style="margin-top:1.5rem" data-t="wound_p4">The world they were born into had rules they couldn&#8217;t follow. Expectations they couldn&#8217;t meet. A whole apparatus of the reasonable world telling them, patiently and repeatedly, that the way they experienced things was the wrong way.</p>
+        <p style="margin-top:1rem" data-t="wound_p5">He made the world he needed because the world he was born into had no room for him.</p>
+      </div>
+      <div class="rv-r">
+        <div class="s-label" style="margin-bottom:1.5rem">Three Things Simultaneously Unique</div>
+        <div class="v9-grid-3" style="gap:1px;display:flex;flex-direction:column">
+          <div class="world-block" style="border-left:2px solid rgba(200,146,42,.35);padding:2rem 2.5rem">
+            <div class="world-block-title" data-t="unique1_title">ONE — A fallen creator who built the world the hero is trapped in</div>
+            <div class="world-block-body" data-t="unique1_body">Who is also an earlier version of the hero. The Moonchild IS Sorkel&#8217;s former self.</div>
           </div>
-          <div style="border-left:2px solid rgba(78,201,196,.3);padding-left:2rem">
-            <div style="font-family:'Cinzel',serif;font-size:1.1rem;color:var(--cream);margin-bottom:.6rem">Physical Register</div>
-            <div style="font-size:1rem;font-weight:300;line-height:1.85;color:rgba(245,237,216,.75)">Cirque du Soleil. The body as world-building. The impossible made physical by human skill. The creature is built first. Everything else follows from what a body can do.</div>
+          <div class="world-block" style="border-left:2px solid rgba(78,201,196,.35);padding:2rem 2.5rem">
+            <div class="world-block-title" data-t="unique2_title">TWO — A parallel reality running simultaneously</div>
+            <div class="world-block-body" data-t="unique2_body">What happens inside the fantasy world directly affects the hero&#8217;s real creative life outside. Two worlds. One story.</div>
           </div>
-          <div style="border-left:2px solid rgba(139,26,26,.4);padding-left:2rem">
-            <div style="font-family:'Cinzel',serif;font-size:1.1rem;color:var(--cream);margin-bottom:.6rem">Tonal Register</div>
-            <div style="font-size:1rem;font-weight:300;line-height:1.85;color:rgba(245,237,216,.75)">Guillermo del Toro. Creatures that are not monsters. Darkness that means something. Beauty and devastation in the same frame. No clean villain.</div>
-          </div>
-          <div style="border-left:2px solid rgba(200,146,42,.2);padding-left:2rem">
-            <div style="font-family:'Cinzel',serif;font-size:1.1rem;color:var(--cream);margin-bottom:.6rem">Source Material</div>
-            <div style="font-size:1rem;font-weight:300;line-height:1.85;color:rgba(245,237,216,.75)">Sergio Bustamante · Photographs from the artist's galleries in Puerto Vallarta & Tlaquepaque. Every character already exists in this work — waiting inside bronze and paint for someone to ask them what they're thinking.</div>
+          <div class="world-block" style="border-left:2px solid rgba(139,26,26,.55);padding:2rem 2.5rem">
+            <div class="world-block-title" data-t="unique3_title">THREE — A weapon that is specifically melancholy</div>
+            <div class="world-block-body" data-t="unique3_body">The deliberate replacement of feeling with logic, wonder with documentation. El Vacío does not arrive with fangs. It arrives with a clipboard.</div>
           </div>
         </div>
       </div>
@@ -1428,161 +1202,578 @@ footer { border-top:1px solid rgba(255,255,255,.05);padding:3rem 4rem;display:fl
   </div>
 </section>
 
-<!-- BEAT SHEET — EPISODE ONE -->
-<section class="sec-seasons" id="episode1" style="background:linear-gradient(to bottom,var(--void),#0A0C18,var(--void))">
-  <div class="seasons-wrap">
-    <div class="seasons-h rv">
-      <div class="s-label">Episode One</div>
-      <h2 class="s-title">The Shore — Pilot Beat Sheet</h2>
-      <p class="s-body" style="margin-top:1rem">Season&nbsp;1 · Levels&nbsp;1–3 · The Moonchild arrives clean. By dawn, he is marked. The clock has started.</p>
+<!-- STORY 4: COMPARABLE TITLES -->
+<section class="v9-section v9-pad" style="background:linear-gradient(to bottom,#0A0B12,var(--void))">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="comps_label">Story 4</div>
+    <h2 class="s-title rv" data-t="comps_title">Comparable Titles</h2>
+    <table class="comps-table rv">
+      <thead><tr><th data-t="comps_th_title">Title</th><th data-t="comps_th_what">What We Take · Where We Diverge</th></tr></thead>
+      <tbody>
+        <tr><td>Pan&#8217;s Labyrinth</td><td><div data-t="comp1">Tone, wound, second world as survival. But Ofelia&#8217;s tasks are externally assigned. Our Moonchild&#8217;s mission is interior.</div></td></tr>
+        <tr><td>The Dark Crystal</td><td><div data-t="comp2">World predates the hero. Body as world-building tool. But Dark Crystal restores wholeness. We restore feeling.</div></td></tr>
+        <tr><td>Inception</td><td><div data-t="comp3">Parallel realities, consciousness as architecture. But Inception&#8217;s inner world has physics. The Carnival has biography.</div></td></tr>
+        <tr><td>The NeverEnding Story</td><td><div data-t="comp4">Imagination under siege, child as savior. But Bastian chooses to enter. Our Moonchild washes ashore.</div></td></tr>
+        <tr><td>Minecraft</td><td><div data-t="comp5">One mind builds everything. But no antagonist, no wound, no fallen creator.</div></td></tr>
+        <tr><td>Inside Out</td><td><div data-t="comp6">Parallel worlds simultaneously, emotion as architecture. But no villain. No melancholy as named weapon.</div></td></tr>
+      </tbody>
+    </table>
+    <div class="gap-block rv" style="margin-top:3rem">
+      <div class="s-label" style="margin-bottom:1rem" data-t="gap_label">What None of Them Have</div>
+      <p class="s-body" data-t="gap_text">An actual living artist — with real sculptures, real galleries, real biography — as the literal architecture of the fantasy world. The Carnival is not inspired by Bustamante&#8217;s work. It IS Bustamante&#8217;s work, made inhabitable.</p>
     </div>
-    <div class="seasons-list">
-      <div class="sn-item rv">
-        <div class="sn-dot" style="color:var(--teal-glow);border-color:var(--teal-glow)"></div>
-        <div class="sn-meta">
-          <div class="sn-num" style="color:var(--teal-glow)">Cold Open</div>
-          <div class="sn-name">Real World — Culiacán</div>
-          <div class="sn-arc">A House · Morning · Young Sergio</div>
-        </div>
-        <div class="sn-body">A boy pads down a hallway in bare feet. His grandfather already gone to the Buelna market. Room by room — the low places, the overlooked corners. We never see what he is looking for. We only see the searching. He stops at a basin of water. His own face looks back. Eight years old in the morning light. He considers it. Keeps searching.</div>
+  </div>
+</section>
+
+<!-- WOUND DIVIDER -->
+<div class="wound-divider rv">
+  <blockquote data-t="wound_divider">Every creative child builds a second world. Not to escape. To survive.</blockquote>
+</div>
+
+<!-- WORLD SECTION -->
+<div class="section-header rv">
+  <span class="section-header-title" data-t="nav_world">World</span>
+  <div class="section-header-line"></div>
+  <span class="section-header-num">02</span>
+</div>
+
+<section class="v9-section v9-pad" id="world" style="background:linear-gradient(to bottom,var(--void),#07091A)">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="world1_label">The Eternal Carnival</div>
+    <h2 class="s-title rv" data-t="world1_title">A Living Empire of Creativity</h2>
+    <div class="v9-grid-2">
+      <div class="rv">
+        <p class="s-body" data-t="world1_body">A living empire of creativity and imagination built across centuries by Sorkel the Astronomer from papier-mâché, bronze, ceramic, and gold. Its citizens are everything he ever imagined into existence.</p>
+        <p class="s-body" style="margin-top:1.5rem;color:var(--crimson-glow);font-style:italic" data-t="world1_dying">And it is dying.</p>
+        <p class="s-body" style="margin-top:1rem" data-t="world1_why">El Vacío and his army Los Que Saben are spreading melancholy through the Carnival like a plague. The bronze advances from the outer rings inward. Citizens lose color, then movement, then memory. They become permanent.</p>
       </div>
-      <div class="sn-item rv" style="transition-delay:.06s">
-        <div class="sn-dot" style="color:var(--teal-glow);border-color:var(--teal-glow)"></div>
-        <div class="sn-meta">
-          <div class="sn-num" style="color:var(--teal-glow)">Beat 1</div>
-          <div class="sn-name">The Shore</div>
-          <div class="sn-arc">Dark Water · Wrong Stars · Level Zero</div>
-        </div>
-        <div class="sn-body">A boy washes ashore — no memory, no name. His arms clean. Both of them. Unmarked. In his hand: something small. Papier-mâché. One painted eye. He stands. Looks at the water. No reflection. He turns. The Carnival is there. He doesn't gasp. He looks at it the way the boy in Culiacán looked into the basin — complete attention.</div>
-      </div>
-      <div class="sn-item rv" style="transition-delay:.12s">
-        <div class="sn-dot" style="color:var(--teal-glow);border-color:var(--teal-glow)"></div>
-        <div class="sn-meta">
-          <div class="sn-num" style="color:var(--teal-glow)">Beat 2–3</div>
-          <div class="sn-name">First Law · Glitch 1</div>
-          <div class="sn-arc">The Bronze Advances · The Sky Flickers</div>
-        </div>
-        <div class="sn-body">No reflection in the water. The Carnival stretches before him — vast, alive. At the margins: the ruins. Bronze advancing. Then the sky flickers — one frame. A studio. Hands on clay. Citizens glance up. Some don't look. The Moonchild doesn't know to look yet. He watches the upturned faces and understands: there is a ritual he doesn't know yet.</div>
-      </div>
-      <div class="sn-item rv" style="transition-delay:.18s">
-        <div class="sn-dot" style="color:var(--gold);border-color:var(--gold)"></div>
-        <div class="sn-meta">
-          <div class="sn-num" style="color:var(--gold)">Beats 4–5</div>
-          <div class="sn-name">Sorkel Arrives · Title Card</div>
-          <div class="sn-arc">The Gondola · The Shore · The Name</div>
-        </div>
-        <div class="sn-body">A gondola out of the dark. Sorkel — star-map coat, one eye open, bronze at the margins of his hands. He sees the boy. Goes still. There you are. They talk on the shore. The Moonchild asks his name first. Sorkel is briefly surprised. I don't have a name. / Not yet. <em style="color:var(--gold-pale)">TITLE CARD: ETERNAL CARNIVAL.</em></div>
-      </div>
-      <div class="sn-item rv" style="transition-delay:.24s">
-        <div class="sn-dot" style="color:var(--gold);border-color:var(--gold)"></div>
-        <div class="sn-meta">
-          <div class="sn-num" style="color:var(--gold)">Beats 6–10</div>
-          <div class="sn-name">The Citizens</div>
-          <div class="sn-arc">El Portero · Luna · Sol Ardiente · La Fuente</div>
-        </div>
-        <div class="sn-body">El Portero and the Name Law: no name, no record — you are here without being here. Luna sees the Moonchild fully where others' eyes slide past. Her crack: I am beginning to remember something I was before I was this. Sol Ardiente performs harder when the next glitch fires. La Fuente mid-narration stops when she sees him: the first time he made something and it looked back at him was not in the studio. It was somewhere else. He was thirteen.</div>
-      </div>
-      <div class="sn-item rv" style="transition-delay:.3s">
-        <div class="sn-dot" style="color:var(--gold);border-color:var(--gold)"></div>
-        <div class="sn-meta">
-          <div class="sn-num" style="color:var(--gold)">Beats 11–15</div>
-          <div class="sn-name">The Deep Carnival</div>
-          <div class="sn-arc">El Escritor · El Toro-Brujo · The Anchor Activates</div>
-        </div>
-        <div class="sn-body">El Escritor: words appear on the blank page when the Moonchild picks it up — fade before they can be written. The thing you are looking for is behind the thing you are looking at. El Toro-Brujo holds the droplet — four hundred years, it does not fall. The right receiver hasn't arrived. Beat 15: the Moonchild holds the anchor near a frozen citizen. The painted eye opens. He sees what was lost. The bronze doesn't crack. But he understands.</div>
-      </div>
-      <div class="sn-item rv" style="transition-delay:.36s">
-        <div class="sn-dot" style="color:var(--bronze-glow);border-color:var(--bronze-glow)"></div>
-        <div class="sn-meta">
-          <div class="sn-num" style="color:var(--bronze-glow)">Beats 16–18</div>
-          <div class="sn-name">Glitch 3 · El Espejo</div>
-          <div class="sn-arc">Violent · Mirror Market · The Other Side</div>
-        </div>
-        <div class="sn-body">Glitch 3 — violent. A woman's voice calling a name. A door slams. Non-lookers turn their backs deliberately. The Moonchild goes to his knees. The Mirror Market: no reflections. A figure on the other side — older, reaching. El Espejo: Two kinds of visitors. Those who come in. Those who look in from outside. / The glitches are the sky showing you. This is the water showing you. Different angles of the same outside.</div>
-      </div>
-      <div class="sn-item rv" style="transition-delay:.42s">
-        <div class="sn-dot" style="color:var(--crimson-glow);border-color:var(--crimson-glow)"></div>
-        <div class="sn-meta">
-          <div class="sn-num" style="color:var(--crimson-glow)">Beat 19</div>
-          <div class="sn-name">The Infection</div>
-          <div class="sn-arc">The Crimson Beat · The Irreversible Act</div>
-        </div>
-        <div class="sn-body">Sorkel's hand on the Moonchild's shoulder. The moment is designed to look like guidance — a steadying gesture. Something that could be read as care. Bronze spreads from Sorkel's hand onto the boy's clean arm. Not all at once. Just a seed. Just enough. Sorkel sees what he's done. Removes his hand. Cannot take it back. His face: something with no name after four centuries of melancholy. Regret is too small a word. Recognition is closer.</div>
-      </div>
-      <div class="sn-item rv" style="transition-delay:.48s">
-        <div class="sn-dot" style="color:var(--gold-pale);border-color:var(--gold-pale)"></div>
-        <div class="sn-meta">
-          <div class="sn-num" style="color:var(--gold-pale)">Glitch 5 · Coda</div>
-          <div class="sn-name">The Double Exposure</div>
-          <div class="sn-arc">Slowest Glitch · Simultaneous Worlds · Dawn</div>
-        </div>
-        <div class="sn-body">Glitch 5 — the slowest. Studio and Carnival in the same space, same air. Not a cut. Simultaneous. The Moonchild looks at the hands. He knows those hands. He doesn't know how. In the gondola, Sorkel dictates: Infection administered. Partial transfer. Subject's purity provides resistance. The seed is present. The clock has started. Then quietly: By the fifth glitch, he will know. In Culiacán, Young Sergio finds the papier-mâché figure. It looks back. <em style="color:var(--gold-pale)">Next — Episode Two: The Hands.</em></div>
+      <div class="rv-r">
+        <div class="s-label" style="margin-bottom:1.5rem" data-t="world1_why_label">Why It&#8217;s Dying</div>
+        <p class="s-body" data-t="world1_why_body">Sorkel was once the greatest creator who ever lived. El Vacío hollowed him out over four centuries. Now he oversees the Carnival&#8217;s slow death — half-witness, half-architect of its destruction.</p>
       </div>
     </div>
   </div>
 </section>
 
-
-
-<!-- HOW IT GETS MADE -->
-<section class="sec-block sec-block-aubergine" id="production" style="padding:9rem 0;">
-  <div class="block-wrap">
-    <div class="rv">
-      <div class="s-label">Production Register</div>
-      <h2 class="s-title">How It Gets Made</h2>
-      <p class="s-body" style="max-width:72ch;font-size:1.45rem;font-weight:300;line-height:1.85;color:rgba(245,237,216,.82);margin-top:1.5rem;">Live action. Heavy VFX and practical effects. Prosthetics. Acrobatic performance in the tradition of Cirque du Soleil. The scale of Pan&rsquo;s Labyrinth, the soul of The Leftovers.</p>
-    </div>
-    <div class="rv prod-pillars-grid" style="margin-top:4rem;">
-      <div class="prod-pillar">
-        <svg viewBox="0 0 24 24" fill="none" style="width:26px;height:26px;margin-bottom:1rem;opacity:.78;"><rect x="2" y="3" width="20" height="14" rx="2" stroke="#c8922A" stroke-width="1.2"/><path d="M8 21h8M12 17v4" stroke="#c8922A" stroke-width="1.2" stroke-linecap="round"/></svg>
-        <div class="prod-pillar-label">Format</div>
-        <p class="prod-pillar-text">Live action. Heavy VFX and practical effects. Prosthetics. Acrobatic performance. Virtual production environments. 4 Seasons &middot; 8 Episodes each.</p>
+<section class="v9-section v9-pad" style="background:linear-gradient(to bottom,#07091A,var(--void))">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="world2_label">World 2</div>
+    <h2 class="s-title rv" data-t="world2_title">Color Is Health · Bronze Is the Enemy</h2>
+    <div class="color-grid rv">
+      <div class="color-swatch-v9">
+        <div class="cs-dot" style="background:var(--gold)"></div>
+        <div class="cs-label" data-t="color1_label">Gold</div>
+        <div class="cs-desc" data-t="color1_desc">Full life. Citizens in the outer rings still carry this. It fades as the bronze advances.</div>
       </div>
-      <div class="prod-pillar">
-        <svg viewBox="0 0 24 24" fill="none" style="width:26px;height:26px;margin-bottom:1rem;opacity:.78;"><circle cx="12" cy="12" r="3" fill="none" stroke="#c8922A" stroke-width="1.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M17.66 6.34l-2.12 2.12M4.22 19.78l2.12-2.12" stroke="#c8922A" stroke-width="1.2" stroke-linecap="round"/></svg>
-        <div class="prod-pillar-label">Visual Language</div>
-        <p class="prod-pillar-text">Bustamante&rsquo;s palette. Warm golds, deep teals, burnt oranges &mdash; giving way to gray and bronze wherever El Vac&iacute;o has reached. Color is health. Bronze is the enemy.</p>
+      <div class="color-swatch-v9">
+        <div class="cs-dot" style="background:var(--teal-glow)"></div>
+        <div class="cs-label" data-t="color2_label">Teal</div>
+        <div class="cs-desc" data-t="color2_desc">Imagination in motion. The color of things still being made, still becoming.</div>
       </div>
-      <div class="prod-pillar">
-        <svg viewBox="0 0 24 24" fill="none" style="width:26px;height:26px;margin-bottom:1rem;opacity:.78;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#c8922A" stroke-width="1.2"/><circle cx="9" cy="7" r="4" stroke="#c8922A" stroke-width="1.2"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="#c8922A" stroke-width="1.2"/></svg>
-        <div class="prod-pillar-label">Physical Register</div>
-        <p class="prod-pillar-text">Cirque du Soleil. The body as world-building. Performers whose physical vocabulary communicates character, emotion, and world simultaneously &mdash; without dialogue.</p>
+      <div class="color-swatch-v9">
+        <div class="cs-dot" style="background:var(--bronze-mid)"></div>
+        <div class="cs-label" data-t="color3_label">Bronze</div>
+        <div class="cs-desc" data-t="color3_desc">The enemy&#8217;s signature. Spreads from touch. Color goes first, then movement, then memory.</div>
       </div>
-      <div class="prod-pillar">
-        <svg viewBox="0 0 24 24" fill="none" style="width:26px;height:26px;margin-bottom:1rem;opacity:.78;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="#c8922A" stroke-width="1.2"/></svg>
-        <div class="prod-pillar-label">Tonal Register</div>
-        <p class="prod-pillar-text">Guillermo del Toro. Creatures that are not monsters. Darkness that means something. Beauty and devastation in the same frame. No clean villain.</p>
-      </div>
-      <div class="prod-pillar">
-        <svg viewBox="0 0 24 24" fill="none" style="width:26px;height:26px;margin-bottom:1rem;opacity:.78;"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" stroke="#c8922A" stroke-width="1.2" stroke-linejoin="round"/></svg>
-        <div class="prod-pillar-label">The Gap</div>
-        <p class="prod-pillar-text">No existing series is a prestige live action fantasy grounded in the biography of a real living artist &mdash; built from his actual sculptures, ending in his actual gallery. That gap is the show.</p>
-      </div>
-      <div class="prod-pillar">
-        <svg viewBox="0 0 24 24" fill="none" style="width:26px;height:26px;margin-bottom:1rem;opacity:.78;"><rect x="2" y="7" width="20" height="14" rx="2" stroke="#c8922A" stroke-width="1.2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M12 12v4M10 14h4" stroke="#c8922A" stroke-width="1.2" stroke-linecap="round"/></svg>
-        <div class="prod-pillar-label">Structure</div>
-        <p class="prod-pillar-text">4 Seasons &middot; 13 Levels &middot; 8 Episodes each &middot; 1 World. Two realities running simultaneously. Sergio Bustamante himself appears in Season 4 in his actual Tlaquepaque gallery.</p>
+      <div class="color-swatch-v9">
+        <div class="cs-dot" style="background:var(--void);border:1px solid rgba(255,255,255,.1)"></div>
+        <div class="cs-label" data-t="color4_label">The Void</div>
+        <div class="cs-desc" data-t="color4_desc">Full conversion. What remains after the bronze has done everything it can do.</div>
       </div>
     </div>
-    <div class="rv" style="margin-top:4rem;">
-      <div class="s-label">Pitch in One Line</div>
-      <div class="comps-flex" style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem;">
-        <span class="comp-pill">Cirque du Soleil</span>
-        <span class="comp-pill">Pan&rsquo;s Labyrinth</span>
-        <span class="comp-pill">The Dark Crystal</span>
-        <span class="comp-pill">Inception</span>
-        <span class="comp-pill">Minecraft</span>
-        <span class="comp-pill">The NeverEnding Story</span>
-        <span class="comp-pill">Star Wars</span>
-        <span class="comp-pill">Inside Out</span>
-        <span class="comp-pill">The Boy and the Heron</span>
-        <span class="comp-pill">Princess Mononoke</span>
+    <p class="s-body rv" style="margin-top:3rem" data-t="color_body">The Carnival was built in color. Warm golds, living teals, deep crimsons. The further the melancholy spreads, the more the palette drains toward bronze, then toward nothing.</p>
+  </div>
+</section>
+
+<section class="v9-section v9-pad" style="background:linear-gradient(to bottom,var(--void),#070A12)">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="world3_label">World 3</div>
+    <h2 class="s-title rv" data-t="world3_title">The Glitches — The Sky as Monitor</h2>
+    <div class="v9-grid-2">
+      <div class="rv">
+        <p class="s-body" data-t="glitch_body">The sky of the Eternal Carnival is not a sky. It is a screen. At unpredictable intervals, it flickers — a studio, hands on clay, the smell of turpentine bleeding through. These are THE GLITCHES. The real world breaking through. The sky showing what exists outside it — the hands that made all of this.</p>
+        <div style="margin-top:2.5rem">
+          <div class="s-label" style="margin-bottom:1rem" data-t="lookers_label">Those Who Look Up</div>
+          <p class="s-body" style="font-size:clamp(1.1rem,1.4vw,1.3rem)" data-t="lookers_body">When a glitch fires, they stop. They look at the sky. They have names for what they see.</p>
+          <div class="s-label" style="margin-top:2rem;margin-bottom:1rem" data-t="nolook_label">Those Who Don&#8217;t Look</div>
+          <p class="s-body" style="font-size:clamp(1.1rem,1.4vw,1.3rem)" data-t="nolook_body">Looking is apostasy. To look up is to admit the Carnival isn&#8217;t everything — that it depends on something outside itself.</p>
+        </div>
       </div>
-      <p class="rv" style="margin-top:2.5rem;font-family:'Space Mono',monospace;font-size:1.1rem;letter-spacing:.1em;color:rgba(200,146,42,.6);font-style:italic;">Physical world-building &middot; Moral darkness &middot; Live action creatures &middot; Parallel realities &middot;<br>One artist&rsquo;s universe &middot; Imagination as stakes</p>
+      <div class="rv-r">
+        <div class="s-label" style="margin-bottom:1.5rem" data-t="glitch_esc_label">Glitch Escalation — Episode 1</div>
+        <div class="glitch-row"><span class="glitch-tag">Glitch 1</span><span class="glitch-desc" data-t="g1">One frame. Hands on clay. Citizens divide.</span></div>
+        <div class="glitch-row"><span class="glitch-tag">Glitch 2</span><span class="glitch-desc" data-t="g2">Three frames. A studio. The smell bleeds through.</span></div>
+        <div class="glitch-row"><span class="glitch-tag">Glitch 3</span><span class="glitch-desc" data-t="g3">Violent. A woman&#8217;s voice. A door slams. The Moonchild on his knees.</span></div>
+        <div class="glitch-row"><span class="glitch-tag">Glitch 4</span><span class="glitch-desc" data-t="g4">A full second. The hands making something specific.</span></div>
+        <div class="glitch-row" style="border:none"><span class="glitch-tag" style="background:rgba(139,26,26,.15);border-color:rgba(139,26,26,.4);color:var(--crimson-glow)">Glitch 5</span><span class="glitch-desc" data-t="g5">The sky tears. Not just a frame — a wound in the air. It knows we&#8217;re here.</span></div>
+      </div>
     </div>
   </div>
 </section>
 
+<section class="v9-section v9-pad" style="background:linear-gradient(to bottom,#070A12,var(--void))">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="world4_label">World 4</div>
+    <h2 class="s-title rv" data-t="world4_title">The 13 Levels</h2>
+    <p class="s-body rv" data-t="levels_intro">There is no single ladder. The passages don&#8217;t have consistent geometry — they have consistent intention. The only compass that works is feeling.</p>
+    <div class="sec-levels" style="padding:3rem 0 0;overflow:hidden">
+      <div class="levels-stair" id="levelsTrack"></div>
+    </div>
+  </div>
+</section>
+
+<section class="v9-section v9-pad" style="background:linear-gradient(to bottom,var(--void),#070915)">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="world5_label">World 5</div>
+    <h2 class="s-title rv" data-t="world5_title">Level Map by Season</h2>
+    <div class="level-map rv">
+      <div class="lmap-row">
+        <div class="lmap-season" data-t="lmap1_season">Season 1 — The Searching</div>
+        <div class="lmap-arc" data-t="lmap1_arc">Levels 1–3 · Arc Word: WONDER</div>
+        <div class="lmap-body" data-t="lmap1_body">Sorkel: Active antagonist, conflicted, infects the Moonchild. Melancholy: Spreading but survivable.</div>
+      </div>
+      <div class="lmap-row">
+        <div class="lmap-season" data-t="lmap2_season">Season 2 — The Cost</div>
+        <div class="lmap-arc" data-t="lmap2_arc">Levels 4–7 · Arc Word: WEIGHT</div>
+        <div class="lmap-body" data-t="lmap2_body">Sorkel: Cracking, the curse wars with what he was. Melancholy: Infiltrating the inner rings.</div>
+      </div>
+      <div class="lmap-row">
+        <div class="lmap-season" data-t="lmap3_season">Season 3 — The Breaking</div>
+        <div class="lmap-arc" data-t="lmap3_arc">Levels 8–12 · Arc Word: RELEASE</div>
+        <div class="lmap-body" data-t="lmap3_body">Sorkel: Broken open, the artist returns. Melancholy: Almost total. The shore itself bronzing.</div>
+      </div>
+      <div class="lmap-row">
+        <div class="lmap-season" data-t="lmap4_season">Season 4 — The Hiding</div>
+        <div class="lmap-arc" data-t="lmap4_arc">Level 13 + Return · Arc Word: LEGACY</div>
+        <div class="lmap-body" data-t="lmap4_body">Sorkel: Restored, color returned, brush in hand. Melancholy: Broken. What it built remains.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="v9-section v9-pad" style="background:linear-gradient(to bottom,#070915,var(--void))">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="world6_label">World 6</div>
+    <h2 class="s-title rv" data-t="world6_title">The Galleries</h2>
+    <p class="s-body rv" data-t="galleries_body">The physical galleries of Sergio Bustamante in Tlaquepaque and Puerto Vallarta are the literal architecture of the Carnival. Every piece on a shelf or pedestal is a citizen. Every room a level. Every doorway a passage.</p>
+    <p class="s-body rv" style="margin-top:1.5rem;color:var(--gold-pale);font-style:italic;font-size:clamp(1.4rem,2vw,1.9rem)" data-t="galleries_key">The Carnival is not inspired by the gallery. The Carnival IS the gallery — made inhabitable.</p>
+  </div>
+</section>
+
+<!-- ENEMY SECTION -->
+<div class="section-header rv">
+  <span class="section-header-title" data-t="nav_enemy">Enemy</span>
+  <div class="section-header-line"></div>
+  <span class="section-header-num">03</span>
+</div>
+
+<section class="v9-section v9-pad" id="void" style="background:linear-gradient(135deg,#04040C 0%,#080510 40%,#0C0408 100%)">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="enemy1_label">Enemy 1</div>
+    <h2 class="s-title rv" data-t="enemy1_title">El Vacío — Supreme Force</h2>
+    <div class="void-card-v9 rv">
+      <div class="void-quote-v9" data-t="void_quote">Not violent. Erasing.<br>The absence that sells itself as clarity.<br><em>It does not arrive with fangs. It arrives with a clipboard.</em></div>
+      <p class="void-body-v9" data-t="void_body">El Vacío is not a person. It is a condition — the deliberate replacement of feeling with logic, wonder with documentation, creativity with the perfect record of creativity. Does not destroy — converts. Turns artists into documentarians of art they can no longer make.</p>
+      <p class="void-body-v9" style="margin-top:1.2rem;color:var(--bronze-mid)" data-t="void_weapon">The weapon and the gift are the same thing: the ability to see clearly, to name what is wrong, to organize. What El Vacío weaponizes is discernment itself.</p>
+    </div>
+  </div>
+</section>
+
+<section class="v9-section v9-pad" style="background:linear-gradient(135deg,#08050F 0%,#040310 50%,#08050F 100%)">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="enemy2_label">Enemy 2</div>
+    <h2 class="s-title rv" data-t="enemy2_title">Los Que Saben — The Ones Who Know</h2>
+    <div class="lqs-grid rv">
+      <div class="lqs-card">
+        <div class="lqs-title" data-t="lqs1_title">What They Are</div>
+        <div class="lqs-body" data-t="lqs1_body">El Vacío&#8217;s army. Bureaucrats of the imagination. They carry clipboards. They arrive after the bronze has touched something to measure what was lost.</div>
+      </div>
+      <div class="lqs-card">
+        <div class="lqs-title" data-t="lqs2_title">What Makes Them Dangerous</div>
+        <div class="lqs-body" data-t="lqs2_body">The villain you cannot hate. The darkness that looks like care. They genuinely believe they are helping. They are not wrong about everything. That is what makes them so devastating.</div>
+      </div>
+      <div class="lqs-card">
+        <div class="lqs-title" data-t="lqs3_title">What They Do</div>
+        <div class="lqs-body" data-t="lqs3_body">They don&#8217;t kill what they touch. They make it permanent. They arrive with patience, with forms, with explanations. They say they are protecting.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="v9-section v9-pad" style="background:linear-gradient(to bottom,#040310,var(--void))">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="enemy3_label">Enemy 3</div>
+    <h2 class="s-title rv" data-t="enemy3_title">The Bronze — What It Does</h2>
+    <div class="bronze-stages rv">
+      <div class="bronze-stage">
+        <div class="bs-num" data-t="bronze1_num">Stage One</div>
+        <div class="bs-title" data-t="bronze1_title">Color Goes First</div>
+        <div class="bs-body" data-t="bronze1_body">When the melancholy touches something alive, the warmth drains from it. Gold becomes bronze. Teal becomes grey. The subject doesn&#8217;t notice immediately.</div>
+      </div>
+      <div class="bronze-stage">
+        <div class="bs-num" data-t="bronze2_num">Stage Two</div>
+        <div class="bs-title" data-t="bronze2_title">Then Movement</div>
+        <div class="bs-body" data-t="bronze2_body">The subject slows. Not in a way they can see. In a way others can. Their gestures become rehearsed. Their choices become habits.</div>
+      </div>
+      <div class="bronze-stage">
+        <div class="bs-num" data-t="bronze3_num">Stage Three</div>
+        <div class="bs-title" data-t="bronze3_title">Then Memory</div>
+        <div class="bs-body" data-t="bronze3_body">The subject remains — permanent, rigid, unable to feel what they&#8217;ve lost. The Moonchild&#8217;s bronze arm is a ticking clock. It will reach his heart in Season 4 if he fails.</div>
+      </div>
+    </div>
+    <div class="rv" style="margin-top:3rem;padding:2rem;border-left:2px solid var(--bronze-mid);background:rgba(107,74,26,.04)">
+      <p class="s-body" data-t="bronze_key">The most important image in the series: Sorkel holding a brush for the first time in four centuries. He&#8217;s made of bronze. The brush has color. His hand shakes.</p>
+    </div>
+  </div>
+</section>
+
+<section class="v9-section v9-pad" style="background:linear-gradient(to bottom,var(--void),#06040C)">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="enemy4_label">Enemy 4</div>
+    <h2 class="s-title rv" data-t="enemy4_title">The Melancholy</h2>
+    <p class="s-body rv" data-t="melancholy_body">The dark side of loving something so much the fear of losing it becomes larger than the joy of having it. The weapon and the gift are the same thing.</p>
+    <p class="s-body rv" style="margin-top:1.5rem" data-t="melancholy_body2">Every creator who has ever been afraid of their own work knows this feeling. El Vacío did not invent it. El Vacío learned to weaponize it.</p>
+    <p class="s-body rv" style="margin-top:1.5rem;color:var(--gold-pale);font-style:italic" data-t="melancholy_sorkel">Sorkel&#8217;s melancholy is the show&#8217;s central wound. Not because melancholy is weakness — but because it is what the most powerful feeling looks like when it is turned against itself.</p>
+  </div>
+</section>
+
+<!-- SORKEL DIVIDER -->
+<div class="sorkel-divider rv">
+  <blockquote data-t="sorkel_divider">The most important image in the series: Sorkel holding a brush for the first time in four centuries. He&#8217;s made of bronze. The brush has color. His hand shakes.</blockquote>
+  <div class="sd-meta" data-t="sorkel_divider_meta">Season Four · The Giving · Tlaquepaque</div>
+</div>
+
+<!-- CHARACTERS SECTION -->
+<div class="section-header rv">
+  <span class="section-header-title" data-t="nav_characters">Characters</span>
+  <div class="section-header-line"></div>
+  <span class="section-header-num">04</span>
+</div>
+
+<section class="v9-section v9-pad" id="characters" style="background:linear-gradient(to bottom,var(--void),#0A0D1A)">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="chars1_label">The Three Principals</div>
+    <h2 class="s-title rv" data-t="chars1_title">Who They Are</h2>
+    <div class="principals-grid rv">
+      <!-- MOONCHILD -->
+      <div class="principal-card">
+        <div class="pc-image">
+          <img src="moonchild-rendering.png" alt="The Moonchild">
+          <svg class="pc-image-fallback" viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;opacity:0"><defs><radialGradient id="mcg2" cx="45%" cy="35%" r="65%"><stop offset="0%" stop-color="#1A5C5A" stop-opacity=".6"/><stop offset="100%" stop-color="#03040A" stop-opacity="1"/></radialGradient></defs><rect width="400" height="600" fill="url(#mcg2)"/></svg>
+        </div>
+        <div class="pc-info">
+          <div class="pc-role" style="color:var(--teal-glow)" data-t="mc_role">The Moonchild</div>
+          <div class="pc-name" data-t="mc_name">El Lunachico</div>
+          <p class="pc-body" data-t="mc_body">The boy who doesn&#8217;t fit the real world. Arrives pure — feeling everything, incapable of numbness. He washes ashore. He did not choose to arrive. In his hand: one small papier-mâché figure with a painted eye. The last thing his grandfather hid for him to find.</p>
+        </div>
+      </div>
+      <!-- SORKEL -->
+      <div class="principal-card">
+        <div class="pc-image">
+          <img src="optim-sorkel.jpeg" alt="Sorkel the Astronomer">
+        </div>
+        <div class="pc-info">
+          <div class="pc-role" style="color:var(--bronze-glow)" data-t="sk_role">The Fallen Creator</div>
+          <div class="pc-name" data-t="sk_name">Sorkel the Astronomer</div>
+          <p class="pc-body" data-t="sk_body">The fallen creator. El Vacío hollowed him out from the inside over four centuries until the greatest artist who ever lived became the perfect administrator of his own work&#8217;s slow death. Coat covered in hand-drawn star maps — hundreds, layered, contradicting each other.</p>
+          <p class="pc-body" style="margin-top:1rem;color:var(--bronze-mid);font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.15em" data-t="sk_arc">S1: Antagonist · S2: Cracking · S3: Broken Open · S4: Restored</p>
+        </div>
+      </div>
+      <!-- EL VACÍO -->
+      <div class="principal-card">
+        <div class="pc-image">
+          <img src="el-vacio-rendering.png" alt="El Vacío">
+          <svg class="pc-image-fallback" viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;opacity:0"><defs><radialGradient id="evg2" cx="50%" cy="50%" r="55%"><stop offset="0%" stop-color="#160808" stop-opacity=".9"/><stop offset="100%" stop-color="#03040A" stop-opacity="1"/></radialGradient></defs><rect width="400" height="600" fill="url(#evg2)"/></svg>
+        </div>
+        <div class="pc-info">
+          <div class="pc-role" style="color:var(--crimson-glow)" data-t="ev_role">Supreme Villain</div>
+          <div class="pc-name" data-t="ev_name">El Vacío</div>
+          <p class="pc-body" data-t="ev_body">Not violent. Erasing. The absence that sells itself as clarity. It does not arrive with fangs. It arrives with a clipboard. Not a person — a condition. The deliberate replacement of feeling with logic, wonder with documentation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="v9-section v9-pad" style="background:linear-gradient(to bottom,#0A0D1A,var(--void))">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="chars2_label">The Anchor</div>
+    <h2 class="s-title rv" data-t="chars2_title">The Grandfather&#8217;s Gift</h2>
+    <div class="anchor-block rv">
+      <div class="anchor-eye">👁</div>
+      <div>
+        <div class="anchor-body" data-t="anchor_body">Papier-mâché figure with a painted eye. When the Moonchild holds it near something that has been bronzed, the eye opens slightly. He can see what the citizen used to feel. The grandfather&#8217;s gift carried into the world the grandfather built without knowing it.</div>
+        <div class="anchor-body" style="margin-top:1rem;color:var(--gold-pale);font-style:italic" data-t="anchor_key">The searching made physical.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="v9-section v9-pad" style="background:linear-gradient(to bottom,var(--void),#080C1A)">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="chars3_label">The Skywalker Mirror</div>
+    <h2 class="s-title rv" data-t="chars3_title">Sorkel&#8217;s Arc</h2>
+    <div class="skywalker-grid rv">
+      <div class="sky-card">
+        <div class="sky-title" data-t="sky1_title">The Mirror</div>
+        <div class="sky-body" data-t="sky1_body">The Moonchild IS Sorkel&#8217;s former self. The Moonchild is Sorkel before the fear. Sorkel is the Moonchild after it wins. He&#8217;s not just believing in Sorkel. He&#8217;s looking at what he could become.</div>
+      </div>
+      <div class="sky-card">
+        <div class="sky-title" data-t="sky2_title">The Gollum / Snape Register</div>
+        <div class="sky-body" data-t="sky2_body">Sorkel can deliver a line that serves El Vacío and in the next breath give the Moonchild the one piece of information he needs to survive. He is not a clean villain. He is a broken person doing a terrible thing while part of him is screaming to stop.</div>
+      </div>
+    </div>
+    <table class="sorkel-arc-table rv" style="margin-top:3rem">
+      <thead><tr><th>Season</th><th>Arc</th></tr></thead>
+      <tbody>
+        <tr><td data-t="sorkel_s1_num">Season 1</td><td data-t="sorkel_s1">Primary antagonist. Infects the Moonchild. Cannot follow above Level 3.</td></tr>
+        <tr><td data-t="sorkel_s2_num">Season 2</td><td data-t="sorkel_s2">Cracking. The artist surfaces briefly. &#8216;I am your world.&#8217;</td></tr>
+        <tr><td data-t="sorkel_s3_num">Season 3</td><td data-t="sorkel_s3">Broken open. Sorkel weeps. Makes something with his hands. El Vacío transformed.</td></tr>
+        <tr><td data-t="sorkel_s4_num">Season 4</td><td data-t="sorkel_s4">Restored. Color returned. Brush in hand. Small things given away. The grandfather revealed.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="v9-section v9-pad" style="background:linear-gradient(to bottom,#080C1A,var(--void))">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="chars4_label">The Citizens</div>
+    <h2 class="s-title rv" data-t="chars4_title">Who Populates the Carnival</h2>
+    <div class="citizens-grid-v9 rv">
+      <div class="citizen-card-v9">
+        <div class="citizen-name-v9" data-t="cit1_name">El Portero</div>
+        <div class="citizen-body-v9" data-t="cit1_body">He is the great doors. The Carnival Gate itself. He does not move. His attention does. Voice of a door that last opened a very long time ago.</div>
+      </div>
+      <div class="citizen-card-v9">
+        <div class="citizen-name-v9" data-t="cit2_name">La Fuente</div>
+        <div class="citizen-body-v9" data-t="cit2_body">The fountain archivist. She has been speaking without pause since 1975. The Moonchild is the first to stop and listen. She narrates everything the glitches show in real time.</div>
+      </div>
+      <div class="citizen-card-v9">
+        <div class="citizen-name-v9" data-t="cit3_name">Luna</div>
+        <div class="citizen-body-v9" data-t="cit3_body">Head a full crescent moon. Silver-blue skin. A hairline crack across her crescent. Always looks at the glitches. Every time. Her crescent tilts upward. The crack deepens slightly.</div>
+      </div>
+      <div class="citizen-card-v9">
+        <div class="citizen-name-v9" data-t="cit4_name">El Toro-Brujo</div>
+        <div class="citizen-body-v9" data-t="cit4_body">Never looks at the glitches. Holds a single droplet of color — the last one he made before the bronze found him. Found in the deepest citizen of Level 3. The droplet falls on the Moonchild&#8217;s bronze arm in Episode 6.</div>
+      </div>
+      <div class="citizen-card-v9">
+        <div class="citizen-name-v9" data-t="cit5_name">Las Lunas Gemelas</div>
+        <div class="citizen-body-v9" data-t="cit5_body">Two figures who share one moon-face between them. They complete each other&#8217;s sentences. When they disagree, one of them is always wrong, and they both know it, and neither will say which.</div>
+      </div>
+      <div class="citizen-card-v9">
+        <div class="citizen-name-v9" data-t="cit6_name">La Escalera</div>
+        <div class="citizen-body-v9" data-t="cit6_body">Appears on the passage between levels. Exists in three versions simultaneously. Ask her the same question three times and you will get three answers, all true, none complete.</div>
+      </div>
+      <div class="citizen-card-v9">
+        <div class="citizen-name-v9" data-t="cit7_name">El Cargador</div>
+        <div class="citizen-body-v9" data-t="cit7_body">Carries the weight of every unfinished thing in the Carnival on his back. Not crushed by it. Shaped by it. The Moonchild is the first to offer to help carry.</div>
+      </div>
+      <div class="citizen-card-v9">
+        <div class="citizen-name-v9" data-t="cit8_name">La Puerta de Luna</div>
+        <div class="citizen-body-v9" data-t="cit8_body">A door that opens only when the Moonchild is not trying to open it. The passage to Level 8.</div>
+      </div>
+      <div class="citizen-card-v9">
+        <div class="citizen-name-v9" data-t="cit9_name">El Escritor</div>
+        <div class="citizen-body-v9" data-t="cit9_body">Looks at the glitches, then writes. The words dissolve before they reach the page. He looks anyway.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARC SECTION -->
+<div class="section-header rv">
+  <span class="section-header-title" data-t="nav_arc">Arc</span>
+  <div class="section-header-line"></div>
+  <span class="section-header-num">05</span>
+</div>
+
+<section class="v9-section v9-pad" id="seasons" style="background:linear-gradient(to bottom,var(--void),#08091A)">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="arc1_label">Four Seasons · Thirteen Levels · One World</div>
+    <h2 class="s-title rv" data-t="arc1_title">The Arc</h2>
+    <p class="s-body rv" data-t="arc1_body">Two worlds running simultaneously — the Carnival inside, Sergio&#8217;s real creative life outside — each affecting the other in ways the characters only partially understand.</p>
+    <div class="season-cards rv">
+      <div class="season-q-card">
+        <div class="sqc-num" data-t="s1_num">Season One</div>
+        <div class="sqc-name" data-t="s1_name">The Searching</div>
+        <div class="sqc-word" data-t="s1_word">Arc Word: WONDER</div>
+        <div class="sqc-quote" data-t="s1_quote">Wonder is not a gift. It is a practice. And the practice is called searching.</div>
+      </div>
+      <div class="season-q-card">
+        <div class="sqc-num" data-t="s2_num">Season Two</div>
+        <div class="sqc-name" data-t="s2_name">The Cost</div>
+        <div class="sqc-word" data-t="s2_word">Arc Word: WEIGHT</div>
+        <div class="sqc-quote" data-t="s2_quote">The world having opinions about your work is not the same as the world being right about your work.</div>
+      </div>
+      <div class="season-q-card">
+        <div class="sqc-num" data-t="s3_num">Season Three</div>
+        <div class="sqc-name" data-t="s3_name">The Breaking</div>
+        <div class="sqc-word" data-t="s3_word">Arc Word: RELEASE</div>
+        <div class="sqc-quote" data-t="s3_quote">The thing El Vacío cannot survive is a person who has stopped apologizing for what they make.</div>
+      </div>
+      <div class="season-q-card">
+        <div class="sqc-num" data-t="s4_num">Season Four</div>
+        <div class="sqc-name" data-t="s4_name">The Hiding</div>
+        <div class="sqc-word" data-t="s4_word">Arc Word: LEGACY</div>
+        <div class="sqc-quote" data-t="s4_quote">Every work of art is something hidden for someone who hasn&#8217;t arrived yet.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="v9-section v9-pad" style="background:linear-gradient(to bottom,#08091A,var(--void))">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="arc2_label">Season One · Eight Episodes</div>
+    <h2 class="s-title rv" data-t="arc2_title">The Pilot Season</h2>
+    <div class="ep-grid-v9 rv">
+      <div class="ep-card-v9">
+        <div class="ep-num-v9">Episode 01</div>
+        <div class="ep-title-v9" data-t="ep1_title">The Searching</div>
+        <div class="ep-body-v9" data-t="ep1_body">Dark water. Wrong stars. A boy washes ashore — no memory, no name, both arms clean. In his hand: a papier-mâché figure with a painted eye. Sorkel arrives. There you are.</div>
+      </div>
+      <div class="ep-card-v9">
+        <div class="ep-num-v9">Episode 02</div>
+        <div class="ep-title-v9" data-t="ep2_title">The Hands</div>
+        <div class="ep-body-v9" data-t="ep2_body">The sky flickers — one frame. Hands on clay. Citizens diverge. Those who look up stop. Those who don&#8217;t press forward. The Moonchild belongs to neither group yet.</div>
+      </div>
+      <div class="ep-card-v9">
+        <div class="ep-num-v9">Episode 03</div>
+        <div class="ep-title-v9" data-t="ep3_title">La Fuente</div>
+        <div class="ep-body-v9" data-t="ep3_body">The Moonchild finds the fountain archivist. She has been speaking without pause since 1975. He is the first to stop and listen. She knows something about the figure in his hand.</div>
+      </div>
+      <div class="ep-card-v9">
+        <div class="ep-num-v9">Episode 04</div>
+        <div class="ep-title-v9" data-t="ep4_title">The Ladder</div>
+        <div class="ep-body-v9" data-t="ep4_body">La Escalera appears on the passage between levels. The Moonchild asks all three questions. Gets all three answers. All true. None complete. He climbs anyway.</div>
+      </div>
+      <div class="ep-card-v9">
+        <div class="ep-num-v9">Episode 05</div>
+        <div class="ep-title-v9" data-t="ep5_title">The Boat</div>
+        <div class="ep-body-v9" data-t="ep5_body">Sorkel sends the gondola without a pilot. The Moonchild must choose: climb in and go where it takes him, or stay where he is. He climbs in. The gondola goes to Sorkel.</div>
+      </div>
+      <div class="ep-card-v9">
+        <div class="ep-num-v9">Episode 06</div>
+        <div class="ep-title-v9" data-t="ep6_title">El Toro-Brujo</div>
+        <div class="ep-body-v9" data-t="ep6_body">The deepest citizen of Level 3 drops a single drop of color onto the advancing bronze of the Moonchild&#8217;s arm. It holds. For now. The bronze hasn&#8217;t learned this color yet.</div>
+      </div>
+      <div class="ep-card-v9">
+        <div class="ep-num-v9">Episode 07</div>
+        <div class="ep-title-v9" data-t="ep7_title">La Ciudad</div>
+        <div class="ep-body-v9" data-t="ep7_body">The city herself closing her eyes. The Moonchild reaches her just as bronze begins to seal her lids. He holds the figure near her face. Her eyes stay open. One more hour.</div>
+      </div>
+      <div class="ep-card-v9">
+        <div class="ep-num-v9">Episode 08</div>
+        <div class="ep-title-v9" data-t="ep8_title">The Astronomer</div>
+        <div class="ep-body-v9" data-t="ep8_body">Sorkel and the Moonchild meet properly for the first time. I am your world, says Sorkel. The Moonchild says: I know. And I&#8217;m going to save you anyway. Season ends.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="v9-section v9-pad" style="background:linear-gradient(to bottom,var(--void),#070A14)">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="arc3_label">Pilot Beat Sheet</div>
+    <h2 class="s-title rv" data-t="arc3_title">Episode One — The Shore (29 Beats)</h2>
+    <div class="beats-grid rv">
+      <div class="beat-card"><div class="beat-num">Beat 1</div><div class="beat-title" data-t="b1_t">Opening Image</div><div class="beat-body" data-t="b1">Black water. Stars in wrong configurations. No constellation a human has named.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 2</div><div class="beat-title" data-t="b2_t">The Shore</div><div class="beat-body" data-t="b2">A boy washes up. Both arms clean. In his hand: papier-mâché. One painted eye.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 3</div><div class="beat-title" data-t="b3_t">He Stands</div><div class="beat-body" data-t="b3">Doesn&#8217;t know where he is. The stars are wrong. He notices.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 4</div><div class="beat-title" data-t="b4_t">The Gondola</div><div class="beat-body" data-t="b4">Sorkel arrives from the dark water. Recognition moves across his face — older than surprise.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 5</div><div class="beat-title" data-t="b5_t">There You Are</div><div class="beat-body" data-t="b5">Sorkel&#8217;s first words. The Moonchild says: The stars are wrong. Sorkel says: They know that.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 6</div><div class="beat-title" data-t="b6_t">The Name Problem</div><div class="beat-body" data-t="b6">I don&#8217;t have a name. Sorkel: Not yet.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 7</div><div class="beat-title" data-t="b7_t">The Great Doors</div><div class="beat-body" data-t="b7">El Portero. He came from the water. He always does.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 8</div><div class="beat-title" data-t="b8_t">Who Lives Here</div><div class="beat-body" data-t="b8">The Moonchild asks who, not may I enter. El Portero&#8217;s eye shifts.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 9</div><div class="beat-title" data-t="b9_t">No Record</div><div class="beat-body" data-t="b9">I cannot record your entry. The record requires a name. He is here without being registered.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 10</div><div class="beat-title" data-t="b10_t">The Midway</div><div class="beat-body" data-t="b10">Full and alive. A woman with a hummingbird for a head. A figure made of clock hands.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 11</div><div class="beat-title" data-t="b11_t">Without A Name</div><div class="beat-body" data-t="b11">Some citizens can&#8217;t see him. Without a name, you&#8217;re harder to hold in the imagination.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 12</div><div class="beat-title" data-t="b12_t">The Carousel</div><div class="beat-body" data-t="b12">Stopped. The Moonchild touches the horse. One eye moves — barely. Sorkel watches.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 13</div><div class="beat-title" data-t="b13_t">Luna</div><div class="beat-body" data-t="b13">Head a crescent moon. A hairline crack. The water gave you back. Many things are returned. Few come back.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 14</div><div class="beat-title" data-t="b14_t">The Grand Tent</div><div class="beat-body" data-t="b14">Inside is vast. La Fuente speaks. She has not stopped since 1975.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 15</div><div class="beat-title" data-t="b15_t">What She Says</div><div class="beat-body" data-t="b15">She says everything the Carnival is and was. The Moonchild listens. Nobody has listened before.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 16</div><div class="beat-title" data-t="b16_t">Glitch 1</div><div class="beat-body" data-t="b16">One frame. Hands on clay. Citizens divide — some look up, some press forward.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 17</div><div class="beat-title" data-t="b17_t">The Bronzed Citizen</div><div class="beat-body" data-t="b17">At the edge of the first district. Fully bronzed. Frozen mid-gesture. Mid-joy.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 18</div><div class="beat-title" data-t="b18_t">The Anchor Shows</div><div class="beat-body" data-t="b18">The Moonchild holds the figure near the frozen one. The painted eye opens slightly. He can see what they used to feel.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 19</div><div class="beat-title" data-t="b19_t">El Espejo</div><div class="beat-body" data-t="b19">A mirror citizen. Reflects not appearance but feeling. The Moonchild sees something he recognizes but cannot name yet.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 20</div><div class="beat-title" data-t="b20_t">Glitch 2</div><div class="beat-body" data-t="b20">Three frames. The studio. The smell bleeds through.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 21</div><div class="beat-title" data-t="b21_t">Glitch 3</div><div class="beat-body" data-t="b21">Violent. A woman&#8217;s voice. A door slams. The Moonchild on his knees.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 22</div><div class="beat-title" data-t="b22_t">You Pulled</div><div class="beat-body" data-t="b22">The glitches don&#8217;t pull. You pulled. You looked up and something in you went toward it.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 23</div><div class="beat-title" data-t="b23_t">What&#8217;s In The Sky</div><div class="beat-body" data-t="b23">The world that dreamed this one into being. Sorkel turns away. I have catalogued it.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 24</div><div class="beat-title" data-t="b24_t">Glitch 4</div><div class="beat-body" data-t="b24">A full second. The hands making something specific. Something recognizable.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 25</div><div class="beat-title" data-t="b25_t">Glitch 5</div><div class="beat-body" data-t="b25">The sky tears. It knows we&#8217;re here. Luna&#8217;s crack grows slightly.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 26</div><div class="beat-title" data-t="b26_t">Sorkel&#8217;s Gondola</div><div class="beat-body" data-t="b26">Sorkel dictates: Arrival confirmed. Clean on arrival. Infection administered. The clock has started.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 27</div><div class="beat-title" data-t="b27_t">The Bronze Spreads</div><div class="beat-body" data-t="b27">The ruined edge, patient. Moving in a pattern that, from high enough, would resemble a word.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 28</div><div class="beat-title" data-t="b28_t">Real World</div><div class="beat-body" data-t="b28">Culiacán. Young Sergio holds the papier-mâché figure — he found it. The grandfather watches from the doorway.</div></div>
+      <div class="beat-card"><div class="beat-num">Beat 29</div><div class="beat-title" data-t="b29_t">Closing Image</div><div class="beat-body" data-t="b29">The Moonchild at the waterfront. His bronze arm. The water where his reflection should be — something patient forming there, looking back. I&#8217;m going to remember.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTION SECTION -->
+<div class="section-header rv">
+  <span class="section-header-title" data-t="nav_production">Production</span>
+  <div class="section-header-line"></div>
+  <span class="section-header-num">06</span>
+</div>
+
+<section class="v9-section v9-pad" id="production" style="background:linear-gradient(135deg,#0B0D28,#07091A,#0B0D28)">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="prod1_label">The Gap in the Market</div>
+    <h2 class="s-title rv" data-t="prod1_title">What Doesn&#8217;t Exist Yet</h2>
+    <div class="gap-block rv">
+      <div class="gap-item">
+        <span class="gap-dash">—</span>
+        <span class="gap-text" data-t="gap1">No prestige fantasy series is built directly from the body of work of a single living artist.</span>
+      </div>
+      <div class="gap-item">
+        <span class="gap-dash">—</span>
+        <span class="gap-text" data-t="gap2">No existing property combines: live-action physical world-building at Cirque scale + biographical parallel reality + melancholy as the specific named weapon + a four-century fallen creator as primary antagonist.</span>
+      </div>
+      <div class="gap-item">
+        <span class="gap-dash">—</span>
+        <span class="gap-text" data-t="gap3">The Carnival is not a metaphor. It is a real place — built from real sculptures, in real galleries, by real hands.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="v9-section v9-pad" style="background:linear-gradient(135deg,#07091A,#0A0B1F,#07091A)">
+  <div class="v9-inner">
+    <div class="s-label rv" data-t="prod2_label">How It Gets Made</div>
+    <h2 class="s-title rv" data-t="prod2_title">Six Production Pillars</h2>
+    <div class="prod-pillars rv">
+      <div class="prod-pillar-v9">
+        <div class="pp-num">01</div>
+        <div class="pp-label" data-t="pp1_label">Physical World-Building</div>
+        <div class="pp-text" data-t="pp1_text">Bustamante&#8217;s sculptures become the literal architecture. Built sets, not CGI environments. The creature is built first. Everything follows from what a body can do.</div>
+      </div>
+      <div class="prod-pillar-v9">
+        <div class="pp-num">02</div>
+        <div class="pp-label" data-t="pp2_label">Parallel Reality</div>
+        <div class="pp-text" data-t="pp2_text">The real-world Sergio storyline runs simultaneously. Two editors. Two color grades. What happens inside directly affects what happens outside.</div>
+      </div>
+      <div class="prod-pillar-v9">
+        <div class="pp-num">03</div>
+        <div class="pp-label" data-t="pp3_label">The Bronze System</div>
+        <div class="pp-text" data-t="pp3_text">A consistent visual language for the melancholy&#8217;s advance. Color saturation as a plot device. The audience can read the stakes in the palette.</div>
+      </div>
+      <div class="prod-pillar-v9">
+        <div class="pp-num">04</div>
+        <div class="pp-label" data-t="pp4_label">Cirque Register</div>
+        <div class="pp-text" data-t="pp4_text">Performers, not CGI creatures. The body as world-building tool. Physical danger as emotional truth. Every citizen a character built first for what a body can express.</div>
+      </div>
+      <div class="prod-pillar-v9">
+        <div class="pp-num">05</div>
+        <div class="pp-label" data-t="pp5_label">Del Toro Tone</div>
+        <div class="pp-text" data-t="pp5_text">Darkness that means something. Beauty and devastation in the same frame. Creatures built first for empathy. The villain is not the scariest thing in the room. The loss is.</div>
+      </div>
+      <div class="prod-pillar-v9">
+        <div class="pp-num">06</div>
+        <div class="pp-label" data-t="pp6_label">Biographical Anchor</div>
+        <div class="pp-text" data-t="pp6_text">Four seasons, four life stages. The show is also a portrait of an artist&#8217;s relationship with their own work across a lifetime. Sergio Bustamante appears as himself in Season 4.</div>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- PHOTO GALLERY -->
 <section class="sec-gallery" id="gallery">
   <div class="gallery-intro rv">
@@ -2058,13 +2249,13 @@ const BZ=[
   {l:"Sorkel's Studio",v:.01},
 ];
 const bzM=document.getElementById('bzMeter');
-BZ.forEach(row=>{
+if(bzM){BZ.forEach(row=>{
   bzM.innerHTML+=`<div class="bz-row">
     <span class="bz-lbl">${row.l}</span>
     <div class="bz-track"><div class="bz-fill" style="width:${row.v*100}%"></div></div>
     <span class="bz-val">${Math.round(row.v*100)}%</span>
   </div>`;
-});
+});}
 
 // ══════════════════════════════════════════════
 // SEASONS
@@ -2080,7 +2271,7 @@ const SEASONS=[
    body:"Sorkel. The studio. A brush on the floor. The most important image in the series: Sorkel holding a brush for the first time in four centuries. In the real world, an old man walks through his gallery surrounded by fifty years of work — and a new child is arriving on the shore."},
 ];
 const sl=document.getElementById('seasonsList');
-SEASONS.forEach((s,i)=>{
+if(sl){SEASONS.forEach((s,i)=>{
   const el=document.createElement('div');
   el.className='sn-item rv';
   el.style.transitionDelay=(i*.12)+'s';
@@ -2094,7 +2285,7 @@ SEASONS.forEach((s,i)=>{
     <div class="sn-body">${s.body}</div>
   `;
   sl.appendChild(el);
-});
+});}
 
 // ══════════════════════════════════════════════
 // INTERSECTION OBSERVER — reveal animations
@@ -2127,6 +2318,624 @@ if(heroImg && heroImgSection){
     heroImg.style.transform = `scale(1.12) translateY(${translateY}px)`;
   }, {passive:true});
 }
+
+
+// ══════════════════════════════════════════════
+// BILINGUAL TOGGLE — v9
+// ══════════════════════════════════════════════
+const TRANSLATIONS = {
+  en: {
+    nav_story: 'Story',
+    nav_world: 'World',
+    nav_enemy: 'Enemy',
+    nav_characters: 'Characters',
+    nav_arc: 'Arc',
+    nav_production: 'Production',
+    logline: 'In a dying empire of imagination, a child who still feels everything must find the creator who has forgotten how — because <em>the boy is the last memory the old man has of himself.</em>',
+    logline_label: 'Logline',
+    story1_label: 'The Pitch in One Line',
+    story1_title: 'What It Is',
+    pitch_stmt: '<span class="pg">Cirque&nbsp;du&nbsp;Soleil</span> meets <span class="pt">Pan&#8217;s&nbsp;Labyrinth</span> meets <span class="pg">The&nbsp;Dark&nbsp;Crystal</span> meets <span class="pt">Inception</span> meets <span class="pc">The&nbsp;NeverEnding&nbsp;Story</span>',
+    story2_label: 'The Story in Three Sentences',
+    story2_heading: 'The Core',
+    story2_s1: 'A boy who doesn\'t fit the real world falls into his own imagination.',
+    story2_s2: 'The imagination is dying because the old man who built it has lost the ability to feel.',
+    story2_s3: 'The boy has to save the old man.',
+    wound_label: 'Story 3',
+    wound_title: 'The Wound',
+    wound_p1: 'Every creative child builds a second world.',
+    wound_p2: 'Not to escape.',
+    wound_p3: 'To survive.',
+    wound_p4: 'The world they were born into had rules they couldn\'t follow. Expectations they couldn\'t meet. A whole apparatus of the reasonable world telling them, patiently and repeatedly, that the way they experienced things was the wrong way.',
+    wound_p5: 'He made the world he needed because the world he was born into had no room for him.',
+    unique1_title: 'ONE — A fallen creator who built the world the hero is trapped in',
+    unique1_body: 'Who is also an earlier version of the hero. The Moonchild IS Sorkel\'s former self.',
+    unique2_title: 'TWO — A parallel reality running simultaneously',
+    unique2_body: 'What happens inside the fantasy world directly affects the hero\'s real creative life outside. Two worlds. One story.',
+    unique3_title: 'THREE — A weapon that is specifically melancholy',
+    unique3_body: 'The deliberate replacement of feeling with logic, wonder with documentation. El Vacío does not arrive with fangs. It arrives with a clipboard.',
+    comps_label: 'Story 4',
+    comps_title: 'Comparable Titles',
+    comps_th_title: 'Title',
+    comps_th_what: 'What We Take · Where We Diverge',
+    comp1: 'Tone, wound, second world as survival. But Ofelia\'s tasks are externally assigned. Our Moonchild\'s mission is interior.',
+    comp2: 'World predates the hero. Body as world-building tool. But Dark Crystal restores wholeness. We restore feeling.',
+    comp3: 'Parallel realities, consciousness as architecture. But Inception\'s inner world has physics. The Carnival has biography.',
+    comp4: 'Imagination under siege, child as savior. But Bastian chooses to enter. Our Moonchild washes ashore.',
+    comp5: 'One mind builds everything. But no antagonist, no wound, no fallen creator.',
+    comp6: 'Parallel worlds simultaneously, emotion as architecture. But no villain. No melancholy as named weapon.',
+    gap_label: 'What None of Them Have',
+    gap_text: 'An actual living artist — with real sculptures, real galleries, real biography — as the literal architecture of the fantasy world. The Carnival is not inspired by Bustamante\'s work. It IS Bustamante\'s work, made inhabitable.',
+    wound_divider: 'Every creative child builds a second world. Not to escape. To survive.',
+    world1_label: 'The Eternal Carnival',
+    world1_title: 'A Living Empire of Creativity',
+    world1_body: 'A living empire of creativity and imagination built across centuries by Sorkel the Astronomer from papier-mâché, bronze, ceramic, and gold. Its citizens are everything he ever imagined into existence.',
+    world1_dying: 'And it is dying.',
+    world1_why: 'El Vacío and his army Los Que Saben are spreading melancholy through the Carnival like a plague. The bronze advances from the outer rings inward. Citizens lose color, then movement, then memory. They become permanent.',
+    world1_why_label: 'Why It\'s Dying',
+    world1_why_body: 'Sorkel was once the greatest creator who ever lived. El Vacío hollowed him out over four centuries. Now he oversees the Carnival\'s slow death — half-witness, half-architect of its destruction.',
+    world2_label: 'World 2',
+    world2_title: 'Color Is Health · Bronze Is the Enemy',
+    color1_label: 'Gold',
+    color1_desc: 'Full life. Citizens in the outer rings still carry this. It fades as the bronze advances.',
+    color2_label: 'Teal',
+    color2_desc: 'Imagination in motion. The color of things still being made, still becoming.',
+    color3_label: 'Bronze',
+    color3_desc: 'The enemy\'s signature. Spreads from touch. Color goes first, then movement, then memory.',
+    color4_label: 'The Void',
+    color4_desc: 'Full conversion. What remains after the bronze has done everything it can do.',
+    color_body: 'The Carnival was built in color. Warm golds, living teals, deep crimsons. The further the melancholy spreads, the more the palette drains toward bronze, then toward nothing.',
+    world3_label: 'World 3',
+    world3_title: 'The Glitches — The Sky as Monitor',
+    glitch_body: 'The sky of the Eternal Carnival is not a sky. It is a screen. At unpredictable intervals, it flickers — a studio, hands on clay, the smell of turpentine bleeding through. These are THE GLITCHES. The real world breaking through.',
+    lookers_label: 'Those Who Look Up',
+    lookers_body: 'When a glitch fires, they stop. They look at the sky. They have names for what they see.',
+    nolook_label: 'Those Who Don\'t Look',
+    nolook_body: 'Looking is apostasy. To look up is to admit the Carnival isn\'t everything — that it depends on something outside itself.',
+    glitch_esc_label: 'Glitch Escalation — Episode 1',
+    g1: 'One frame. Hands on clay. Citizens divide.',
+    g2: 'Three frames. A studio. The smell bleeds through.',
+    g3: 'Violent. A woman\'s voice. A door slams. The Moonchild on his knees.',
+    g4: 'A full second. The hands making something specific.',
+    g5: 'The sky tears. Not just a frame — a wound in the air. It knows we\'re here.',
+    world4_label: 'World 4',
+    world4_title: 'The 13 Levels',
+    levels_intro: 'There is no single ladder. The passages don\'t have consistent geometry — they have consistent intention. The only compass that works is feeling.',
+    world5_label: 'World 5',
+    world5_title: 'Level Map by Season',
+    lmap1_season: 'Season 1 — The Searching',
+    lmap1_arc: 'Levels 1–3 · Arc Word: WONDER',
+    lmap1_body: 'Sorkel: Active antagonist, conflicted, infects the Moonchild. Melancholy: Spreading but survivable.',
+    lmap2_season: 'Season 2 — The Cost',
+    lmap2_arc: 'Levels 4–7 · Arc Word: WEIGHT',
+    lmap2_body: 'Sorkel: Cracking, the curse wars with what he was. Melancholy: Infiltrating the inner rings.',
+    lmap3_season: 'Season 3 — The Breaking',
+    lmap3_arc: 'Levels 8–12 · Arc Word: RELEASE',
+    lmap3_body: 'Sorkel: Broken open, the artist returns. Melancholy: Almost total. The shore itself bronzing.',
+    lmap4_season: 'Season 4 — The Hiding',
+    lmap4_arc: 'Level 13 + Return · Arc Word: LEGACY',
+    lmap4_body: 'Sorkel: Restored, color returned, brush in hand. Melancholy: Broken. What it built remains.',
+    world6_label: 'World 6',
+    world6_title: 'The Galleries',
+    galleries_body: 'The physical galleries of Sergio Bustamante in Tlaquepaque and Puerto Vallarta are the literal architecture of the Carnival. Every piece on a shelf or pedestal is a citizen. Every room a level. Every doorway a passage.',
+    galleries_key: 'The Carnival is not inspired by the gallery. The Carnival IS the gallery — made inhabitable.',
+    enemy1_label: 'Enemy 1',
+    enemy1_title: 'El Vacío — Supreme Force',
+    void_quote: 'Not violent. Erasing.<br>The absence that sells itself as clarity.<br><em>It does not arrive with fangs. It arrives with a clipboard.</em>',
+    void_body: 'El Vacío is not a person. It is a condition — the deliberate replacement of feeling with logic, wonder with documentation, creativity with the perfect record of creativity. Does not destroy — converts.',
+    void_weapon: 'The weapon and the gift are the same thing: the ability to see clearly, to name what is wrong, to organize. What El Vacío weaponizes is discernment itself.',
+    enemy2_label: 'Enemy 2',
+    enemy2_title: 'Los Que Saben — The Ones Who Know',
+    lqs1_title: 'What They Are',
+    lqs1_body: 'El Vacío\'s army. Bureaucrats of the imagination. They carry clipboards. They arrive after the bronze has touched something to measure what was lost.',
+    lqs2_title: 'What Makes Them Dangerous',
+    lqs2_body: 'The villain you cannot hate. The darkness that looks like care. They genuinely believe they are helping. They are not wrong about everything. That is what makes them so devastating.',
+    lqs3_title: 'What They Do',
+    lqs3_body: 'They don\'t kill what they touch. They make it permanent. They arrive with patience, with forms, with explanations. They say they are protecting.',
+    enemy3_label: 'Enemy 3',
+    enemy3_title: 'The Bronze — What It Does',
+    bronze1_num: 'Stage One',
+    bronze1_title: 'Color Goes First',
+    bronze1_body: 'When the melancholy touches something alive, the warmth drains from it. Gold becomes bronze. Teal becomes grey. The subject doesn\'t notice immediately.',
+    bronze2_num: 'Stage Two',
+    bronze2_title: 'Then Movement',
+    bronze2_body: 'The subject slows. Not in a way they can see. In a way others can. Their gestures become rehearsed. Their choices become habits.',
+    bronze3_num: 'Stage Three',
+    bronze3_title: 'Then Memory',
+    bronze3_body: 'The subject remains — permanent, rigid, unable to feel what they\'ve lost. The Moonchild\'s bronze arm is a ticking clock. It will reach his heart in Season 4 if he fails.',
+    bronze_key: 'The most important image in the series: Sorkel holding a brush for the first time in four centuries. He\'s made of bronze. The brush has color. His hand shakes.',
+    enemy4_label: 'Enemy 4',
+    enemy4_title: 'The Melancholy',
+    melancholy_body: 'The dark side of loving something so much the fear of losing it becomes larger than the joy of having it. The weapon and the gift are the same thing.',
+    melancholy_body2: 'Every creator who has ever been afraid of their own work knows this feeling. El Vacío did not invent it. El Vacío learned to weaponize it.',
+    melancholy_sorkel: 'Sorkel\'s melancholy is the show\'s central wound. Not because melancholy is weakness — but because it is what the most powerful feeling looks like when it is turned against itself.',
+    sorkel_divider: 'The most important image in the series: Sorkel holding a brush for the first time in four centuries. He\'s made of bronze. The brush has color. His hand shakes.',
+    sorkel_divider_meta: 'Season Four · The Giving · Tlaquepaque',
+    chars1_label: 'The Three Principals',
+    chars1_title: 'Who They Are',
+    mc_role: 'The Moonchild',
+    mc_name: 'El Lunachico',
+    mc_body: 'The boy who doesn\'t fit the real world. Arrives pure — feeling everything, incapable of numbness. He washes ashore. He did not choose to arrive. In his hand: one small papier-mâché figure with a painted eye. The last thing his grandfather hid for him to find.',
+    sk_role: 'The Fallen Creator',
+    sk_name: 'Sorkel the Astronomer',
+    sk_body: 'The fallen creator. El Vacío hollowed him out from the inside over four centuries until the greatest artist who ever lived became the perfect administrator of his own work\'s slow death. Coat covered in hand-drawn star maps — hundreds, layered, contradicting each other.',
+    sk_arc: 'S1: Antagonist · S2: Cracking · S3: Broken Open · S4: Restored',
+    ev_role: 'Supreme Villain',
+    ev_name: 'El Vacío',
+    ev_body: 'Not violent. Erasing. The absence that sells itself as clarity. It does not arrive with fangs. It arrives with a clipboard. Not a person — a condition. The deliberate replacement of feeling with logic, wonder with documentation.',
+    chars2_label: 'The Anchor',
+    chars2_title: 'The Grandfather\'s Gift',
+    anchor_body: 'Papier-mâché figure with a painted eye. When the Moonchild holds it near something that has been bronzed, the eye opens slightly. He can see what the citizen used to feel. The grandfather\'s gift carried into the world the grandfather built without knowing it.',
+    anchor_key: 'The searching made physical.',
+    chars3_label: 'The Skywalker Mirror',
+    chars3_title: 'Sorkel\'s Arc',
+    sky1_title: 'The Mirror',
+    sky1_body: 'The Moonchild IS Sorkel\'s former self. The Moonchild is Sorkel before the fear. Sorkel is the Moonchild after it wins. He\'s not just believing in Sorkel. He\'s looking at what he could become.',
+    sky2_title: 'The Gollum / Snape Register',
+    sky2_body: 'Sorkel can deliver a line that serves El Vacío and in the next breath give the Moonchild the one piece of information he needs to survive. He is not a clean villain. He is a broken person doing a terrible thing while part of him is screaming to stop.',
+    sorkel_s1_num: 'Season 1',
+    sorkel_s1: 'Primary antagonist. Infects the Moonchild. Cannot follow above Level 3.',
+    sorkel_s2_num: 'Season 2',
+    sorkel_s2: 'Cracking. The artist surfaces briefly. \'I am your world.\'',
+    sorkel_s3_num: 'Season 3',
+    sorkel_s3: 'Broken open. Sorkel weeps. Makes something with his hands. El Vacío transformed.',
+    sorkel_s4_num: 'Season 4',
+    sorkel_s4: 'Restored. Color returned. Brush in hand. Small things given away. The grandfather revealed.',
+    chars4_label: 'The Citizens',
+    chars4_title: 'Who Populates the Carnival',
+    cit1_name: 'El Portero',
+    cit1_body: 'He is the great doors. The Carnival Gate itself. He does not move. His attention does. Voice of a door that last opened a very long time ago.',
+    cit2_name: 'La Fuente',
+    cit2_body: 'The fountain archivist. She has been speaking without pause since 1975. The Moonchild is the first to stop and listen. She narrates everything the glitches show in real time.',
+    cit3_name: 'Luna',
+    cit3_body: 'Head a full crescent moon. Silver-blue skin. A hairline crack across her crescent. Always looks at the glitches. Every time. Her crescent tilts upward. The crack deepens slightly.',
+    cit4_name: 'El Toro-Brujo',
+    cit4_body: 'Never looks at the glitches. Holds a single droplet of color — the last one he made before the bronze found him. The droplet falls on the Moonchild\'s bronze arm in Episode 6. It holds. For now.',
+    cit5_name: 'Las Lunas Gemelas',
+    cit5_body: 'Two figures who share one moon-face between them. They complete each other\'s sentences. When they disagree, one of them is always wrong, and they both know it, and neither will say which.',
+    cit6_name: 'La Escalera',
+    cit6_body: 'Appears on the passage between levels. Exists in three versions simultaneously. Ask her the same question three times and you will get three answers, all true, none complete.',
+    cit7_name: 'El Cargador',
+    cit7_body: 'Carries the weight of every unfinished thing in the Carnival on his back. Not crushed by it. Shaped by it. The Moonchild is the first to offer to help carry.',
+    cit8_name: 'La Puerta de Luna',
+    cit8_body: 'A door that opens only when the Moonchild is not trying to open it. The passage to Level 8.',
+    cit9_name: 'El Escritor',
+    cit9_body: 'Looks at the glitches, then writes. The words dissolve before they reach the page. He looks anyway.',
+    arc1_label: 'Four Seasons · Thirteen Levels · One World',
+    arc1_title: 'The Arc',
+    arc1_body: 'Two worlds running simultaneously — the Carnival inside, Sergio\'s real creative life outside — each affecting the other in ways the characters only partially understand.',
+    s1_num: 'Season One',
+    s1_name: 'The Searching',
+    s1_word: 'Arc Word: WONDER',
+    s1_quote: 'Wonder is not a gift. It is a practice. And the practice is called searching.',
+    s2_num: 'Season Two',
+    s2_name: 'The Cost',
+    s2_word: 'Arc Word: WEIGHT',
+    s2_quote: 'The world having opinions about your work is not the same as the world being right about your work.',
+    s3_num: 'Season Three',
+    s3_name: 'The Breaking',
+    s3_word: 'Arc Word: RELEASE',
+    s3_quote: 'The thing El Vacío cannot survive is a person who has stopped apologizing for what they make.',
+    s4_num: 'Season Four',
+    s4_name: 'The Hiding',
+    s4_word: 'Arc Word: LEGACY',
+    s4_quote: 'Every work of art is something hidden for someone who hasn\'t arrived yet.',
+    arc2_label: 'Season One · Eight Episodes',
+    arc2_title: 'The Pilot Season',
+    ep1_title: 'The Searching',
+    ep1_body: 'Dark water. Wrong stars. A boy washes ashore — no memory, no name, both arms clean. In his hand: a papier-mâché figure with a painted eye. Sorkel arrives. There you are.',
+    ep2_title: 'The Hands',
+    ep2_body: 'The sky flickers — one frame. Hands on clay. Citizens diverge. Those who look up stop. Those who don\'t press forward. The Moonchild belongs to neither group yet.',
+    ep3_title: 'La Fuente',
+    ep3_body: 'The Moonchild finds the fountain archivist. She has been speaking without pause since 1975. He is the first to stop and listen. She knows something about the figure in his hand.',
+    ep4_title: 'The Ladder',
+    ep4_body: 'La Escalera appears on the passage between levels. The Moonchild asks all three questions. Gets all three answers. All true. None complete. He climbs anyway.',
+    ep5_title: 'The Boat',
+    ep5_body: 'Sorkel sends the gondola without a pilot. The Moonchild must choose: climb in and go where it takes him, or stay where he is. He climbs in. The gondola goes to Sorkel.',
+    ep6_title: 'El Toro-Brujo',
+    ep6_body: 'The deepest citizen of Level 3 drops a single drop of color onto the advancing bronze of the Moonchild\'s arm. It holds. For now. The bronze hasn\'t learned this color yet.',
+    ep7_title: 'La Ciudad',
+    ep7_body: 'The city herself closing her eyes. The Moonchild reaches her just as bronze begins to seal her lids. He holds the figure near her face. Her eyes stay open. One more hour.',
+    ep8_title: 'The Astronomer',
+    ep8_body: 'Sorkel and the Moonchild meet properly for the first time. I am your world, says Sorkel. The Moonchild says: I know. And I\'m going to save you anyway. Season ends.',
+    arc3_label: 'Pilot Beat Sheet',
+    arc3_title: 'Episode One — The Shore (29 Beats)',
+    b1_t: 'Opening Image',
+    b1: 'Black water. Stars in wrong configurations. No constellation a human has named.',
+    b2_t: 'The Shore',
+    b2: 'A boy washes up. Both arms clean. In his hand: papier-mâché. One painted eye.',
+    b3_t: 'He Stands',
+    b3: 'Doesn\'t know where he is. The stars are wrong. He notices.',
+    b4_t: 'The Gondola',
+    b4: 'Sorkel arrives from the dark water. Recognition moves across his face — older than surprise.',
+    b5_t: 'There You Are',
+    b5: 'Sorkel\'s first words. The Moonchild says: The stars are wrong. Sorkel says: They know that.',
+    b6_t: 'The Name Problem',
+    b6: 'I don\'t have a name. Sorkel: Not yet.',
+    b7_t: 'The Great Doors',
+    b7: 'El Portero. He came from the water. He always does.',
+    b8_t: 'Who Lives Here',
+    b8: 'The Moonchild asks who, not may I enter. El Portero\'s eye shifts.',
+    b9_t: 'No Record',
+    b9: 'I cannot record your entry. The record requires a name. He is here without being registered.',
+    b10_t: 'The Midway',
+    b10: 'Full and alive. A woman with a hummingbird for a head. A figure made of clock hands.',
+    b11_t: 'Without A Name',
+    b11: 'Some citizens can\'t see him. Without a name, you\'re harder to hold in the imagination.',
+    b12_t: 'The Carousel',
+    b12: 'Stopped. The Moonchild touches the horse. One eye moves — barely. Sorkel watches.',
+    b13_t: 'Luna',
+    b13: 'Head a crescent moon. A hairline crack. The water gave you back. Many things are returned. Few come back.',
+    b14_t: 'The Grand Tent',
+    b14: 'Inside is vast. La Fuente speaks. She has not stopped since 1975.',
+    b15_t: 'What She Says',
+    b15: 'She says everything the Carnival is and was. The Moonchild listens. Nobody has listened before.',
+    b16_t: 'Glitch 1',
+    b16: 'One frame. Hands on clay. Citizens divide — some look up, some press forward.',
+    b17_t: 'The Bronzed Citizen',
+    b17: 'At the edge of the first district. Fully bronzed. Frozen mid-gesture. Mid-joy.',
+    b18_t: 'The Anchor Shows',
+    b18: 'The Moonchild holds the figure near the frozen one. The painted eye opens slightly. He can see what they used to feel.',
+    b19_t: 'El Espejo',
+    b19: 'A mirror citizen. Reflects not appearance but feeling. The Moonchild sees something he recognizes but cannot name yet.',
+    b20_t: 'Glitch 2',
+    b20: 'Three frames. The studio. The smell bleeds through.',
+    b21_t: 'Glitch 3',
+    b21: 'Violent. A woman\'s voice. A door slams. The Moonchild on his knees.',
+    b22_t: 'You Pulled',
+    b22: 'The glitches don\'t pull. You pulled. You looked up and something in you went toward it.',
+    b23_t: 'What\'s In The Sky',
+    b23: 'The world that dreamed this one into being. Sorkel turns away. I have catalogued it.',
+    b24_t: 'Glitch 4',
+    b24: 'A full second. The hands making something specific. Something recognizable.',
+    b25_t: 'Glitch 5',
+    b25: 'The sky tears. It knows we\'re here. Luna\'s crack grows slightly.',
+    b26_t: 'Sorkel\'s Gondola',
+    b26: 'Sorkel dictates: Arrival confirmed. Clean on arrival. Infection administered. The clock has started.',
+    b27_t: 'The Bronze Spreads',
+    b27: 'The ruined edge, patient. Moving in a pattern that, from high enough, would resemble a word.',
+    b28_t: 'Real World',
+    b28: 'Culiacán. Young Sergio holds the papier-mâché figure — he found it. The grandfather watches from the doorway.',
+    b29_t: 'Closing Image',
+    b29: 'The Moonchild at the waterfront. His bronze arm. The water where his reflection should be — something patient forming there, looking back. I\'m going to remember.',
+    prod1_label: 'The Gap in the Market',
+    prod1_title: 'What Doesn\'t Exist Yet',
+    gap1: 'No prestige fantasy series is built directly from the body of work of a single living artist.',
+    gap2: 'No existing property combines: live-action physical world-building at Cirque scale + biographical parallel reality + melancholy as the specific named weapon + a four-century fallen creator as primary antagonist.',
+    gap3: 'The Carnival is not a metaphor. It is a real place — built from real sculptures, in real galleries, by real hands.',
+    prod2_label: 'How It Gets Made',
+    prod2_title: 'Six Production Pillars',
+    pp1_label: 'Physical World-Building',
+    pp1_text: 'Bustamante\'s sculptures become the literal architecture. Built sets, not CGI environments. The creature is built first. Everything follows from what a body can do.',
+    pp2_label: 'Parallel Reality',
+    pp2_text: 'The real-world Sergio storyline runs simultaneously. Two editors. Two color grades. What happens inside directly affects what happens outside.',
+    pp3_label: 'The Bronze System',
+    pp3_text: 'A consistent visual language for the melancholy\'s advance. Color saturation as a plot device. The audience can read the stakes in the palette.',
+    pp4_label: 'Cirque Register',
+    pp4_text: 'Performers, not CGI creatures. The body as world-building tool. Physical danger as emotional truth. Every citizen a character built first for what a body can express.',
+    pp5_label: 'Del Toro Tone',
+    pp5_text: 'Darkness that means something. Beauty and devastation in the same frame. Creatures built first for empathy. The villain is not the scariest thing in the room. The loss is.',
+    pp6_label: 'Biographical Anchor',
+    pp6_text: 'Four seasons, four life stages. The show is also a portrait of an artist\'s relationship with their own work across a lifetime. Sergio Bustamante appears as himself in Season 4.',
+    hero_series_type: 'A Live-Action TV Series Concept',
+    hero_eyebrow: 'An Original Series &nbsp;·&nbsp; Created by Marc Sternberg<br>Son of a Botanist Productions',
+    hero_scroll: 'Descend',
+    nav_sub: 'An Original Series'
+  },
+  es: {
+    nav_story: 'Historia',
+    nav_world: 'Mundo',
+    nav_enemy: 'Enemigo',
+    nav_characters: 'Personajes',
+    nav_arc: 'Arco',
+    nav_production: 'Producción',
+    logline: 'En un imperio de imaginación que se desmorona, un niño que aún lo siente todo debe encontrar al creador que ha olvidado cómo — porque <em>el niño es el último recuerdo que el anciano tiene de sí mismo.</em>',
+    logline_label: 'Logline',
+    story1_label: 'El Pitch en Una Línea',
+    story1_title: 'Qué Es',
+    pitch_stmt: '<span class="pg">Cirque&nbsp;du&nbsp;Soleil</span> meets <span class="pt">El&nbsp;laberinto&nbsp;del&nbsp;fauno</span> meets <span class="pg">The&nbsp;Dark&nbsp;Crystal</span> meets <span class="pt">Inception</span> meets <span class="pc">La&nbsp;Historia&nbsp;Sin&nbsp;Fin</span>',
+    story2_label: 'La Historia en Tres Oraciones',
+    story2_heading: 'El Núcleo',
+    story2_s1: 'Un niño que no encaja en el mundo real cae dentro de su propia imaginación.',
+    story2_s2: 'La imaginación está muriendo porque el anciano que la construyó ha perdido la capacidad de sentir.',
+    story2_s3: 'El niño tiene que salvar al anciano.',
+    wound_label: 'Historia 3',
+    wound_title: 'La Herida',
+    wound_p1: 'Todo niño creativo construye un segundo mundo.',
+    wound_p2: 'No para escapar.',
+    wound_p3: 'Para sobrevivir.',
+    wound_p4: 'El mundo en que nacieron tenía reglas que no podían seguir. Expectativas que no podían cumplir. Todo un aparato del mundo razonable diciéndoles, con paciencia y repetición, que la manera en que vivían las cosas era la manera equivocada.',
+    wound_p5: 'Él construyó el mundo que necesitaba porque el mundo en que nació no tenía espacio para él.',
+    unique1_title: 'UNO — Un creador caído que construyó el mundo en que el héroe está atrapado',
+    unique1_body: 'Que es también una versión anterior del héroe. El Lunachico ES el yo anterior de Sorkel.',
+    unique2_title: 'DOS — Una realidad paralela corriendo simultáneamente',
+    unique2_body: 'Lo que sucede dentro del mundo fantástico afecta directamente la vida creativa real del héroe afuera. Dos mundos. Una historia.',
+    unique3_title: 'TRES — Un arma que es específicamente la melancolía',
+    unique3_body: 'El reemplazo deliberado del sentimiento por la lógica, el asombro por la documentación. El Vacío no llega con colmillos. Llega con un portapapeles.',
+    comps_label: 'Historia 4',
+    comps_title: 'Títulos Comparables',
+    comps_th_title: 'Título',
+    comps_th_what: 'Qué Tomamos · Dónde Divergimos',
+    comp1: 'Tono, herida, segundo mundo como supervivencia. Pero las tareas de Ofelia son asignadas externamente. La misión de nuestro Lunachico es interior.',
+    comp2: 'El mundo existe antes que el héroe. El cuerpo como herramienta de construcción. Pero Dark Crystal restaura totalidad. Nosotros restauramos el sentimiento.',
+    comp3: 'Realidades paralelas, la consciencia como arquitectura. Pero el mundo interior de Inception tiene física. El Carnaval tiene biografía.',
+    comp4: 'La imaginación bajo asedio, el niño como salvador. Pero Bastian elige entrar. Nuestro Lunachico llega arrastrado por el mar.',
+    comp5: 'Una mente lo construye todo. Pero sin antagonista, sin herida, sin creador caído.',
+    comp6: 'Mundos paralelos simultáneos, la emoción como arquitectura. Pero sin villano. Sin melancolía como arma nombrada.',
+    gap_label: 'Lo Que Ninguno Tiene',
+    gap_text: 'Un artista vivo real — con esculturas reales, galerías reales, biografía real — como la arquitectura literal del mundo fantástico. El Carnaval no está inspirado en la obra de Bustamante. ES la obra de Bustamante, hecha habitable.',
+    wound_divider: 'Todo niño creativo construye un segundo mundo. No para escapar. Para sobrevivir.',
+    world1_label: 'El Carnaval Eterno',
+    world1_title: 'Un Imperio Viviente de Creatividad',
+    world1_body: 'Un imperio viviente de creatividad e imaginación construido a lo largo de siglos por Sorkel el Astrónomo en papel maché, bronce, cerámica y oro. Sus ciudadanos son todo lo que alguna vez imaginó a la existencia.',
+    world1_dying: 'Y está muriendo.',
+    world1_why: 'El Vacío y su ejército Los Que Saben están extendiendo la melancolía por el Carnaval como una plaga. El bronce avanza desde los anillos exteriores hacia adentro. Los ciudadanos pierden color, luego movimiento, luego memoria. Se vuelven permanentes.',
+    world1_why_label: 'Por Qué Está Muriendo',
+    world1_why_body: 'Sorkel fue alguna vez el más grande creador que jamás existió. El Vacío lo vació por dentro durante cuatro siglos. Ahora supervisa la muerte lenta del Carnaval — mitad testigo, mitad arquitecto de su destrucción.',
+    world2_label: 'Mundo 2',
+    world2_title: 'El Color Es Salud · El Bronce Es el Enemigo',
+    color1_label: 'Oro',
+    color1_desc: 'Vida plena. Los ciudadanos en los anillos exteriores aún lo llevan. Se desvanece a medida que el bronce avanza.',
+    color2_label: 'Verde Azulado',
+    color2_desc: 'Imaginación en movimiento. El color de las cosas que aún se están haciendo, aún convirtiéndose.',
+    color3_label: 'Bronce',
+    color3_desc: 'La firma del enemigo. Se extiende por contacto. El color va primero, luego el movimiento, luego la memoria.',
+    color4_label: 'El Vacío',
+    color4_desc: 'Conversión total. Lo que queda después de que el bronce ha hecho todo lo que puede hacer.',
+    color_body: 'El Carnaval fue construido en color. Oros cálidos, verdes vivos, carmesíes profundos. Cuanto más se extiende la melancolía, más se vacía la paleta hacia el bronce, luego hacia la nada.',
+    world3_label: 'Mundo 3',
+    world3_title: 'Los Destellos — El Cielo Como Pantalla',
+    glitch_body: 'El cielo del Carnaval Eterno no es un cielo. Es una pantalla. A intervalos impredecibles, parpadea — un estudio, manos sobre arcilla, el olor de la trementina filtrándose. Estos son LOS DESTELLOS. El mundo real abriéndose paso.',
+    lookers_label: 'Los Que Miran Arriba',
+    lookers_body: 'Cuando llega un destello, se detienen. Miran el cielo. Tienen nombres para lo que ven.',
+    nolook_label: 'Los Que No Miran',
+    nolook_body: 'Mirar es apostasía. Mirar hacia arriba es admitir que el Carnaval no lo es todo — que depende de algo fuera de sí mismo.',
+    glitch_esc_label: 'Escalada de Destellos — Episodio 1',
+    g1: 'Un fotograma. Manos sobre arcilla. Los ciudadanos se dividen.',
+    g2: 'Tres fotogramas. Un estudio. El olor se filtra.',
+    g3: 'Violento. La voz de una mujer. Una puerta se cierra de golpe. El Lunachico de rodillas.',
+    g4: 'Un segundo completo. Las manos haciendo algo específico.',
+    g5: 'El cielo se rasga. No es solo un fotograma — es una herida en el aire. Sabe que estamos aquí.',
+    world4_label: 'Mundo 4',
+    world4_title: 'Los 13 Niveles',
+    levels_intro: 'No hay una sola escalera. Los pasajes no tienen una geometría consistente — tienen una intención consistente. La única brújula que funciona es el sentimiento.',
+    world5_label: 'Mundo 5',
+    world5_title: 'Mapa de Niveles por Temporada',
+    lmap1_season: 'Temporada 1 — La Búsqueda',
+    lmap1_arc: 'Niveles 1–3 · Palabra del Arco: ASOMBRO',
+    lmap1_body: 'Sorkel: Antagonista activo, conflictuado, infecta al Lunachico. Melancolía: Extendiéndose pero sobrevivible.',
+    lmap2_season: 'Temporada 2 — El Costo',
+    lmap2_arc: 'Niveles 4–7 · Palabra del Arco: PESO',
+    lmap2_body: 'Sorkel: Resquebrajándose, la maldición lucha con lo que fue. Melancolía: Infiltrándose en los anillos interiores.',
+    lmap3_season: 'Temporada 3 — El Quiebre',
+    lmap3_arc: 'Niveles 8–12 · Palabra del Arco: LIBERACIÓN',
+    lmap3_body: 'Sorkel: Roto y abierto, el artista regresa. Melancolía: Casi total. La orilla misma bronceándose.',
+    lmap4_season: 'Temporada 4 — El Esconder',
+    lmap4_arc: 'Nivel 13 + Regreso · Palabra del Arco: LEGADO',
+    lmap4_body: 'Sorkel: Restaurado, el color regresó, pincel en mano. Melancolía: Rota. Lo que construyó permanece.',
+    world6_label: 'Mundo 6',
+    world6_title: 'Las Galerías',
+    galleries_body: 'Las galerías físicas de Sergio Bustamante en Tlaquepaque y Puerto Vallarta son la arquitectura literal del Carnaval. Cada pieza en un estante o pedestal es un ciudadano. Cada habitación un nivel. Cada umbral un pasaje.',
+    galleries_key: 'El Carnaval no está inspirado en la galería. El Carnaval ES la galería — hecha habitable.',
+    enemy1_label: 'Enemigo 1',
+    enemy1_title: 'El Vacío — Fuerza Suprema',
+    void_quote: 'No es violento. Borra.<br>La ausencia que se vende a sí misma como claridad.<br><em>No llega con colmillos. Llega con un portapapeles.</em>',
+    void_body: 'El Vacío no es una persona. Es una condición — el reemplazo deliberado del sentimiento por la lógica, el asombro por la documentación, la creatividad por el registro perfecto de la creatividad. No destruye — convierte.',
+    void_weapon: 'El arma y el don son la misma cosa: la capacidad de ver con claridad, de nombrar lo que está mal, de organizar. Lo que El Vacío arma como arma es el discernimiento mismo.',
+    enemy2_label: 'Enemigo 2',
+    enemy2_title: 'Los Que Saben — Los Que Saben',
+    lqs1_title: 'Qué Son',
+    lqs1_body: 'El ejército de El Vacío. Burócratas de la imaginación. Llevan portapapeles. Llegan después de que el bronce ha tocado algo para medir lo que se perdió.',
+    lqs2_title: 'Qué Los Hace Peligrosos',
+    lqs2_body: 'El villano al que no puedes odiar. La oscuridad que parece cuidado. De verdad creen que están ayudando. No se equivocan en todo. Eso es lo que los hace tan devastadores.',
+    lqs3_title: 'Lo Que Hacen',
+    lqs3_body: 'No matan lo que tocan. Lo hacen permanente. Llegan con paciencia, con formularios, con explicaciones. Dicen que están protegiendo.',
+    enemy3_label: 'Enemigo 3',
+    enemy3_title: 'El Bronce — Lo Que Hace',
+    bronze1_num: 'Etapa Uno',
+    bronze1_title: 'El Color Va Primero',
+    bronze1_body: 'Cuando la melancolía toca algo vivo, el calor se le escapa. El oro se vuelve bronce. El verde azulado se vuelve gris. El sujeto no lo nota de inmediato.',
+    bronze2_num: 'Etapa Dos',
+    bronze2_title: 'Luego el Movimiento',
+    bronze2_body: 'El sujeto se ralentiza. No de una manera que él pueda ver. De una manera que otros pueden. Sus gestos se vuelven ensayados. Sus elecciones se vuelven hábitos.',
+    bronze3_num: 'Etapa Tres',
+    bronze3_title: 'Luego la Memoria',
+    bronze3_body: 'El sujeto permanece — permanente, rígido, incapaz de sentir lo que ha perdido. El brazo bronceado del Lunachico es una cuenta regresiva. Llegará a su corazón en la Temporada 4 si falla.',
+    bronze_key: 'La imagen más importante de la serie: Sorkel sosteniendo un pincel por primera vez en cuatro siglos. Está hecho de bronce. El pincel tiene color. Su mano tiembla.',
+    enemy4_label: 'Enemigo 4',
+    enemy4_title: 'La Melancolía',
+    melancholy_body: 'El lado oscuro de amar algo tanto que el miedo a perderlo se vuelve más grande que el gozo de tenerlo. El arma y el don son la misma cosa.',
+    melancholy_body2: 'Todo creador que alguna vez tuvo miedo de su propio trabajo conoce este sentimiento. El Vacío no lo inventó. El Vacío aprendió a armarlo como arma.',
+    melancholy_sorkel: 'La melancolía de Sorkel es la herida central de la serie. No porque la melancolía sea debilidad — sino porque es lo que el sentimiento más poderoso parece cuando se vuelve contra sí mismo.',
+    sorkel_divider: 'La imagen más importante de la serie: Sorkel sosteniendo un pincel por primera vez en cuatro siglos. Está hecho de bronce. El pincel tiene color. Su mano tiembla.',
+    sorkel_divider_meta: 'Temporada Cuatro · El Dar · Tlaquepaque',
+    chars1_label: 'Los Tres Principales',
+    chars1_title: 'Quiénes Son',
+    mc_role: 'El Lunachico',
+    mc_name: 'El Lunachico',
+    mc_body: 'El niño que no encaja en el mundo real. Llega puro — sintiéndolo todo, incapaz de entumecerse. Llega arrastrado por el mar. No eligió llegar. En su mano: una pequeña figura de papel maché con un ojo pintado. Lo último que su abuelo escondió para que él lo encontrara.',
+    sk_role: 'El Creador Caído',
+    sk_name: 'Sorkel el Astrónomo',
+    sk_body: 'El creador caído. El Vacío lo vació por dentro durante cuatro siglos hasta que el más grande artista que jamás existió se convirtió en el perfecto administrador de la muerte lenta de su propia obra. Abrigo cubierto de mapas estelares dibujados a mano — cientos, superpuestos, contradiciéndose entre sí.',
+    sk_arc: 'T1: Antagonista · T2: Resquebrajándose · T3: Roto y Abierto · T4: Restaurado',
+    ev_role: 'Villano Supremo',
+    ev_name: 'El Vacío',
+    ev_body: 'No es violento. Borra. La ausencia que se vende a sí misma como claridad. No llega con colmillos. Llega con un portapapeles. No es una persona — es una condición. El reemplazo deliberado del sentimiento por la lógica, el asombro por la documentación.',
+    chars2_label: 'El Ancla',
+    chars2_title: 'El Regalo del Abuelo',
+    anchor_body: 'Figura de papel maché con un ojo pintado. Cuando el Lunachico la sostiene cerca de algo que ha sido bronceado, el ojo se abre ligeramente. Puede ver lo que el ciudadano solía sentir. El regalo del abuelo llevado al mundo que el abuelo construyó sin saberlo.',
+    anchor_key: 'La búsqueda hecha física.',
+    chars3_label: 'El Espejo de Skywalker',
+    chars3_title: 'El Arco de Sorkel',
+    sky1_title: 'El Espejo',
+    sky1_body: 'El Lunachico ES el yo anterior de Sorkel. El Lunachico es Sorkel antes del miedo. Sorkel es el Lunachico después de que el miedo gana. No solo cree en Sorkel. Está mirando lo que podría convertirse.',
+    sky2_title: 'El Registro Gollum / Snape',
+    sky2_body: 'Sorkel puede pronunciar una frase que sirve a El Vacío y en el siguiente aliento darle al Lunachico la única pieza de información que necesita para sobrevivir. No es un villano limpio. Es una persona rota haciendo algo terrible mientras una parte de él grita para detenerse.',
+    sorkel_s1_num: 'Temporada 1',
+    sorkel_s1: 'Antagonista principal. Infecta al Lunachico. No puede seguirlo más allá del Nivel 3.',
+    sorkel_s2_num: 'Temporada 2',
+    sorkel_s2: 'Resquebrajándose. El artista emerge brevemente. \'Yo soy tu mundo.\'',
+    sorkel_s3_num: 'Temporada 3',
+    sorkel_s3: 'Roto y abierto. Sorkel llora. Hace algo con sus manos. El Vacío transformado.',
+    sorkel_s4_num: 'Temporada 4',
+    sorkel_s4: 'Restaurado. El color regresó. Pincel en mano. Pequeñas cosas regaladas. El abuelo revelado.',
+    chars4_label: 'Los Ciudadanos',
+    chars4_title: 'Quién Puebla el Carnaval',
+    cit1_name: 'El Portero',
+    cit1_body: 'Él es las grandes puertas. La Puerta del Carnaval misma. Él no se mueve. Su atención sí. Voz de una puerta que se abrió por última vez hace mucho tiempo.',
+    cit2_name: 'La Fuente',
+    cit2_body: 'La archivista de la fuente. Lleva hablando sin pausa desde 1975. El Lunachico es el primero en detenerse y escuchar. Narra todo lo que muestran los destellos en tiempo real.',
+    cit3_name: 'Luna',
+    cit3_body: 'Cabeza como luna creciente completa. Piel azul plateada. Una grieta fina a través de su creciente. Siempre mira los destellos. Siempre. Su creciente se inclina hacia arriba. La grieta se profundiza ligeramente.',
+    cit4_name: 'El Toro-Brujo',
+    cit4_body: 'Nunca mira los destellos. Sostiene una sola gota de color — la última que hizo antes de que el bronce lo encontrara. La gota cae sobre el brazo bronceado del Lunachico en el Episodio 6. Se mantiene. Por ahora.',
+    cit5_name: 'Las Lunas Gemelas',
+    cit5_body: 'Dos figuras que comparten un único rostro lunar entre ellas. Completan las frases una de la otra. Cuando no están de acuerdo, una de ellas siempre está equivocada, y ambas lo saben, y ninguna dirá cuál.',
+    cit6_name: 'La Escalera',
+    cit6_body: 'Aparece en el pasaje entre niveles. Existe en tres versiones simultáneamente. Hazle la misma pregunta tres veces y obtendrás tres respuestas, todas verdaderas, ninguna completa.',
+    cit7_name: 'El Cargador',
+    cit7_body: 'Carga el peso de cada cosa inacabada del Carnaval en su espalda. No aplastado por ello. Formado por ello. El Lunachico es el primero en ofrecerse a ayudar a cargar.',
+    cit8_name: 'La Puerta de Luna',
+    cit8_body: 'Una puerta que solo se abre cuando el Lunachico no está intentando abrirla. El pasaje al Nivel 8.',
+    cit9_name: 'El Escritor',
+    cit9_body: 'Mira los destellos, luego escribe. Las palabras se disuelven antes de llegar a la página. Mira de todos modos.',
+    arc1_label: 'Cuatro Temporadas · Trece Niveles · Un Mundo',
+    arc1_title: 'El Arco',
+    arc1_body: 'Dos mundos corriendo simultáneamente — el Carnaval por dentro, la vida creativa real de Sergio por fuera — cada uno afectando al otro de maneras que los personajes solo comprenden parcialmente.',
+    s1_num: 'Temporada Uno',
+    s1_name: 'La Búsqueda',
+    s1_word: 'Palabra del Arco: ASOMBRO',
+    s1_quote: 'El asombro no es un don. Es una práctica. Y la práctica se llama búsqueda.',
+    s2_num: 'Temporada Dos',
+    s2_name: 'El Costo',
+    s2_word: 'Palabra del Arco: PESO',
+    s2_quote: 'Que el mundo tenga opiniones sobre tu trabajo no es lo mismo que el mundo tener razón sobre tu trabajo.',
+    s3_num: 'Temporada Tres',
+    s3_name: 'El Quiebre',
+    s3_word: 'Palabra del Arco: LIBERACIÓN',
+    s3_quote: 'Lo que El Vacío no puede sobrevivir es una persona que ha dejado de disculparse por lo que hace.',
+    s4_num: 'Temporada Cuatro',
+    s4_name: 'El Esconder',
+    s4_word: 'Palabra del Arco: LEGADO',
+    s4_quote: 'Toda obra de arte es algo escondido para alguien que todavía no ha llegado.',
+    arc2_label: 'Temporada Uno · Ocho Episodios',
+    arc2_title: 'La Temporada Piloto',
+    ep1_title: 'La Búsqueda',
+    ep1_body: 'Agua oscura. Estrellas equivocadas. Un niño llega arrastrado a la orilla — sin memoria, sin nombre, ambos brazos limpios. En su mano: una figura de papel maché con un ojo pintado. Sorkel llega. Ahí estás.',
+    ep2_title: 'Las Manos',
+    ep2_body: 'El cielo parpadea — un fotograma. Manos sobre arcilla. Los ciudadanos se dividen. Los que miran arriba se detienen. Los que no siguen adelante. El Lunachico no pertenece a ningún grupo todavía.',
+    ep3_title: 'La Fuente',
+    ep3_body: 'El Lunachico encuentra a la archivista de la fuente. Lleva hablando sin pausa desde 1975. Él es el primero en detenerse y escuchar. Ella sabe algo sobre la figura en su mano.',
+    ep4_title: 'La Escalera',
+    ep4_body: 'La Escalera aparece en el pasaje entre niveles. El Lunachico hace las tres preguntas. Obtiene las tres respuestas. Todas verdaderas. Ninguna completa. Sube de todos modos.',
+    ep5_title: 'La Barca',
+    ep5_body: 'Sorkel envía la góndola sin piloto. El Lunachico debe elegir: subirse e ir adonde lo lleve, o quedarse donde está. Se sube. La góndola va hacia Sorkel.',
+    ep6_title: 'El Toro-Brujo',
+    ep6_body: 'El ciudadano más profundo del Nivel 3 deja caer una sola gota de color sobre el bronce que avanza en el brazo del Lunachico. Se mantiene. Por ahora. El bronce aún no ha aprendido este color.',
+    ep7_title: 'La Ciudad',
+    ep7_body: 'La ciudad misma cerrando sus ojos. El Lunachico llega a ella justo cuando el bronce comienza a sellar sus párpados. Sostiene la figura cerca de su rostro. Sus ojos permanecen abiertos. Una hora más.',
+    ep8_title: 'El Astrónomo',
+    ep8_body: 'Sorkel y el Lunachico se encuentran propiamente por primera vez. Yo soy tu mundo, dice Sorkel. El Lunachico dice: Lo sé. Y te voy a salvar de todos modos. Fin de temporada.',
+    arc3_label: 'Guión de Escenas del Piloto',
+    arc3_title: 'Episodio Uno — La Orilla (29 Escenas)',
+    b1_t: 'Imagen de Apertura',
+    b1: 'Agua negra. Estrellas en configuraciones incorrectas. Ninguna constelación que un humano haya nombrado.',
+    b2_t: 'La Orilla',
+    b2: 'Un niño llega a la orilla. Ambos brazos limpios. En su mano: papel maché. Un ojo pintado.',
+    b3_t: 'Se Levanta',
+    b3: 'No sabe dónde está. Las estrellas son incorrectas. Lo nota.',
+    b4_t: 'La Góndola',
+    b4: 'Sorkel llega desde el agua oscura. El reconocimiento cruza su rostro — más antiguo que la sorpresa.',
+    b5_t: 'Ahí Estás',
+    b5: 'Las primeras palabras de Sorkel. El Lunachico dice: Las estrellas son incorrectas. Sorkel dice: Lo saben.',
+    b6_t: 'El Problema del Nombre',
+    b6: 'No tengo nombre. Sorkel: Todavía no.',
+    b7_t: 'Las Grandes Puertas',
+    b7: 'El Portero. Vino del agua. Siempre lo hace.',
+    b8_t: 'Quién Vive Aquí',
+    b8: 'El Lunachico pregunta quién, no si puede entrar. El ojo de El Portero se mueve.',
+    b9_t: 'Sin Registro',
+    b9: 'No puedo registrar tu entrada. El registro requiere un nombre. Está aquí sin estar registrado.',
+    b10_t: 'El Paseo',
+    b10: 'Lleno y vivo. Una mujer con un colibrí por cabeza. Una figura hecha de manecillas de reloj.',
+    b11_t: 'Sin Nombre',
+    b11: 'Algunos ciudadanos no pueden verlo. Sin nombre, eres más difícil de retener en la imaginación.',
+    b12_t: 'El Carrusel',
+    b12: 'Detenido. El Lunachico toca el caballo. Un ojo se mueve — apenas. Sorkel observa.',
+    b13_t: 'Luna',
+    b13: 'Cabeza de luna creciente. Una grieta fina. El agua te devolvió. Muchas cosas son devueltas. Pocas regresan.',
+    b14_t: 'La Gran Carpa',
+    b14: 'Por dentro es inmensa. La Fuente habla. No se ha detenido desde 1975.',
+    b15_t: 'Lo Que Dice',
+    b15: 'Dice todo lo que el Carnaval es y fue. El Lunachico escucha. Nadie ha escuchado antes.',
+    b16_t: 'Destello 1',
+    b16: 'Un fotograma. Manos sobre arcilla. Los ciudadanos se dividen — algunos miran arriba, otros siguen adelante.',
+    b17_t: 'El Ciudadano Bronzeado',
+    b17: 'En el borde del primer distrito. Completamente bronzeado. Congelado a medio gesto. A mitad de alegría.',
+    b18_t: 'El Ancla Muestra',
+    b18: 'El Lunachico sostiene la figura cerca del congelado. El ojo pintado se abre ligeramente. Puede ver lo que solían sentir.',
+    b19_t: 'El Espejo',
+    b19: 'Un ciudadano espejo. Refleja no la apariencia sino el sentimiento. El Lunachico ve algo que reconoce pero no puede nombrar todavía.',
+    b20_t: 'Destello 2',
+    b20: 'Tres fotogramas. El estudio. El olor se filtra.',
+    b21_t: 'Destello 3',
+    b21: 'Violento. La voz de una mujer. Una puerta se cierra de golpe. El Lunachico de rodillas.',
+    b22_t: 'Tú Jalaste',
+    b22: 'Los destellos no jalan. Tú jalaste. Miraste hacia arriba y algo en ti fue hacia ello.',
+    b23_t: 'Qué Hay en el Cielo',
+    b23: 'El mundo que soñó este en existencia. Sorkel se da la vuelta. Lo he catalogado.',
+    b24_t: 'Destello 4',
+    b24: 'Un segundo completo. Las manos haciendo algo específico. Algo reconocible.',
+    b25_t: 'Destello 5',
+    b25: 'El cielo se rasga. Sabe que estamos aquí. La grieta de Luna crece ligeramente.',
+    b26_t: 'La Góndola de Sorkel',
+    b26: 'Sorkel dicta: Llegada confirmada. Limpio al llegar. Infección administrada. El reloj ha comenzado.',
+    b27_t: 'El Bronce Se Extiende',
+    b27: 'El borde arruinado, paciente. Moviéndose en un patrón que, desde suficiente altura, se asemejaría a una palabra.',
+    b28_t: 'Mundo Real',
+    b28: 'Culiacán. El joven Sergio sostiene la figura de papel maché — la encontró. El abuelo observa desde el umbral.',
+    b29_t: 'Imagen de Cierre',
+    b29: 'El Lunachico frente al agua. Su brazo bronzeado. El agua donde debería estar su reflejo — algo paciente formándose allí, mirando de vuelta. Voy a recordar.',
+    prod1_label: 'La Brecha en el Mercado',
+    prod1_title: 'Lo Que Todavía No Existe',
+    gap1: 'Ninguna serie de fantasía de prestigio está construida directamente a partir de la obra de un único artista vivo.',
+    gap2: 'Ninguna propiedad existente combina: construcción de mundos físicos en acción real a escala Cirque + realidad paralela biográfica + la melancolía como el arma específica nombrada + un creador caído de cuatro siglos como antagonista principal.',
+    gap3: 'El Carnaval no es una metáfora. Es un lugar real — construido a partir de esculturas reales, en galerías reales, por manos reales.',
+    prod2_label: 'Cómo Se Hace',
+    prod2_title: 'Seis Pilares de Producción',
+    pp1_label: 'Construcción Física del Mundo',
+    pp1_text: 'Las esculturas de Bustamante se convierten en la arquitectura literal. Escenarios construidos, no entornos CGI. La criatura se construye primero. Todo sigue de lo que un cuerpo puede hacer.',
+    pp2_label: 'Realidad Paralela',
+    pp2_text: 'La historia del Sergio real corre simultáneamente. Dos editores. Dos correcciones de color. Lo que sucede adentro afecta directamente lo que sucede afuera.',
+    pp3_label: 'El Sistema de Bronce',
+    pp3_text: 'Un lenguaje visual consistente para el avance de la melancolía. La saturación del color como dispositivo argumental. El público puede leer las apuestas en la paleta.',
+    pp4_label: 'Registro Cirque',
+    pp4_text: 'Performers, no criaturas CGI. El cuerpo como herramienta de construcción de mundos. El peligro físico como verdad emocional. Cada ciudadano un personaje construido primero para lo que un cuerpo puede expresar.',
+    pp5_label: 'Tono Del Toro',
+    pp5_text: 'Oscuridad que significa algo. Belleza y devastación en el mismo encuadre. Criaturas construidas primero para la empatía. El villano no es lo más aterrador en la habitación. La pérdida lo es.',
+    pp6_label: 'Ancla Biográfica',
+    pp6_text: 'Cuatro temporadas, cuatro etapas de vida. La serie es también un retrato de la relación de un artista con su propia obra a lo largo de una vida. Sergio Bustamante aparece como él mismo en la Temporada 4.',
+    hero_series_type: 'Un Concepto de Serie de TV en Acción Real',
+    hero_eyebrow: 'Una Serie Original &nbsp;·&nbsp; Creada por Marc Sternberg<br>Son of a Botanist Productions',
+    hero_scroll: 'Descender',
+    nav_sub: 'Una Serie Original'
+  }
+};
+
+let currentLang = 'en';
+function setLang(lang) {
+  currentLang = lang;
+  const T = TRANSLATIONS[lang];
+  const btnEn = document.getElementById('langBtnEn');
+  const btnEs = document.getElementById('langBtnEs');
+  if (btnEn) btnEn.setAttribute('data-active', lang === 'en' ? 'true' : 'false');
+  if (btnEs) btnEs.setAttribute('data-active', lang === 'es' ? 'true' : 'false');
+  document.querySelectorAll('[data-t]').forEach(el => {
+    const key = el.getAttribute('data-t');
+    if (T[key] !== undefined) el.innerHTML = T[key];
+  });
+}
+function toggleLang() { setLang(currentLang === 'en' ? 'es' : 'en'); }
 </script>
 </body>
 </html>
