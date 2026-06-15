@@ -3,7 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <script>
-// Mobile redirect disabled for standalone file distribution
+// Mobile redirect — send phones/tablets to the mobile version
+(function(){
+  var w = window.innerWidth || document.documentElement.clientWidth;
+  if(w < 768){
+    var mob = window.location.href
+      .replace('eternal_carnival_v9_desktop.html','eternal_carnival_v9_mobile.html')
+      .replace('_desktop.html','_mobile.html');
+    if(mob !== window.location.href) window.location.replace(mob);
+  }
+})();
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -411,8 +420,16 @@ section { position:relative;z-index:2; }
 @keyframes pitchBreath { 0%,100%{opacity:.6} 50%{opacity:1} }
 .pitch-inner { position:relative;max-width:1100px;margin:0 auto; }
 .pitch-stmt {
-  font-size:clamp(2.2rem,4vw,4rem);font-weight:300;font-style:italic;line-height:1.7;color:var(--cream);margin:4rem 0 5rem;
-  text-wrap:balance;
+  margin:4rem 0 5rem;
+}
+.pitch-line {
+  font-size:clamp(1.3rem,2vw,1.8rem);font-weight:300;font-style:italic;line-height:1.5;color:var(--cream);margin-bottom:1rem;
+}
+.pitch-built {
+  margin-top:2.5rem;padding:1.4rem 2rem;
+  border-left:2px solid rgba(200,146,42,.35);
+  background:rgba(200,146,42,.04);
+  font-size:clamp(1.2rem,1.6vw,1.6rem);font-weight:300;font-style:italic;color:var(--ivory);
 }
 .pg { color:var(--gold-pale);font-weight:700;font-style:normal; }
 .pt { color:var(--teal-glow);font-weight:700;font-style:normal; }
@@ -1177,7 +1194,15 @@ footer { border-top:1px solid rgba(255,255,255,.05);padding:3rem 4rem;display:fl
     <h2 class="s-title rv" data-t="story1_title">What It Is</h2>
     <div class="sec-pitch" style="padding:0;overflow:visible">
       <div class="pitch-inner rv" style="max-width:none;text-align:left">
-        <p class="pitch-stmt" data-t="pitch_stmt" style="text-align:left"><span class="pg">Cirque&nbsp;du&nbsp;Soleil</span> meets <span class="pt">Pan&#8217;s&nbsp;Labyrinth</span> meets <span class="pg">The&nbsp;Dark&nbsp;Crystal</span> meets <span class="pt">Inception</span> meets <span class="pc">The&nbsp;NeverEnding&nbsp;Story</span></p>
+        <div class="pitch-stmt" data-t="pitch_stmt" style="text-align:left">
+          <p class="pitch-line">The spectacle and physical world of <span class="pg">Cirque&nbsp;du&nbsp;Soleil</span> and <span class="pg">The&nbsp;Dark&nbsp;Crystal</span>.</p>
+          <p class="pitch-line">The layered realities of <span class="pt">Inception</span>.</p>
+          <p class="pitch-line">The darkness and grief of <span class="pt">Pan&#8217;s&nbsp;Labyrinth</span> and <span class="pt">The&nbsp;Boy&nbsp;and&nbsp;the&nbsp;Heron</span>.</p>
+          <p class="pitch-line">The desperate imagination of <span class="pc">The&nbsp;NeverEnding&nbsp;Story</span> and <span class="pc">The&nbsp;Phantom&nbsp;Tollbooth</span>.</p>
+          <p class="pitch-line">The interior world made real of <span class="pg">Inside&nbsp;Out</span>.</p>
+          <p class="pitch-line">The epic scale and world mythology of <span class="pt">Star&nbsp;Wars</span>.</p>
+          <div class="pitch-built">Built inside one real artist&#8217;s lifetime of work.</div>
+        </div>
         <div class="pitch-tags" style="justify-content:flex-start">
           <span class="pitch-tag">Physical World-Building</span>
           <span class="pitch-tag">Moral Darkness</span>
@@ -2397,7 +2422,7 @@ const TRANSLATIONS = {
     logline_label: 'Logline',
     story1_label: 'The Pitch in One Line',
     story1_title: 'What It Is',
-    pitch_stmt: '<span class="pg">Cirque&nbsp;du&nbsp;Soleil</span> meets <span class="pt">Pan&#8217;s&nbsp;Labyrinth</span> meets <span class="pg">The&nbsp;Dark&nbsp;Crystal</span> meets <span class="pt">Inception</span> meets <span class="pc">The&nbsp;NeverEnding&nbsp;Story</span>',
+    pitch_stmt: '<p class=\"pitch-line\">The spectacle and physical world of <span class=\"pg\">Cirque&nbsp;du&nbsp;Soleil</span> and <span class=\"pg\">The&nbsp;Dark&nbsp;Crystal</span>.</p><p class=\"pitch-line\">The layered realities of <span class=\"pt\">Inception</span>.</p><p class=\"pitch-line\">The darkness and grief of <span class=\"pt\">Pan&#8217;s&nbsp;Labyrinth</span> and <span class=\"pt\">The&nbsp;Boy&nbsp;and&nbsp;the&nbsp;Heron</span>.</p><p class=\"pitch-line\">The desperate imagination of <span class=\"pc\">The&nbsp;NeverEnding&nbsp;Story</span> and <span class=\"pc\">The&nbsp;Phantom&nbsp;Tollbooth</span>.</p><p class=\"pitch-line\">The interior world made real of <span class=\"pg\">Inside&nbsp;Out</span>.</p><p class=\"pitch-line\">The epic scale and world mythology of <span class=\"pt\">Star&nbsp;Wars</span>.</p><div class=\"pitch-built\">Built inside one real artist&#8217;s lifetime of work.</div>',
     story2_label: 'The Story in Three Sentences',
     story2_heading: 'The Core',
     story2_s1: 'A boy who doesn\'t fit the real world falls into his own imagination.',
@@ -2724,7 +2749,7 @@ const TRANSLATIONS = {
     logline_label: 'Logline',
     story1_label: 'El Pitch en Una Línea',
     story1_title: 'Qué Es',
-    pitch_stmt: '<span class="pg">Cirque&nbsp;du&nbsp;Soleil</span> meets <span class="pt">El&nbsp;laberinto&nbsp;del&nbsp;fauno</span> meets <span class="pg">The&nbsp;Dark&nbsp;Crystal</span> meets <span class="pt">Inception</span> meets <span class="pc">La&nbsp;Historia&nbsp;Sin&nbsp;Fin</span>',
+    pitch_stmt: '<p class=\"pitch-line\">El espect&aacute;culo y el mundo f&iacute;sico de <span class=\"pg\">Cirque&nbsp;du&nbsp;Soleil</span> y <span class=\"pg\">The&nbsp;Dark&nbsp;Crystal</span>.</p><p class=\"pitch-line\">Las realidades superpuestas de <span class=\"pt\">Inception</span>.</p><p class=\"pitch-line\">La oscuridad y el dolor de <span class=\"pt\">El&nbsp;laberinto&nbsp;del&nbsp;fauno</span> y <span class=\"pt\">El&nbsp;ni&ntilde;o&nbsp;y&nbsp;la&nbsp;garza</span>.</p><p class=\"pitch-line\">La imaginaci&oacute;n desesperada de <span class=\"pc\">La&nbsp;historia&nbsp;interminable</span> y <span class=\"pc\">The&nbsp;Phantom&nbsp;Tollbooth</span>.</p><p class=\"pitch-line\">El mundo interior hecho realidad de <span class=\"pg\">Inside&nbsp;Out</span>.</p><p class=\"pitch-line\">La escala &eacute;pica y la mitolog&iacute;a de <span class=\"pt\">Star&nbsp;Wars</span>.</p><div class=\"pitch-built\">Constru&iacute;do dentro de la obra de toda una vida de un solo artista.</div>',
     story2_label: 'La Historia en Tres Oraciones',
     story2_heading: 'El Núcleo',
     story2_s1: 'Un niño que no encaja en el mundo real cae dentro de su propia imaginación.',
