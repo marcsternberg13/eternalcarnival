@@ -7,7 +7,7 @@
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ETERNAL CARNIVAL · Desktop</title>
+<title>ETERNAL CARNIVAL · v10</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;700;900&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
@@ -481,6 +481,49 @@ footer { border-top:1px solid rgba(255,255,255,.05);padding:3rem 4rem;display:fl
   .ft-meta { text-align:center; }
 }
 @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms !important;transition-duration:.01ms !important; } }
+
+/* ── MOBILE HERO FIXES ── */
+@media(max-width:600px) {
+  .hero-content { padding:0 1.4rem; }
+  .series-type {
+    font-size:.62rem;
+    letter-spacing:.22em;
+    margin-bottom:.6rem;
+  }
+  .eyebrow {
+    font-size:.58rem;
+    letter-spacing:.18em;
+    margin-bottom:1.4rem;
+    line-height:1.9;
+  }
+  .hero-title {
+    font-size:clamp(2.6rem,16vw,4rem);
+    line-height:.86;
+  }
+  .logline {
+    font-size:clamp(1rem,4.2vw,1.2rem);
+    line-height:1.7;
+    margin-top:1.8rem;
+    max-width:94vw;
+  }
+  .cta-row {
+    margin-top:2.2rem;
+    flex-direction:column;
+    align-items:stretch;
+    gap:1rem;
+    width:100%;
+  }
+  .btn-p, .btn-s {
+    padding:.95rem 1.5rem;
+    font-size:.62rem;
+    letter-spacing:.22em;
+    text-align:center;
+    justify-content:center;
+  }
+  .lang-toggle-hero {
+    margin-bottom:1rem;
+  }
+}
 
 /* ── HAMBURGER ── */
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.4rem;background:transparent;border:none;}
@@ -1068,6 +1111,110 @@ footer { border-top:1px solid rgba(255,255,255,.05);padding:3rem 4rem;display:fl
   .anchor-block { grid-template-columns:1fr; }
 }
 
+/* ── V10 PITCH LINES — VISUAL ONE-LINER ── */
+.pitch-lines-wrap {
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  margin-top:3rem;
+}
+.pitch-line-item {
+  display:grid;
+  grid-template-columns:56px 1fr;
+  align-items:center;
+  gap:2rem;
+  padding:2.2rem 0;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  opacity:0;
+  transform:translateX(-24px);
+  transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1), border-color .4s ease, background .4s ease;
+  cursor:default;
+  border-radius:2px;
+  padding-left:1.2rem;
+  padding-right:1.2rem;
+  margin-left:-1.2rem;
+  margin-right:-1.2rem;
+}
+.pitch-line-item.on {
+  opacity:1;
+  transform:translateX(0);
+}
+.pitch-line-item:last-child {
+  border-bottom:none;
+}
+.pitch-line-item:hover {
+  background:rgba(200,146,42,.04);
+  border-color:rgba(200,146,42,.15);
+}
+.pitch-line-icon {
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  border:1px solid rgba(200,146,42,.22);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  background:rgba(200,146,42,.04);
+  transition:border-color .4s, background .4s;
+}
+.pitch-line-item:hover .pitch-line-icon {
+  border-color:rgba(200,146,42,.55);
+  background:rgba(200,146,42,.08);
+}
+.pitch-line-icon svg {
+  width:20px;height:20px;
+  opacity:.7;
+  transition:opacity .3s;
+}
+.pitch-line-item:hover .pitch-line-icon svg { opacity:1; }
+.pitch-line-text {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.45rem,2.2vw,2.1rem);
+  font-weight:300;
+  line-height:1.35;
+  color:rgba(245,237,216,.82);
+}
+.pitch-line-text .pref {
+  color:var(--gold-pale);
+  font-weight:600;
+  font-style:normal;
+}
+.pitch-line-text .ptq {
+  color:var(--teal-glow);
+  font-weight:600;
+  font-style:normal;
+}
+.pitch-line-text .prc {
+  color:#C85A5A;
+  font-weight:600;
+  font-style:normal;
+}
+.pitch-line-closer {
+  margin-top:3.5rem;
+  padding:2.5rem 3rem;
+  border-left:3px solid var(--gold);
+  background:rgba(200,146,42,.04);
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.5rem,2.4vw,2.2rem);
+  font-style:italic;
+  font-weight:300;
+  color:var(--cream);
+  line-height:1.5;
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
+}
+.pitch-line-closer.on {
+  opacity:1;
+  transform:translateY(0);
+}
+@media(max-width:768px) {
+  .pitch-line-item { grid-template-columns:42px 1fr; gap:1.2rem; padding:1.6rem 0; }
+  .pitch-line-icon { width:42px; height:42px; }
+  .pitch-line-closer { padding:1.8rem 2rem; }
+}
+
 </style>
 </head>
 <body>
@@ -1218,23 +1365,69 @@ footer { border-top:1px solid rgba(255,255,255,.05);padding:3rem 4rem;display:fl
   <span class="section-header-num">01</span>
 </div>
 
-<!-- STORY 1: PITCH -->
+<!-- STORY 1: PITCH — v10 VISUAL ONE-LINER -->
 <section class="v9-section v9-pad" id="story" style="background:linear-gradient(to bottom,var(--void),#070A14)">
   <div class="v9-inner">
     <div class="s-label rv" data-t="story1_label">The Pitch in One Line</div>
     <h2 class="s-title rv" data-t="story1_title">What It Is</h2>
-    <div class="sec-pitch" style="padding:0;overflow:visible">
-      <div class="pitch-inner rv" style="max-width:none;text-align:left">
-        <div class="pitch-stmt" data-t="pitch_stmt" style="text-align:left">The spectacle and physical world of <span class="pg">Cirque&nbsp;du&nbsp;Soleil</span> and <span class="pg">The&nbsp;Dark&nbsp;Crystal</span>.<br>The layered realities of <span class="pt">Inception</span>.<br>The darkness and grief of <span class="pt">Pan&#8217;s&nbsp;Labyrinth</span> and <span class="pt">The&nbsp;Boy&nbsp;and&nbsp;the&nbsp;Heron</span>.<br>The desperate imagination of <span class="pc">The&nbsp;NeverEnding&nbsp;Story</span> and <span class="pc">The&nbsp;Phantom&nbsp;Tollbooth</span>.<br>The interior world made real of <span class="pg">Inside&nbsp;Out</span>.<br>The epic scale and world mythology of <span class="pt">Star&nbsp;Wars</span>.<br><br><em>Built inside one real artist&#8217;s lifetime of work.</em></div>
-        <div class="pitch-tags" style="justify-content:flex-start">
-          <span class="pitch-tag">Physical World-Building</span>
-          <span class="pitch-tag">Moral Darkness</span>
-          <span class="pitch-tag">Live Action Creatures</span>
-          <span class="pitch-tag">Parallel Realities</span>
-          <span class="pitch-tag">One Artist&#8217;s Universe</span>
-          <span class="pitch-tag">Imagination as Stakes</span>
+
+    <div class="pitch-lines-wrap" id="pitchLines">
+
+      <div class="pitch-line-item" data-delay="0">
+        <div class="pitch-line-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C8922A" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
         </div>
+        <div class="pitch-line-text" data-t="pl1">The spectacle and physical world of <span class="pref">Cirque&nbsp;du&nbsp;Soleil</span> and <span class="pref">The&nbsp;Dark&nbsp;Crystal</span>.</div>
       </div>
+
+      <div class="pitch-line-item" data-delay="60">
+        <div class="pitch-line-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#4EC9C4" stroke-width="1.5"><path d="M12 22V12M12 12L2 7l10-5 10 5-10 5z"/><path d="M2 17l10 5 10-5"/></svg>
+        </div>
+        <div class="pitch-line-text" data-t="pl2">The layered realities of <span class="ptq">Inception</span>.</div>
+      </div>
+
+      <div class="pitch-line-item" data-delay="120">
+        <div class="pitch-line-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C85A5A" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="pitch-line-text" data-t="pl3">The darkness and grief of <span class="prc">Pan&#8217;s&nbsp;Labyrinth</span> and <span class="prc">The&nbsp;Boy&nbsp;and&nbsp;the&nbsp;Heron</span>.</div>
+      </div>
+
+      <div class="pitch-line-item" data-delay="180">
+        <div class="pitch-line-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C8922A" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="pitch-line-text" data-t="pl4">The desperate imagination of <span class="pref">The&nbsp;NeverEnding&nbsp;Story</span> and <span class="pref">The&nbsp;Phantom&nbsp;Tollbooth</span>.</div>
+      </div>
+
+      <div class="pitch-line-item" data-delay="240">
+        <div class="pitch-line-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#4EC9C4" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M20.188 10.934a8 8 0 0 1 0 2.132M3.812 10.934a8 8 0 0 1 0 2.132M15.5 5.374a8 8 0 0 0-7 0M15.5 18.626a8 8 0 0 1-7 0"/></svg>
+        </div>
+        <div class="pitch-line-text" data-t="pl5">The interior world made real of <span class="ptq">Inside&nbsp;Out</span>.</div>
+      </div>
+
+      <div class="pitch-line-item" data-delay="300">
+        <div class="pitch-line-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C8922A" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="pitch-line-text" data-t="pl6">The epic scale and world mythology of <span class="pref">Star&nbsp;Wars</span>.</div>
+      </div>
+
+    </div>
+
+    <div class="pitch-line-closer rv" id="pitchCloser" data-t="pl_closer">
+      Built inside one real artist&#8217;s lifetime of work.
+    </div>
+
+    <div class="pitch-tags" style="justify-content:flex-start;margin-top:3rem" id="pitchTagsRow">
+      <span class="pitch-tag" data-t="ptag1">Physical World-Building</span>
+      <span class="pitch-tag" data-t="ptag2">Moral Darkness</span>
+      <span class="pitch-tag" data-t="ptag3">Live Action Creatures</span>
+      <span class="pitch-tag" data-t="ptag4">Parallel Realities</span>
+      <span class="pitch-tag" data-t="ptag5">One Artist&#8217;s Universe</span>
+      <span class="pitch-tag" data-t="ptag6">Imagination as Stakes</span>
     </div>
   </div>
 </section>
@@ -2415,6 +2608,26 @@ const obs=new IntersectionObserver((entries)=>{
 document.querySelectorAll('.rv,.rv-l,.rv-r,.lv-card,.ch-card').forEach(el=>obs.observe(el));
 
 // ══════════════════════════════════════════════
+// PITCH LINES — staggered scroll-triggered reveal
+// ══════════════════════════════════════════════
+const pitchLineObs = new IntersectionObserver((entries)=>{
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      const items = entry.target.querySelectorAll('.pitch-line-item');
+      items.forEach((item, i) => {
+        const delay = parseInt(item.getAttribute('data-delay')||0);
+        setTimeout(() => item.classList.add('on'), delay);
+      });
+      const closer = document.getElementById('pitchCloser');
+      if(closer) setTimeout(() => closer.classList.add('on'), 420);
+      pitchLineObs.unobserve(entry.target);
+    }
+  });
+}, {threshold: 0.15});
+const pitchLinesWrap = document.getElementById('pitchLines');
+if(pitchLinesWrap) pitchLineObs.observe(pitchLinesWrap);
+
+// ══════════════════════════════════════════════
 // HERO IMAGE PARALLAX — scroll down into it
 // ══════════════════════════════════════════════
 const heroImg = document.querySelector('.hero-img-photo');
@@ -2445,7 +2658,19 @@ const TRANSLATIONS = {
     logline_label: 'Logline',
     story1_label: 'The Pitch in One Line',
     story1_title: 'What It Is',
-    pitch_stmt: 'The spectacle and physical world of <span class="pg">Cirque&nbsp;du&nbsp;Soleil</span> and <span class="pg">The&nbsp;Dark&nbsp;Crystal</span>.<br>The layered realities of <span class="pt">Inception</span>.<br>The darkness and grief of <span class="pt">Pan&#8217;s&nbsp;Labyrinth</span> and <span class="pt">The&nbsp;Boy&nbsp;and&nbsp;the&nbsp;Heron</span>.<br>The desperate imagination of <span class="pc">The&nbsp;NeverEnding&nbsp;Story</span> and <span class="pc">The&nbsp;Phantom&nbsp;Tollbooth</span>.<br>The interior world made real of <span class="pg">Inside&nbsp;Out</span>.<br>The epic scale and world mythology of <span class="pt">Star&nbsp;Wars</span>.<br><br><em>Built inside one real artist&#8217;s lifetime of work.</em>',
+    pl1: 'The spectacle and physical world of <span class="pref">Cirque&nbsp;du&nbsp;Soleil</span> and <span class="pref">The&nbsp;Dark&nbsp;Crystal</span>.',
+    pl2: 'The layered realities of <span class="ptq">Inception</span>.',
+    pl3: 'The darkness and grief of <span class="prc">Pan&#8217;s&nbsp;Labyrinth</span> and <span class="prc">The&nbsp;Boy&nbsp;and&nbsp;the&nbsp;Heron</span>.',
+    pl4: 'The desperate imagination of <span class="pref">The&nbsp;NeverEnding&nbsp;Story</span> and <span class="pref">The&nbsp;Phantom&nbsp;Tollbooth</span>.',
+    pl5: 'The interior world made real of <span class="ptq">Inside&nbsp;Out</span>.',
+    pl6: 'The epic scale and world mythology of <span class="pref">Star&nbsp;Wars</span>.',
+    pl_closer: 'Built inside one real artist&#8217;s lifetime of work.',
+    ptag1: 'Physical World-Building',
+    ptag2: 'Moral Darkness',
+    ptag3: 'Live Action Creatures',
+    ptag4: 'Parallel Realities',
+    ptag5: 'One Artist&#8217;s Universe',
+    ptag6: 'Imagination as Stakes',
     story2_label: 'The Story in Three Sentences',
     story2_heading: 'The Core',
     story2_s1: 'A boy who doesn\'t fit the real world falls into his own imagination.',
@@ -2768,11 +2993,23 @@ const TRANSLATIONS = {
     nav_characters: 'Personajes',
     nav_arc: 'Arco',
     nav_production: 'Producción',
-    logline: 'En un imperio de imaginación que se desmorona, un niño que aún lo siente todo debe encontrar al creador que ha olvidado cómo — porque <em>el niño es el último recuerdo que el anciano tiene de sí mismo.</em>',
+    logline: 'En un imperio de imaginación que agoniza, un niño que aún lo siente todo debe encontrar al creador que ha olvidado cómo — porque <em>el niño es el último recuerdo que el anciano tiene de sí mismo.</em>',
     logline_label: 'Logline',
     story1_label: 'El Pitch en Una Línea',
     story1_title: 'Qué Es',
-    pitch_stmt: 'El espectáculo y el mundo físico de <span class="pg">Cirque&nbsp;du&nbsp;Soleil</span> y <span class="pg">The&nbsp;Dark&nbsp;Crystal</span>.<br>Las realidades superpuestas de <span class="pt">Inception</span>.<br>La oscuridad y el dolor de <span class="pt">El&nbsp;laberinto&nbsp;del&nbsp;fauno</span> y <span class="pt">El&nbsp;niño&nbsp;y&nbsp;la&nbsp;garza</span>.<br>La imaginación desesperada de <span class="pc">La&nbsp;historia&nbsp;interminable</span> y <span class="pc">The&nbsp;Phantom&nbsp;Tollbooth</span>.<br>El mundo interior hecho realidad de <span class="pg">Inside&nbsp;Out</span>.<br>La escala épica y la mitología de <span class="pt">Star&nbsp;Wars</span>.<br><br><em>Construido dentro de la obra de toda una vida de un solo artista.</em>',
+    pl1: 'El espectáculo y el mundo físico de <span class="pref">Cirque&nbsp;du&nbsp;Soleil</span> y <span class="pref">The&nbsp;Dark&nbsp;Crystal</span>.',
+    pl2: 'Las realidades superpuestas de <span class="ptq">Inception</span>.',
+    pl3: 'La oscuridad y el dolor de <span class="prc">El&nbsp;laberinto&nbsp;del&nbsp;fauno</span> y <span class="prc">El&nbsp;niño&nbsp;y&nbsp;la&nbsp;garza</span>.',
+    pl4: 'La imaginación desesperada de <span class="pref">La&nbsp;historia&nbsp;interminable</span> y <span class="pref">The&nbsp;Phantom&nbsp;Tollbooth</span>.',
+    pl5: 'El mundo interior hecho realidad de <span class="ptq">Del&nbsp;Revés</span>.',
+    pl6: 'La escala épica y la mitología de <span class="pref">Star&nbsp;Wars</span>.',
+    pl_closer: 'Construido dentro de la obra de toda una vida de un solo artista.',
+    ptag1: 'Construcción Física del Mundo',
+    ptag2: 'Oscuridad Moral',
+    ptag3: 'Criaturas en Acción Real',
+    ptag4: 'Realidades Paralelas',
+    ptag5: 'El Universo de Un Solo Artista',
+    ptag6: 'La Imaginación en Juego',
     story2_label: 'La Historia en Tres Oraciones',
     story2_heading: 'El Núcleo',
     story2_s1: 'Un niño que no encaja en el mundo real cae dentro de su propia imaginación.',
@@ -2795,17 +3032,17 @@ const TRANSLATIONS = {
     comps_title: 'Títulos Comparables',
     comps_th_title: 'Título',
     comps_th_what: 'Qué Tomamos · Dónde Divergimos',
-    comp1: '<strong>Lo Que Tomamos</strong> — El segundo mundo de un niño como supervivencia, no como escape. Una oscuridad que se gana su lugar. La herida que hace necesaria la fantasía.<div style="height:0.75rem"></div><strong>Donde Divergimos</strong> — <em>A Ofelia le asignan tareas el mundo en el que entró. Nuestro Niño Luna no tiene misión. Llega arrastrado por la orilla cargando algo pequeño que su abuelo escondió para él, impulsado no por una misión sino por un hábito — la búsqueda. Y lo que busca no sabe que necesita ser encontrado.</em>',
-    comp2: '<strong>Lo Que Tomamos</strong> — Un mundo que precede al héroe por siglos y no lo necesita. La criatura construida primero, cada encuadre habitado físicamente. Villanos que no son malvados por origen sino corrompidos — mitades rotas de algo que alguna vez fue completo.<div style="height:0.75rem"></div><strong>Donde Divergimos</strong> — <em>La herida de The Dark Crystal es un objeto roto. Encuentra el fragmento, restaura el cristal, el mundo sana. Nuestra herida son cuatro siglos de un artista que dejó de crear. Eso no se arregla encontrando nada. El Niño Luna tiene que hacer que Sorkel recuerde cómo se sentía antes de que el miedo se volviera más grande que la alegría. Eso no es una búsqueda. Es lo más difícil que una persona puede hacer por otra.</em>',
+    comp1: '<strong>Lo Que Tomamos</strong> — El segundo mundo de un niño como supervivencia, no como escape. Una oscuridad que se gana su lugar. La herida que hace necesaria la fantasía.<div style="height:0.75rem"></div><strong>Donde Divergimos</strong> — <em>A Ofelia le asignan tareas el mundo en el que entró. Nuestro Lunachico no tiene misión. Llega arrastrado por la orilla cargando algo pequeño que su abuelo escondió para él, impulsado no por una misión sino por un hábito — la búsqueda. Y lo que busca no sabe que necesita ser encontrado.</em>',
+    comp2: '<strong>Lo Que Tomamos</strong> — Un mundo que precede al héroe por siglos y no lo necesita. La criatura construida primero, cada encuadre habitado físicamente. Villanos que no son malvados por origen sino corrompidos — mitades rotas de algo que alguna vez fue completo.<div style="height:0.75rem"></div><strong>Donde Divergimos</strong> — <em>La herida de The Dark Crystal es un objeto roto. Encuentra el fragmento, restaura el cristal, el mundo sana. Nuestra herida son cuatro siglos de un artista que dejó de crear. Eso no se arregla encontrando nada. El Lunachico tiene que hacer que Sorkel recuerde cómo se sentía antes de que el miedo se volviera más grande que la alegría. Eso no es una búsqueda. Es lo más difícil que una persona puede hacer por otra.</em>',
     comp3: '<strong>Lo Que Tomamos</strong> — Dos mundos corriendo simultáneamente, cada uno afectando al otro, sin detenerse a explicar el mecanismo. El duelo convertido en arquitectura física. El interior como un lugar real con consecuencias reales.<div style="height:0.75rem"></div><strong>Donde Divergimos</strong> — <em>El mundo interior de Inception es un problema de ingeniería — tiene física, pisos, reglas que pueden mapearse y explotarse. El Carnaval no tiene nada de eso. Responde al sentimiento, no a la arquitectura. Y donde Inception termina en ambigüedad deliberada, nosotros terminamos con un hombre caminando por su galería real en Tlaquepaque, rodeado de cincuenta años de obra que existe en el mundo físico. La ambigüedad no sobrevive la Temporada 4. La prueba está en los estantes.</em>',
-    comp4: '<strong>Lo Que Tomamos</strong> — La imaginación como algo que puede morir literalmente. El vacío que no mata — borra. La capacidad de sentir de un niño como última defensa contra que todo se convierta en nada.<div style="height:0.75rem"></div><strong>Donde Divergimos</strong> — <em>Bastian salva Fantasia creyendo con suficiente fuerza. El acto de fe, declarado en la tormenta, es suficiente. Nuestro Niño Luna no puede hacer eso. Sorkel ha catalogado estrellas durante cuatrocientos años y ha escuchado cada argumento. Lo que lo alcanza no es la fe. En la Temporada 3, el Niño Luna hace algo — un acto de creación pura, ofrecido sin disculpa — y espera. Bastian grita un nombre en la tormenta. El Niño Luna pone arcilla sobre una mesa y espera.</em>',
+    comp4: '<strong>Lo Que Tomamos</strong> — La imaginación como algo que puede morir literalmente. El vacío que no mata — borra. La capacidad de sentir de un niño como última defensa contra que todo se convierta en nada.<div style="height:0.75rem"></div><strong>Donde Divergimos</strong> — <em>Bastian salva Fantasia creyendo con suficiente fuerza. El acto de fe, declarado en la tormenta, es suficiente. Nuestro Lunachico no puede hacer eso. Sorkel ha catalogado estrellas durante cuatrocientos años y ha escuchado cada argumento. Lo que lo alcanza no es la fe. En la Temporada 3, el Lunachico hace algo — un acto de creación pura, ofrecido sin disculpa — y espera. Bastian grita un nombre en la tormenta. El Lunachico pone arcilla sobre una mesa y espera.</em>',
     comp5: '<strong>Lo Que Tomamos</strong> — La prueba de que un universo construido desde una sola imaginación, hecho navegable, puede sostener apuestas dramáticas épicas. La producción obsesiva de una mente en forma física — y el público seguirá.<div style="height:0.75rem"></div><strong>Donde Divergimos</strong> — <em>El mundo de Minecraft fue construido para jugarse, por jugadores, como una invitación. Nuestro mundo fue construido por un niño que no tenía otro lenguaje — que creció en una casa grande en Culiacán buscando cada mañana algo que su abuelo había escondido, y nunca dejó de buscar. Minecraft no tiene herida en su centro. El nuestro no tiene otra cosa.</em>',
     comp6: '<strong>Lo Que Tomamos</strong> — Mundos interior y exterior corriendo simultáneamente, cada uno afectando al otro, sin explicación. El sentimiento como arquitectura literal. El interior es real, tiene consecuencias, y las cosas que se pierden allí importan tanto como cualquier cosa en el mundo físico.<div style="height:0.75rem"></div><strong>Donde Divergimos</strong> — <em>El mundo interior de Del Revés es universal — construido para contener a todos, nombrado Alegría y Tristeza porque esas son las emociones de todos. Nuestro mundo pertenece a un hombre específico, construido por un par de manos específicas. No puedes sacar a Bustamante y contar la misma historia. Del Revés es un mapa de cómo funciona el sentimiento. Nosotros somos el registro del sentimiento de una vida — terminando con el hombre real todavía escondiendo cosas para niños que aún no han llegado.</em>',
     comp7: '<strong>Lo Que Tomamos</strong> — La arquitectura de cuatro actos donde el verdadero motor no es el bien contra el mal sino el yo contra el yo futuro. Vader no es el enemigo de Luke. Vader es la advertencia de Luke. Toda la saga corre sobre una sola pregunta: ¿se convertirá el niño en el hombre roto, o el hombre roto recordará al niño?<div style="height:0.75rem"></div><strong>Donde Divergimos</strong> — <em>Vader es redimido por el sacrificio. Un acto decisivo, una muerte, la cuenta saldada. Nuestro arco se resuelve en algo más silencioso y más difícil. Sorkel no es redimido por hacer algo heroico. Es redimido por recordar. Toma algo pequeño. Lo hace. Lo regala. No es un sacrificio. No es una batalla. Un hombre en su banco de trabajo, haciendo lo único que alguna vez fue.</em>',
     comp8: '<strong>Lo Que Tomamos</strong> — El peso de un mundo que no comienza con la historia. Historias y pérdidas que preceden al héroe por eras. El héroe como algo pequeño moviéndose a través de una herencia que no pidió. Y la pregunta central: ¿derrotar al mal destruye lo que hacía que valiera la pena luchar?<div style="height:0.75rem"></div><strong>Donde Divergimos</strong> — <em>Tolkien inventó su mundo por completo, durante décadas, por obsesión. Existe solo en la obra. Nuestro mundo ya existía antes de que escribiéramos una sola palabra. Las esculturas están en los estantes. Las galerías están abiertas. Puedes entrar a Tlaquepaque y pararte junto a los ciudadanos. Nosotros no construimos el Carnaval Eterno. Entramos a él. Y en la Temporada 4, Bustamante también. Tolkien nunca pudo hacer eso.</em>',
-    comp9: '<strong>Lo Que Tomamos</strong> — Un mundo que muere no por violencia sino por indiferencia. Lo que está en juego es la supervivencia del significado en sí. Y un niño que no encaja en ningún lugar lo atraviesa y descubre que era exactamente lo que se necesitaba — no porque fuera elegido, sino porque todavía le importaba.<div style="height:0.75rem"></div><strong>Donde Divergimos</strong> — <em>Milo es un visitante. Resuelve la crisis de otro y regresa a casa. Su habitación lo espera. El Niño Luna no tiene hogar al que regresar — no está pasando por el Carnaval, él es aquello de lo que está hecho el Carnaval. Es lo último que Sorkel creó antes de que la melancolía ganara, regresando al mundo del que vino. No regresa a casa al final. Se convierte en el abuelo. Empieza a esconder cosas. La Cabina se cierra. Nuestra puerta queda abierta.</em>',
-    comp10: '<strong>Lo Que Tomamos</strong> — Una niña cae en un mundo con su propia lógica interna, absurdo desde afuera y perfectamente consistente desde dentro. Sin elegida, sin misión. Solo una niña avanzando a través de un lugar que nunca fue construido para ella, aprendiendo sus leyes rompiéndolas.<div style="height:0.75rem"></div><strong>Donde Divergimos</strong> — <em>El País de las Maravillas no tiene herida. Nadie lo construyó desde el dolor o la supervivencia. Y Alicia sale — despierta, siempre fue suyo para abandonar. Nuestro Niño Luna no puede irse. Si fracasa, un hombre en Tlaquepaque deja su pincel y no lo vuelve a tomar. Las apuestas de Alicia nunca fueron tan reales.</em>',
-    comp11: '<strong>Lo Que Tomamos</strong> — Un niño cae en un mundo construido por un creador moribundo que lo construyó porque no tenía otra manera de sostener lo que la vida le había hecho. Bello y roto en el mismo encuadre. El niño debe decidir si heredar el mundo o dejarlo terminar. Ninguna película existente se ha acercado más a nuestra estructura.<div style="height:0.75rem"></div><strong>Donde Divergimos</strong> — <em>El mundo de Miyazaki se cierra. El tío abuelo no encuentra sucesor y lo sella — un monumento a una mente que no pudo continuar. Nuestro mundo no se cierra. El Niño Luna se convierte en quien esconde cosas para el próximo niño que aún no ha llegado. Y el propio Bustamante todavía va al mercado Buelna, todavía esconde cosas en la galería. El Niño y la Garza es una elegía. El Carnaval Eterno es una posta.</em>',
+    comp9: '<strong>Lo Que Tomamos</strong> — Un mundo que muere no por violencia sino por indiferencia. Lo que está en juego es la supervivencia del significado en sí. Y un niño que no encaja en ningún lugar lo atraviesa y descubre que era exactamente lo que se necesitaba — no porque fuera elegido, sino porque todavía le importaba.<div style="height:0.75rem"></div><strong>Donde Divergimos</strong> — <em>Milo es un visitante. Resuelve la crisis de otro y regresa a casa. Su habitación lo espera. El Lunachico no tiene hogar al que regresar — no está pasando por el Carnaval, él es aquello de lo que está hecho el Carnaval. Es lo último que Sorkel creó antes de que la melancolía ganara, regresando al mundo del que vino. No regresa a casa al final. Se convierte en el abuelo. Empieza a esconder cosas. La Cabina se cierra. Nuestra puerta queda abierta.</em>',
+    comp10: '<strong>Lo Que Tomamos</strong> — Una niña cae en un mundo con su propia lógica interna, absurdo desde afuera y perfectamente consistente desde dentro. Sin elegida, sin misión. Solo una niña avanzando a través de un lugar que nunca fue construido para ella, aprendiendo sus leyes rompiéndolas.<div style="height:0.75rem"></div><strong>Donde Divergimos</strong> — <em>El País de las Maravillas no tiene herida. Nadie lo construyó desde el dolor o la supervivencia. Y Alicia sale — despierta, siempre fue suyo para abandonar. Nuestro Lunachico no puede irse. Si fracasa, un hombre en Tlaquepaque deja su pincel y no lo vuelve a tomar. Las apuestas de Alicia nunca fueron tan reales.</em>',
+    comp11: '<strong>Lo Que Tomamos</strong> — Un niño cae en un mundo construido por un creador moribundo que lo construyó porque no tenía otra manera de sostener lo que la vida le había hecho. Bello y roto en el mismo encuadre. El niño debe decidir si heredar el mundo o dejarlo terminar. Ninguna película existente se ha acercado más a nuestra estructura.<div style="height:0.75rem"></div><strong>Donde Divergimos</strong> — <em>El mundo de Miyazaki se cierra. El tío abuelo no encuentra sucesor y lo sella — un monumento a una mente que no pudo continuar. Nuestro mundo no se cierra. El Lunachico se convierte en quien esconde cosas para el próximo niño que aún no ha llegado. Y el propio Bustamante todavía va al mercado Buelna, todavía esconde cosas en la galería. El Niño y la Garza es una elegía. El Carnaval Eterno es una posta.</em>',
     comp12: '<strong>Lo Que Tomamos</strong> — Un creador construye algo desde el dolor y lo creado lo supera — en sentimiento, en valentía, en capacidad de amar. Y al ser completamente lo que fue hecho para ser, la creación salva al creador de la versión de sí mismo que el dolor estaba construyendo.<div style="height:0.75rem"></div><strong>Donde Divergimos</strong> — <em>Geppetto sabe que construyó a Pinocho. El dolor está presente, reconocido, visible en todo momento. Sorkel ha olvidado que construyó algo. El niño que camina por su mundo es catalogado como una amenaza, no reconocido como una creación. Pinocho trata sobre el amor que sobrevive a la pérdida. El Carnaval Eterno trata sobre lo que sucede después de que la pérdida gana — y lo que cuesta recuperar el amor.</em>',
     gap_label: 'Lo Que Ninguno Tiene',
     gap_text: 'Un artista vivo real — con esculturas reales, galerías reales, biografía real — como la arquitectura literal del mundo fantástico. El Carnaval no está inspirado en la obra de Bustamante. ES la obra de Bustamante, hecha habitable.',
@@ -2954,7 +3191,7 @@ const TRANSLATIONS = {
     s2_num: 'Temporada Dos',
     s2_name: 'El Costo',
     s2_word: 'Palabra del Arco: PESO',
-    s2_quote: 'Que el mundo tenga opiniones sobre tu trabajo no es lo mismo que el mundo tener razón sobre tu trabajo.',
+    s2_quote: 'Que el mundo tenga opiniones sobre tu trabajo no es lo mismo que el mundo tenga razón sobre tu trabajo.',
     s3_num: 'Temporada Tres',
     s3_name: 'El Quiebre',
     s3_word: 'Palabra del Arco: LIBERACIÓN',
@@ -3028,7 +3265,7 @@ const TRANSLATIONS = {
     b22_t: 'Tú Jalaste',
     b22: 'Los destellos no jalan. Tú jalaste. Miraste hacia arriba y algo en ti fue hacia ello.',
     b23_t: 'Qué Hay en el Cielo',
-    b23: 'El mundo que soñó este en existencia. Sorkel se da la vuelta. Lo he catalogado.',
+    b23: 'El mundo que soñó este hasta hacerlo existir. Sorkel se da la vuelta. Lo he catalogado.',
     b24_t: 'Destello 4',
     b24: 'Un segundo completo. Las manos haciendo algo específico. Algo reconocible.',
     b25_t: 'Destello 5',
@@ -3057,7 +3294,7 @@ const TRANSLATIONS = {
     pp4_label: 'Registro Cirque',
     pp4_text: 'Performers, no criaturas CGI. El cuerpo como herramienta de construcción de mundos. El peligro físico como verdad emocional. Cada ciudadano un personaje construido primero para lo que un cuerpo puede expresar.',
     pp5_label: 'Tono Del Toro',
-    pp5_text: 'Oscuridad que significa algo. Belleza y devastación en el mismo encuadre. Criaturas construidas primero para la empatía. El villano no es lo más aterrador en la habitación. La pérdida lo es.',
+    pp5_text: 'Oscuridad que significa algo. Belleza y devastación en el mismo encuadre. Criaturas construidas primero para la empatía. El villano no es lo más aterrador en la habitación. Lo es la pérdida.',
     pp6_label: 'Ancla Biográfica',
     pp6_text: 'Cuatro temporadas, cuatro etapas de vida. La serie es también un retrato de la relación de un artista con su propia obra a lo largo de una vida. Sergio Bustamante aparece como él mismo en la Temporada 4.',
     hero_series_type: 'Un Concepto de Serie de TV en Acción Real',
@@ -3066,9 +3303,9 @@ const TRANSLATIONS = {
     producer_label: 'Sobre el Productor',
     producer_name: 'Marc Sternberg',
     producer_bio1: 'Marc Sternberg es un productor creativo galardonado, Especialista Fulbright y estudiante de arte de toda la vida, cuyo trabajo se sitúa en la intersección entre la visión creativa y la ejecución estratégica. Con más de 20 años en marketing global y más de 12 años produciendo contenido cinematográfico, televisivo y documental, Marc aporta una capacidad singular para traducir mundos artísticos en narrativas convincentes y comercialmente viables. Aborda cada proyecto como colaborador creativo y arquitecto estratégico al mismo tiempo, garantizando que la visión y la ejecución nunca estén en conflicto.',
-    producer_bio2: 'En 2024, Marc entró a la galería de Sergio Bustamante en Tlaquepaque, Guadalajara, Jalisco, México, y no ha vuelto a ser el mismo desde entonces. Se encontró de pie dentro de un universo ya completamente formado: figuras de bronce en pleno vuelo, animales soñando en metal y resina, una mitología tan completa que parecía antigua. El concepto de Eternal Carnival arraigó ese día y no lo ha soltado.',
-    producer_bio3: 'Como Fundador de Son of a Botanist Productions, gestiona un catálogo de más de 10 propiedades en cine, documental y series. Su MFA del Dodge College de la Universidad Chapman, combinado con credenciales de Oxford y HEC París, refleja a un productor que se toma en serio el oficio. Para Eternal Carnival, Marc imagina una serie que no se limita a adaptar el arte de Bustamante. Lo habita, construyendo un mundo tan estratificado y vivo como las esculturas mismas.',
-    producer_collab_quote: 'Bustamante ha pasado toda una vida construyendo un mundo en bronce, cerámica y oro — uno por el que millones han caminado y que los ha transformado. Marc llegó a este proyecto como coleccionista primero y productor segundo, que es exactamente el orden correcto. Esta colaboración está construida sobre una reverencia genuina por la obra y la creencia compartida de que las mejores historias son las que ya existen, esperando el recipiente adecuado. Eternal Carnival es ese recipiente.',
+    producer_bio2: 'En 2024, Marc entró a la galería de Sergio Bustamante en Tlaquepaque, Guadalajara, Jalisco, México, y no ha vuelto a ser el mismo desde entonces. Se encontró de pie dentro de un universo ya completamente formado: figuras de bronce en pleno vuelo, animales soñando en metal y resina, una mitología tan completa que parecía antigua. El concepto de Carnaval Eterno arraigó ese día y no lo ha soltado.',
+    producer_bio3: 'Como Fundador de Son of a Botanist Productions, gestiona un catálogo de más de 10 propiedades en cine, documental y series. Su MFA del Dodge College de la Universidad Chapman, combinado con credenciales de Oxford y HEC París, refleja a un productor que se toma en serio el oficio. Para Carnaval Eterno, Marc imagina una serie que no se limita a adaptar el arte de Bustamante. Lo habita, construyendo un mundo tan estratificado y vivo como las esculturas mismas.',
+    producer_collab_quote: 'Bustamante ha pasado toda una vida construyendo un mundo en bronce, cerámica y oro — uno por el que millones han caminado y que los ha transformado. Marc llegó a este proyecto como coleccionista primero y productor segundo, que es exactamente el orden correcto. Esta colaboración está construida sobre una reverencia genuina por la obra y la creencia compartida de que las mejores historias son las que ya existen, esperando el vehículo adecuado. Carnaval Eterno es ese vehículo.',
     hero_cta: 'Contactar a Marc Sternberg',
     close_label: 'La Promesa',
     close_quote: 'El Carnaval sobrevivió.<br>La obra existe.<br>La búsqueda continúa.<br><em style=\'color:var(--gold-pale)\'>Eso es suficiente. Siempre ha sido suficiente.</em>',
