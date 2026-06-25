@@ -200,6 +200,10 @@ nav.scrolled {
   padding:1.15rem 3rem;cursor:none;transition:all .4s ease;
 }
 .btn-s:hover { border-color:var(--gold);color:var(--gold);background:rgba(200,146,42,.06);box-shadow:0 0 30px rgba(200,146,42,.1); }
+.lang-en-show { display:none; }
+.lang-es-show { display:none; }
+html[data-active-lang="en"] .lang-en-show { display:flex; }
+html[data-active-lang="es"] .lang-es-show { display:flex; }
 
 /* Scroll signal */
 .scroll-sig {
@@ -1340,6 +1344,15 @@ footer { border-top:1px solid rgba(255,255,255,.05);padding:3rem 4rem;display:fl
     </p>
     <div class="cta-row">
       <a href="mailto:marcsternberg13@gmail.com" class="btn-p" style="text-decoration:none;display:inline-flex;align-items:center;"><span data-t="hero_cta">Contact Marc Sternberg</span></a>
+    </div>
+    <!-- English: two pitch deck buttons -->
+    <div class="cta-row lang-en-show" style="gap:1.2rem;flex-wrap:wrap;justify-content:center;margin-top:1.2rem;">
+      <a href="https://drive.google.com/file/d/1ieFbB0J6kbAM_eVCclxDa1tYZBWCXdu0/view?usp=drive_link" target="_blank" rel="noopener" class="btn-s" style="text-decoration:none;display:inline-flex;align-items:center;">View Pitch Deck v.1</a>
+      <a href="https://drive.google.com/file/d/1fyTY6q1ILAZ18jNlYtiNFi6e6WCbpyKj/view?usp=drive_link" target="_blank" rel="noopener" class="btn-s" style="text-decoration:none;display:inline-flex;align-items:center;">View Pitch Deck v.2</a>
+    </div>
+    <!-- Spanish: one pitch deck button -->
+    <div class="cta-row lang-es-show" style="justify-content:center;margin-top:1.2rem;">
+      <a href="https://drive.google.com/file/d/134lcE2mDoqqR5PI2DyAHaumFzG0B_I7V/view?usp=drive_link" target="_blank" rel="noopener" class="btn-s" style="text-decoration:none;display:inline-flex;align-items:center;">Ver Propuesta de Desarrollo</a>
     </div>
   </div>
 
@@ -3340,6 +3353,7 @@ function setLang(lang) {
   const btnEs = document.getElementById('langBtnEs');
   if (btnEn) btnEn.setAttribute('data-active', lang === 'en' ? 'true' : 'false');
   if (btnEs) btnEs.setAttribute('data-active', lang === 'es' ? 'true' : 'false');
+  document.documentElement.setAttribute('data-active-lang', lang);
   document.querySelectorAll('[data-t]').forEach(el => {
     const key = el.getAttribute('data-t');
     if (T[key] !== undefined) el.innerHTML = T[key];
